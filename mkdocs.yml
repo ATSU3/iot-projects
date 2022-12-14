@@ -1,1 +1,45 @@
 site_name: IoT Projects
+
+site_author: Atsufumi Suzuki
+
+
+theme:
+    name: material
+    palette:
+        primary: white
+        accent: indigo
+    font:
+        text: Ubuntu
+        code: Ubuntu Mono
+    features:
+        - navigation.tabs
+        - navigation.instant
+
+plugins:
+    - search
+
+markdown_extensions:
+    - extra
+    - smarty
+    - admonition
+    - codehilite:
+        guess_lang: false
+        linenums: true
+        use_pygments: true
+    - toc:
+        permalink: true
+    - meta
+    - pymdownx.mark
+    - pymdownx.magiclink
+    - pymdownx.emoji
+    - pymdownx.keys
+    - def_list
+    - admonition
+
+extra_css:
+    - css/extra.css
+
+extra_javascript:
+    - javascripts/extra.js
+
+use_directory_urls: false
