@@ -2,3 +2,18 @@ img[src*='#center'] {
     display: block;
     margin: auto;
 }
+
+.cssgrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-auto-rows: 1fr;
+    grid-gap: 0.8em;
+    padding: 0.8em;
+    margin: 0 0 2em;
+}
+
+.cssgrid>div {
+    overflow: auto;
+    min-width: 0;
+    padding: 1em;
+}
