@@ -383,10 +383,37 @@
     環境
   </a>
   
+    <nav class="md-nav" aria-label="環境">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#google-cloud-platform" class="md-nav__link">
+    Google Cloud Platformの設定
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#spreadsheet" class="md-nav__link">
+    Spreadsheet設定
+  </a>
+  
 </li>
         
           <li class="md-nav__item">
   <a href="#python_1" class="md-nav__link">
+    Python環境構築
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#python_2" class="md-nav__link">
     Pythonプログラム
   </a>
   
@@ -458,10 +485,37 @@
     環境
   </a>
   
+    <nav class="md-nav" aria-label="環境">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#google-cloud-platform" class="md-nav__link">
+    Google Cloud Platformの設定
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#spreadsheet" class="md-nav__link">
+    Spreadsheet設定
+  </a>
+  
 </li>
         
           <li class="md-nav__item">
   <a href="#python_1" class="md-nav__link">
+    Python環境構築
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#python_2" class="md-nav__link">
     Pythonプログラム
   </a>
   
@@ -501,8 +555,20 @@
 <p><img alt="" src="../images/prototype/prototype1/idea_sketch.jpg#center" /></p>
 <p>ラボ内では多くの電子パーツあり、在庫管理に非常に多くの時間を要するため、自動化することができないかどうか考えた。
 在庫はスプレッドシートで管理しているため、各棚と対象のスプレッドシートの各パーツの在庫数が同期されるような仕組みを作り自動化することができたら行もが大幅に効率化されるため、作成してみる。</p>
-<h3 id="python">スプレッドシートをpythonで操作する<a class="headerlink" href="#python" title="Permanent link">&para;</a></h3>
-<h4 id="_1">環境<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h4>
+<h2 id="python">スプレッドシートをpythonで操作する<a class="headerlink" href="#python" title="Permanent link">&para;</a></h2>
+<h3 id="_1">環境<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h3>
+<h4 id="google-cloud-platform">Google Cloud Platformの設定<a class="headerlink" href="#google-cloud-platform" title="Permanent link">&para;</a></h4>
+<ol>
+<li>プロジェクトを作成</li>
+<li>Google Drive APIを有効にする</li>
+<li>Google Sheets APIを有効にする</li>
+<li>「APIとサービス」-&gt; 「ダッシュボード」から有効化されていることを確認する。</li>
+<li>「認証情報」-&gt; 「サービスアカウント名」-&gt; 「役割: 編集者」, 「キータイプ: JSON」で作成する。</li>
+</ol>
+<h4 id="spreadsheet">Spreadsheet設定<a class="headerlink" href="#spreadsheet" title="Permanent link">&para;</a></h4>
+<p>サンプルで部品名とその個数を入力するシートを作成する。
+<img alt="" src="../images/prototype/prototype1/spreadsheet_1.jpg#center" /></p>
+<h4 id="python_1">Python環境構築<a class="headerlink" href="#python_1" title="Permanent link">&para;</a></h4>
 <ul>
 <li>Raspberry Pi 3B<ul>
 <li>ディストリビューション: Raspbian GNU/Linux 11 (bullseye)</li>
@@ -522,7 +588,7 @@
 <div class="codehilite"><pre><span></span><code>$ pip install gspread oauth2client
 </code></pre></div>
 
-<h4 id="python_1">Pythonプログラム<a class="headerlink" href="#python_1" title="Permanent link">&para;</a></h4>
+<h3 id="python_2">Pythonプログラム<a class="headerlink" href="#python_2" title="Permanent link">&para;</a></h3>
 <div class="codehilite"><pre><span></span><code><span class="kn">import</span> <span class="nn">gspread</span>
 <span class="kn">import</span> <span class="nn">time</span>
 <span class="kn">import</span> <span class="nn">RPi.GPIO</span> <span class="k">as</span> <span class="nn">GPIO</span>
@@ -568,7 +634,7 @@
         <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.3</span><span class="p">)</span>
 </code></pre></div>
 
-<h3 id="_2">参考資料<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<h2 id="_2">参考資料<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
 <ul>
 <li><a href="https://docs.gspread.org/en/latest/user-guide.html">Examples of gspread Usage</a></li>
 <li><a href="https://developers.google.com/sheets/api">Google Sheets for Developers sheet API</a></li>
