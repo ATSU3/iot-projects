@@ -9,13 +9,29 @@
 ラボ内では多くの電子パーツあり、在庫管理に非常に多くの時間を要するため、自動化することができないかどうか考えた。
 在庫はスプレッドシートで管理しているため、各棚と対象のスプレッドシートの各パーツの在庫数が同期されるような仕組みを作り自動化することができたら行もが大幅に効率化されるため、作成してみる。
 
-### スプレッドシートをpythonで操作する
+## スプレッドシートをpythonで操作する
 
-#### 環境
+### 環境
+
+#### Google Cloud Platformの設定
+
+1. プロジェクトを作成
+2. Google Drive APIを有効にする
+3. Google Sheets APIを有効にする
+4. 「APIとサービス」-> 「ダッシュボード」から有効化されていることを確認する。
+5. 「認証情報」-> 「サービスアカウント名」-> 「役割: 編集者」, 「キータイプ: JSON」で作成する。
+
+
+#### Spreadsheet設定
+サンプルで部品名とその個数を入力するシートを作成する。
+![](../images/prototype/prototype1/spreadsheet_1.jpg#center)
+
+
+
+#### Python環境構築
 - Raspberry Pi 3B
     - ディストリビューション: Raspbian GNU/Linux 11 (bullseye)
     - python version 3.9.2
-
 
 対象のルートディレクトリに仮想環境を作成する。
 ```bash
@@ -32,7 +48,7 @@ $ source .env/bin/activate
 $ pip install gspread oauth2client
 ```
 
-#### Pythonプログラム
+### Pythonプログラム
 ```python
 import gspread
 import time
@@ -80,6 +96,6 @@ while True:
 
 ```
 
-### 参考資料
+## 参考資料
 - [Examples of gspread Usage](https://docs.gspread.org/en/latest/user-guide.html)
 - [Google Sheets for Developers sheet API](https://developers.google.com/sheets/api)
