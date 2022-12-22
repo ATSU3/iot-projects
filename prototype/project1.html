@@ -385,6 +385,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#python_1" class="md-nav__link">
+    Pythonプログラム
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -453,6 +460,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#python_1" class="md-nav__link">
+    Pythonプログラム
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -506,6 +520,52 @@
 
 <p>今回はpythonでスプレッドシートを操作するため、gspreadと、Oauth認証関連のoauth2clientを使用します。</p>
 <div class="codehilite"><pre><span></span><code>$ pip install gspread oauth2client
+</code></pre></div>
+
+<h4 id="python_1">Pythonプログラム<a class="headerlink" href="#python_1" title="Permanent link">&para;</a></h4>
+<div class="codehilite"><pre><span></span><code><span class="kn">import</span> <span class="nn">gspread</span>
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">import</span> <span class="nn">RPi.GPIO</span> <span class="k">as</span> <span class="nn">GPIO</span>
+<span class="kn">from</span> <span class="nn">oauth2client.service_account</span> <span class="kn">import</span> <span class="n">ServiceAccountCredentials</span>
+
+<span class="n">scope</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;https://spreadsheets.google.com/feeds&#39;</span><span class="p">,</span><span class="s1">&#39;https://www.googleapis.com/auth/drive&#39;</span><span class="p">]</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">ServiceAccountCredentials</span><span class="o">.</span><span class="n">from_json_keyfile_name</span><span class="p">(</span><span class="s1">&#39;対象のjsonファイル&#39;</span><span class="p">,</span> <span class="n">scope</span><span class="p">)</span>
+
+<span class="n">gs</span> <span class="o">=</span> <span class="n">gspread</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+
+<span class="n">SPREADSHEET_KEY</span> <span class="o">=</span> <span class="s1">&#39;スプレッドシートキー&#39;</span>
+<span class="n">worksheet</span> <span class="o">=</span> <span class="n">gs</span><span class="o">.</span><span class="n">open_by_key</span><span class="p">(</span><span class="n">SPREADSHEET_KEY</span><span class="p">)</span><span class="o">.</span><span class="n">worksheet</span><span class="p">(</span><span class="s2">&quot;stock&quot;</span><span class="p">)</span>
+
+<span class="n">GPIO</span><span class="o">.</span><span class="n">setwarnings</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">GPIO</span><span class="o">.</span><span class="n">setmode</span><span class="p">(</span><span class="n">GPIO</span><span class="o">.</span><span class="n">BCM</span><span class="p">)</span>
+<span class="n">GPIO</span><span class="o">.</span><span class="n">setup</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">GPIO</span><span class="o">.</span><span class="n">IN</span><span class="p">,</span> <span class="n">pull_up_down</span><span class="o">=</span><span class="n">GPIO</span><span class="o">.</span><span class="n">PUD_UP</span><span class="p">)</span>
+<span class="n">GPIO</span><span class="o">.</span><span class="n">setup</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">GPIO</span><span class="o">.</span><span class="n">IN</span><span class="p">,</span> <span class="n">pull_up_down</span><span class="o">=</span><span class="n">GPIO</span><span class="o">.</span><span class="n">PUD_UP</span><span class="p">)</span>
+<span class="n">GPIO</span><span class="o">.</span><span class="n">setup</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="n">GPIO</span><span class="o">.</span><span class="n">IN</span><span class="p">,</span> <span class="n">pull_up_down</span><span class="o">=</span><span class="n">GPIO</span><span class="o">.</span><span class="n">PUD_UP</span><span class="p">)</span>
+<span class="n">GPIO</span><span class="o">.</span><span class="n">setup</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="n">GPIO</span><span class="o">.</span><span class="n">IN</span><span class="p">,</span> <span class="n">pull_up_down</span><span class="o">=</span><span class="n">GPIO</span><span class="o">.</span><span class="n">PUD_UP</span><span class="p">)</span>
+<span class="n">GPIO</span><span class="o">.</span><span class="n">setup</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="n">GPIO</span><span class="o">.</span><span class="n">IN</span><span class="p">,</span> <span class="n">pull_up_down</span><span class="o">=</span><span class="n">GPIO</span><span class="o">.</span><span class="n">PUD_UP</span><span class="p">)</span>
+
+<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="k">while</span> <span class="n">GPIO</span><span class="o">.</span><span class="n">input</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span> <span class="o">==</span> <span class="n">GPIO</span><span class="o">.</span><span class="n">LOW</span><span class="p">:</span>
+        <span class="n">val_1</span> <span class="o">=</span> <span class="n">worksheet</span><span class="o">.</span><span class="n">acell</span><span class="p">(</span><span class="s2">&quot;B2&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">value</span>
+        <span class="n">val_2</span> <span class="o">=</span> <span class="n">worksheet</span><span class="o">.</span><span class="n">acell</span><span class="p">(</span><span class="s2">&quot;B3&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">value</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">GPIO</span><span class="o">.</span><span class="n">input</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
+        <span class="k">if</span> <span class="n">GPIO</span><span class="o">.</span><span class="n">input</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">==</span> <span class="n">GPIO</span><span class="o">.</span><span class="n">LOW</span><span class="p">:</span>
+            <span class="n">val1</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">val_1</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
+            <span class="n">worksheet</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="s1">&#39;B2&#39;</span><span class="p">,</span> <span class="n">val1</span><span class="p">)</span>
+            <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.3</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">GPIO</span><span class="o">.</span><span class="n">input</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="o">==</span> <span class="n">GPIO</span><span class="o">.</span><span class="n">LOW</span><span class="p">:</span>
+            <span class="n">val1</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">val_1</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span>
+            <span class="n">worksheet</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="s1">&#39;B2&#39;</span><span class="p">,</span> <span class="n">val1</span><span class="p">)</span>
+            <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.3</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">GPIO</span><span class="o">.</span><span class="n">input</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span> <span class="o">==</span> <span class="n">GPIO</span><span class="o">.</span><span class="n">LOW</span><span class="p">:</span>
+            <span class="n">val2</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">val_2</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
+            <span class="n">worksheet</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="s1">&#39;B3&#39;</span><span class="p">,</span> <span class="n">val2</span><span class="p">)</span>
+            <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.3</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">GPIO</span><span class="o">.</span><span class="n">input</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span> <span class="o">==</span> <span class="n">GPIO</span><span class="o">.</span><span class="n">LOW</span><span class="p">:</span>
+            <span class="n">val2</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">val_2</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span>
+            <span class="n">worksheet</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="s1">&#39;B3&#39;</span><span class="p">,</span> <span class="n">val2</span><span class="p">)</span>
+            <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.3</span><span class="p">)</span>
+        <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.3</span><span class="p">)</span>
 </code></pre></div>
 
 <h3 id="_2">参考資料<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
