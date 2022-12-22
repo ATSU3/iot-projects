@@ -24,7 +24,6 @@ markdown_extensions:
     - admonition
     - codehilite:
         guess_lang: false
-        linenums: true
         use_pygments: true
     - toc:
         permalink: true
