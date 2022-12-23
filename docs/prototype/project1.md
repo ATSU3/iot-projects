@@ -16,6 +16,19 @@
 #### Google Cloud Platformの設定
 
 1. プロジェクトを作成
+
+![](../images/prototype/prototype1/gcp_1.jpg#center)
+
+![](../images/prototype/prototype1/gcp_2.jpg#center)
+
+![](../images/prototype/prototype1/gcp_3.jpg#center)
+
+![](../images/prototype/prototype1/gcp_4.jpg#center)
+
+![](../images/prototype/prototype1/gcp_5.jpg#center)
+
+
+
 2. Google Drive APIを有効にする
 3. Google Sheets APIを有効にする
 4. 「APIとサービス」-> 「ダッシュボード」から有効化されていることを確認する。
