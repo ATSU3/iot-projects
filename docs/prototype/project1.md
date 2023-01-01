@@ -33,17 +33,22 @@ Google Cloud のコンソール画面を開いたらまず最初に新しいプ�
 移動すると、対象のプロジェクトのダッシュボードページに遷移します。
 ![](../images/prototype/prototype1/gcp_5.jpg#center)
 
-2. Google Drive APIを有効にする
-Google Drive APIを有効にします。
+2. Spreadsheet APIとGoogle Drive APIを有効にする。
+
 ハンバーガーメニューをクリックして「APIとサービス」-> 「ライブラリ」を選択します。
 ![](../images/prototype/prototype1/gcp_6.jpg#center)
 
 以下のライブラリ検索ページが表示されるため、検索ボックスに「spreadsheet」と入力して「Google Sheets API」を表示します。
 ![](../images/prototype/prototype1/gcp_7.jpg#center)
 
+Google Sheets APIを有効にするため、「有効にする」ボタンをクリックします。
+![](../images/prototype/prototype1/gcp_8.jpg#center)
 
-3. Google Sheets APIを有効にする
 
+次に、上記と同様にGoogle Drive APIを検索して、有効化します。
+![](../images/prototype/prototype1/gcp_9.jpg#center)
+
+![](../images/prototype/prototype1/gcp_10.jpg#center)
 
 4. 「APIとサービス」-> 「ダッシュボード」から有効化されていることを確認する。
 5. 「認証情報」-> 「サービスアカウント名」-> 「役割: 編集者」, 「キータイプ: JSON」で作成する。
