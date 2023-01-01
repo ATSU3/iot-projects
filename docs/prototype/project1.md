@@ -15,22 +15,36 @@
 
 #### Google Cloud Platformの設定
 
-1. プロジェクトを作成
+1. プロジェクトを作成する。
 
+Google Cloud のコンソール画面を開いたらまず最初に新しいプロジェクトを作成します。
+ナビゲーションメニューから以下の黄色い枠で囲われた部分をクリックします。
 ![](../images/prototype/prototype1/gcp_1.jpg#center)
 
+プロジェクト選択・新規作成のウィンドウが表示されるため、新しいプロジェクトをクリックします。
 ![](../images/prototype/prototype1/gcp_2.jpg#center)
 
+新しいプロジェクト作成ページに遷移するため、プロジェクト名を入力して作成ボタンをクリックします。
 ![](../images/prototype/prototype1/gcp_3.jpg#center)
 
+プロジェクトができると、ナビゲーションバーの通知からプロジェクトを確認できるため、「プロジェクトを選択」をクリックして、作成したプロジェクトに移動しましょう。
 ![](../images/prototype/prototype1/gcp_4.jpg#center)
 
+移動すると、対象のプロジェクトのダッシュボードページに遷移します。
 ![](../images/prototype/prototype1/gcp_5.jpg#center)
 
-
-
 2. Google Drive APIを有効にする
+Google Drive APIを有効にします。
+ハンバーガーメニューをクリックして「APIとサービス」-> 「ライブラリ」を選択します。
+![](../images/prototype/prototype1/gcp_6.jpg#center)
+
+以下のライブラリ検索ページが表示されるため、検索ボックスに「spreadsheet」と入力して「Google Sheets API」を表示します。
+![](../images/prototype/prototype1/gcp_7.jpg#center)
+
+
 3. Google Sheets APIを有効にする
+
+
 4. 「APIとサービス」-> 「ダッシュボード」から有効化されていることを確認する。
 5. 「認証情報」-> 「サービスアカウント名」-> 「役割: 編集者」, 「キータイプ: JSON」で作成する。
 
