@@ -50,7 +50,13 @@ Google Sheets APIを有効にするため、「有効にする」ボタンをク
 
 ![](../images/prototype/prototype1/gcp_10.jpg#center)
 
-4. 「APIとサービス」-> 「ダッシュボード」から有効化されていることを確認する。
+「APIとサービス」-> 「有効なAPIとサービス」から有効化されていることを確認することができます。
+![](../images/prototype/prototype1/gcp_11.jpg#center)
+
+
+![](../images/prototype/prototype1/gcp_12.jpg#center)
+
+
 5. 「認証情報」-> 「サービスアカウント名」-> 「役割: 編集者」, 「キータイプ: JSON」で作成する。
 
 
