@@ -107,30 +107,30 @@ GPIO.setup(2, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 GPIO.setup(3, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 GPIO.setup(4, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 GPIO.setup(5, GPIO.IN, pull_up_down=GPIO.PUD_UP)
-GPIO.setup(6, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 
 while True:
-    while GPIO.input(6) == GPIO.LOW:
+    val_1 = ""
+    val_2 = ""
+    if GPIO.input(2) == GPIO.LOW:
         val_1 = worksheet.acell("B2").value
+        val1 = int(val_1) + 1
+        worksheet.update('B2', val1)
+        time.sleep(0.1)
+    elif GPIO.input(3) == GPIO.LOW:
+        val_1 = worksheet.acell("B2").value
+        val1 = int(val_1) - 1
+        worksheet.update('B2', val1)
+        time.sleep(0.1)
+    elif GPIO.input(4) == GPIO.LOW:
         val_2 = worksheet.acell("B3").value
-        print(GPIO.input(2))
-        if GPIO.input(2) == GPIO.LOW:
-            val1 = int(val_1) + 1
-            worksheet.update('B2', val1)
-            time.sleep(0.3)
-        elif GPIO.input(3) == GPIO.LOW:
-            val1 = int(val_1) - 1
-            worksheet.update('B2', val1)
-            time.sleep(0.3)
-        elif GPIO.input(4) == GPIO.LOW:
-            val2 = int(val_2) + 1
-            worksheet.update('B3', val2)
-            time.sleep(0.3)
-        elif GPIO.input(5) == GPIO.LOW:
-            val2 = int(val_2) - 1
-            worksheet.update('B3', val2)
-            time.sleep(0.3)
-        time.sleep(0.3)
+        val2 = int(val_2) + 1
+        worksheet.update('B3', val2)
+        time.sleep(0.1)
+    elif GPIO.input(5) == GPIO.LOW:
+        val_2 = worksheet.acell("B3").value
+        val2 = int(val_2) - 1
+        worksheet.update('B3', val2)
+        time.sleep(0.1)
 
 ```
 
