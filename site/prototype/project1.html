@@ -401,6 +401,13 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    電子回路
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#python_1" class="md-nav__link">
     Python環境構築
   </a>
@@ -417,6 +424,19 @@
     Pythonプログラム
   </a>
   
+    <nav class="md-nav" aria-label="Pythonプログラム">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    ボディ設計
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
       </ul>
@@ -425,7 +445,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
+  <a href="#_4" class="md-nav__link">
     参考資料
   </a>
   
@@ -503,6 +523,13 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    電子回路
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#python_1" class="md-nav__link">
     Python環境構築
   </a>
@@ -519,6 +546,19 @@
     Pythonプログラム
   </a>
   
+    <nav class="md-nav" aria-label="Pythonプログラム">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    ボディ設計
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
       </ul>
@@ -527,7 +567,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
+  <a href="#_4" class="md-nav__link">
     参考資料
   </a>
   
@@ -552,47 +592,65 @@
   <link href="../css/extra.css" rel="stylesheet"></link>
 </head></p>
 <h1 id="wip">ラボ内の在庫管理を自動化してみる (WIP)<a class="headerlink" href="#wip" title="Permanent link">&para;</a></h1>
-<p><img alt="" src="../images/prototype/prototype1/idea_sketch.jpg#center" /></p>
+<p><img alt="" src="../images/prototype/prototype1/idea_sketch/idea_sketch.jpg#center" /></p>
 <p>ラボ内では多くの電子パーツあり、在庫管理に非常に多くの時間を要するため、自動化することができないかどうか考えた。
-在庫はスプレッドシートで管理しているため、各棚と対象のスプレッドシートの各パーツの在庫数が同期されるような仕組みを作り自動化することができたら行もが大幅に効率化されるため、作成してみる。</p>
+在庫はスプレッドシートで管理しているため、各棚と対象のスプレッドシートの各パーツの在庫数が同期されるような仕組みを作り自動化することができたら作業が大幅に効率化されると考えた。</p>
+<p>今回はラボ内の電子パーツが限られているため、第一段階目として、上記のように各収納箱の全面に+ボタン、-ボタンを取り付け、使った分+,-のボタンを押すことでスプレッドシートに数を反映させるプロトタイプを作成する。</p>
 <h2 id="python">スプレッドシートをpythonで操作する<a class="headerlink" href="#python" title="Permanent link">&para;</a></h2>
 <h3 id="_1">環境<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h3>
 <h4 id="google-cloud-platform">Google Cloud Platformの設定<a class="headerlink" href="#google-cloud-platform" title="Permanent link">&para;</a></h4>
-<ol>
+<ul>
 <li>プロジェクトを作成する。</li>
-</ol>
-<p>Google Cloud のコンソール画面を開いたらまず最初に新しいプロジェクトを作成します。
+</ul>
+<!-- 
+Google Cloud のコンソール画面を開いたらまず最初に新しいプロジェクトを作成します。
 ナビゲーションメニューから以下の黄色い枠で囲われた部分をクリックします。
-<img alt="" src="../images/prototype/prototype1/gcp_1.jpg#center" /></p>
-<p>プロジェクト選択・新規作成のウィンドウが表示されるため、新しいプロジェクトをクリックします。
-<img alt="" src="../images/prototype/prototype1/gcp_2.jpg#center" /></p>
-<p>新しいプロジェクト作成ページに遷移するため、プロジェクト名を入力して作成ボタンをクリックします。
-<img alt="" src="../images/prototype/prototype1/gcp_3.jpg#center" /></p>
-<p>プロジェクトができると、ナビゲーションバーの通知からプロジェクトを確認できるため、「プロジェクトを選択」をクリックして、作成したプロジェクトに移動しましょう。
-<img alt="" src="../images/prototype/prototype1/gcp_4.jpg#center" /></p>
-<p>移動すると、対象のプロジェクトのダッシュボードページに遷移します。
-<img alt="" src="../images/prototype/prototype1/gcp_5.jpg#center" /></p>
-<ol>
-<li>Spreadsheet APIとGoogle Drive APIを有効にする。</li>
-</ol>
-<p>ハンバーガーメニューをクリックして「APIとサービス」-&gt; 「ライブラリ」を選択します。
-<img alt="" src="../images/prototype/prototype1/gcp_6.jpg#center" /></p>
-<p>以下のライブラリ検索ページが表示されるため、検索ボックスに「spreadsheet」と入力して「Google Sheets API」を表示します。
-<img alt="" src="../images/prototype/prototype1/gcp_7.jpg#center" /></p>
-<p>Google Sheets APIを有効にするため、「有効にする」ボタンをクリックします。
-<img alt="" src="../images/prototype/prototype1/gcp_8.jpg#center" /></p>
-<p>次に、上記と同様にGoogle Drive APIを検索して、有効化します。
-<img alt="" src="../images/prototype/prototype1/gcp_9.jpg#center" /></p>
-<p><img alt="" src="../images/prototype/prototype1/gcp_10.jpg#center" /></p>
-<p>「APIとサービス」-&gt; 「有効なAPIとサービス」から有効化されていることを確認することができます。
-<img alt="" src="../images/prototype/prototype1/gcp_11.jpg#center" /></p>
-<p><img alt="" src="../images/prototype/prototype1/gcp_12.jpg#center" /></p>
-<ol>
-<li>「認証情報」-&gt; 「サービスアカウント名」-&gt; 「役割: 編集者」, 「キータイプ: JSON」で作成する。</li>
-</ol>
+![](../images/prototype/prototype1/gcp_1.jpg#center)
+
+プロジェクト選択・新規作成のウィンドウが表示されるため、新しいプロジェクトをクリックします。
+![](../images/prototype/prototype1/gcp_2.jpg#center)
+
+新しいプロジェクト作成ページに遷移するため、プロジェクト名を入力して作成ボタンをクリックします。
+![](../images/prototype/prototype1/gcp_3.jpg#center)
+
+プロジェクトができると、ナビゲーションバーの通知からプロジェクトを確認できるため、「プロジェクトを選択」をクリックして、作成したプロジェクトに移動しましょう。
+![](../images/prototype/prototype1/gcp_4.jpg#center)
+
+移動すると、対象のプロジェクトのダッシュボードページに遷移します。
+![](../images/prototype/prototype1/gcp_5.jpg#center)
+
+2. Spreadsheet APIとGoogle Drive APIを有効にする。
+
+ハンバーガーメニューをクリックして「APIとサービス」-> 「ライブラリ」を選択します。
+![](../images/prototype/prototype1/gcp_6.jpg#center)
+
+以下のライブラリ検索ページが表示されるため、検索ボックスに「spreadsheet」と入力して「Google Sheets API」を表示します。
+![](../images/prototype/prototype1/gcp_7.jpg#center)
+
+Google Sheets APIを有効にするため、「有効にする」ボタンをクリックします。
+![](../images/prototype/prototype1/gcp_8.jpg#center)
+
+
+次に、上記と同様にGoogle Drive APIを検索して、有効化します。
+![](../images/prototype/prototype1/gcp_9.jpg#center)
+
+![](../images/prototype/prototype1/gcp_10.jpg#center)
+
+「APIとサービス」-> 「有効なAPIとサービス」から有効化されていることを確認することができます。
+![](../images/prototype/prototype1/gcp_11.jpg#center)
+
+
+![](../images/prototype/prototype1/gcp_12.jpg#center)
+
+
+5. 「認証情報」-> 「サービスアカウント名」-> 「役割: 編集者」, 「キータイプ: JSON」で作成する。 -->
+
 <h4 id="spreadsheet">Spreadsheet設定<a class="headerlink" href="#spreadsheet" title="Permanent link">&para;</a></h4>
 <p>サンプルで部品名とその個数を入力するシートを作成する。
-<img alt="" src="../images/prototype/prototype1/spreadsheet_1.jpg#center" /></p>
+<img alt="" src="../images/prototype/prototype1/spreadsheet/spreadsheet_1.jpg#center" /></p>
+<h4 id="_2">電子回路<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h4>
+<p>電子回路は以下の図のような構成にしております。RapsberrypiのGPIO2, 3, 4, 5を各タクトスイッチと接続しております。また、タクトスイッチはRaspberryPi内部のプルアップ抵抗とも接続しております。</p>
+<p><img alt="" src="../images/prototype/prototype1/circuit/circuit_1.jpg#center" /></p>
 <h4 id="python_1">Python環境構築<a class="headerlink" href="#python_1" title="Permanent link">&para;</a></h4>
 <ul>
 <li>Raspberry Pi 3B<ul>
@@ -659,10 +717,12 @@
         <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.1</span><span class="p">)</span>
 </code></pre></div>
 
-<h2 id="_2">参考資料<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<h4 id="_3">ボディ設計<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
+<h2 id="_4">参考資料<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
 <ul>
 <li><a href="https://docs.gspread.org/en/latest/user-guide.html">Examples of gspread Usage</a></li>
 <li><a href="https://developers.google.com/sheets/api">Google Sheets for Developers sheet API</a></li>
+<li><a href="https://amg-solution.jp/blog/26703">GoogleスプレッドシートにAPIで書き込む！GCP設定編</a></li>
 </ul>
 
 

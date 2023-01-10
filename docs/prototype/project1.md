@@ -143,6 +143,15 @@ while True:
 
 #### ボディ設計
 
+Fusion360で収納ケースを作成しました。
+
+![](../images/prototype/prototype1/fusion360/fusion360_1.jpg#center)
+
+![](../images/prototype/prototype1/fusion360/fusion360_2.jpg#center)
+
+作成したデータはDXF形式で出力して、加工はMDF2.5mmを使用しレーザーカッターを用いて行いて行いました。
+
+
 
 ## 参考資料
 - [Examples of gspread Usage](https://docs.gspread.org/en/latest/user-guide.html)
