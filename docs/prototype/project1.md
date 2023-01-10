@@ -4,10 +4,14 @@
 
 # ラボ内の在庫管理を自動化してみる (WIP)
 
-![](../images/prototype/prototype1/idea_sketch.jpg#center)
+![](../images/prototype/prototype1/idea_sketch/idea_sketch.jpg#center)
 
 ラボ内では多くの電子パーツあり、在庫管理に非常に多くの時間を要するため、自動化することができないかどうか考えた。
-在庫はスプレッドシートで管理しているため、各棚と対象のスプレッドシートの各パーツの在庫数が同期されるような仕組みを作り自動化することができたら行もが大幅に効率化されるため、作成してみる。
+在庫はスプレッドシートで管理しているため、各棚と対象のスプレッドシートの各パーツの在庫数が同期されるような仕組みを作り自動化することができたら作業が大幅に効率化されると考えた。
+
+
+今回はラボ内の電子パーツが限られているため、第一段階目として、上記のように各収納箱の全面に+ボタン、-ボタンを取り付け、使った分+,-のボタンを押すことでスプレッドシートに数を反映させるプロトタイプを作成する。
+
 
 ## スプレッドシートをpythonで操作する
 
@@ -15,8 +19,8 @@
 
 #### Google Cloud Platformの設定
 
-1. プロジェクトを作成する。
-
+- プロジェクトを作成する。
+<!-- 
 Google Cloud のコンソール画面を開いたらまず最初に新しいプロジェクトを作成します。
 ナビゲーションメニューから以下の黄色い枠で囲われた部分をクリックします。
 ![](../images/prototype/prototype1/gcp_1.jpg#center)
@@ -57,14 +61,18 @@ Google Sheets APIを有効にするため、「有効にする」ボタンをク
 ![](../images/prototype/prototype1/gcp_12.jpg#center)
 
 
-5. 「認証情報」-> 「サービスアカウント名」-> 「役割: 編集者」, 「キータイプ: JSON」で作成する。
+5. 「認証情報」-> 「サービスアカウント名」-> 「役割: 編集者」, 「キータイプ: JSON」で作成する。 -->
 
 
 #### Spreadsheet設定
 サンプルで部品名とその個数を入力するシートを作成する。
-![](../images/prototype/prototype1/spreadsheet_1.jpg#center)
+![](../images/prototype/prototype1/spreadsheet/spreadsheet_1.jpg#center)
 
+#### 電子回路
 
+電子回路は以下の図のような構成にしております。RapsberrypiのGPIO2, 3, 4, 5を各タクトスイッチと接続しております。また、タクトスイッチはRaspberryPi内部のプルアップ抵抗とも接続しております。
+
+![](../images/prototype/prototype1/circuit/circuit_1.jpg#center)
 
 #### Python環境構築
 - Raspberry Pi 3B
@@ -131,9 +139,13 @@ while True:
         val2 = int(val_2) - 1
         worksheet.update('B3', val2)
         time.sleep(0.1)
-
 ```
+
+#### ボディ設計
+
 
 ## 参考資料
 - [Examples of gspread Usage](https://docs.gspread.org/en/latest/user-guide.html)
 - [Google Sheets for Developers sheet API](https://developers.google.com/sheets/api)
+- [GoogleスプレッドシートにAPIで書き込む！GCP設定編](https://amg-solution.jp/blog/26703)
+
