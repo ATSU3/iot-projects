@@ -150,20 +150,20 @@ Fusion360で以下のように収納ケースを作成しました。
 
 ![](../images/prototype/prototype1/fusion360/fusion360_2.jpg#center)
 
-作成したデータはDXF形式で出力して、加工はMDF2.5mmを使用しレーザーカッターを用いて行いて行いました。
+作成したデータはDXF形式で出力して、加工はMDF2.5mmを使用しレーザーカッターを用いて行いて行いました。データは[こちら](../files/prototype1/case.pdf)からダウンロードできます。
 
 電子回路は以下のように半田付けして格納しております。
 ![](../images/prototype/prototype1/circuit/circuit_2.jpg#center)
 
-#### プロトタイプ
+#### 評価
 
-以下の動画のように+,-ボタンを押した回数分、カウントアップ、カウントダウンし、値がリアルタイムでスプレッドシートに反映されます。
+以下の動画のように+,-ボタンを押した回数分、カウントアップ、カウントダウンし、値がリアルタイムでスプレッドシートに反映することができました。
 
 <video width="100%" height="400px" id="center" controls>
   <source src="../videos/test/project1/prototype_1.mp4" type="video/mp4">
 </video>
 
-ここまでで第一段階のプロトタイプの作成を完了しました。
+ここまでで第一段階のプロトタイプの作成を終了します。
 
 ## データ
 - [case.ai](../files/prototype1/case.ai)
