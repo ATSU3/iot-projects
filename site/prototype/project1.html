@@ -434,6 +434,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    プロトタイプ
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -445,7 +452,14 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
+  <a href="#_5" class="md-nav__link">
+    データ
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
     参考資料
   </a>
   
@@ -556,6 +570,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    プロトタイプ
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -567,7 +588,14 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
+  <a href="#_5" class="md-nav__link">
+    データ
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
     参考資料
   </a>
   
@@ -592,61 +620,60 @@
   <link href="../css/extra.css" rel="stylesheet"></link>
 </head></p>
 <h1 id="wip">ラボ内の在庫管理を自動化してみる (WIP)<a class="headerlink" href="#wip" title="Permanent link">&para;</a></h1>
+<p>ラボ内では多くの電子パーツあり、在庫管理に非常に多くの時間を要するため、自動化することができないかどうか考えました。
+在庫はスプレッドシートで管理しているため、各棚と対象のスプレッドシートの各パーツの在庫数が同期されるような仕組みを作り自動化することができたら作業が大幅に効率化されると考えました。</p>
 <p><img alt="" src="../images/prototype/prototype1/idea_sketch/idea_sketch.jpg#center" /></p>
-<p>ラボ内では多くの電子パーツあり、在庫管理に非常に多くの時間を要するため、自動化することができないかどうか考えた。
-在庫はスプレッドシートで管理しているため、各棚と対象のスプレッドシートの各パーツの在庫数が同期されるような仕組みを作り自動化することができたら作業が大幅に効率化されると考えた。</p>
-<p>今回はラボ内の電子パーツが限られているため、第一段階目として、上記のように各収納箱の全面に+ボタン、-ボタンを取り付け、使った分+,-のボタンを押すことでスプレッドシートに数を反映させるプロトタイプを作成する。</p>
+<p>今回はラボ内の電子パーツが限られているため、第一段階目として、上記のように収納箱の前面に+ボタン、-ボタンを取り付け、使った分+,-のボタンを押すことでスプレッドシートに数を反映させるプロトタイプを作成します。</p>
+<p><img alt="" src="../images/prototype/prototype1/idea_sketch/idea_sketch_2.jpg#center" /></p>
 <h2 id="python">スプレッドシートをpythonで操作する<a class="headerlink" href="#python" title="Permanent link">&para;</a></h2>
 <h3 id="_1">環境<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h3>
 <h4 id="google-cloud-platform">Google Cloud Platformの設定<a class="headerlink" href="#google-cloud-platform" title="Permanent link">&para;</a></h4>
-<ul>
-<li>プロジェクトを作成する。</li>
-</ul>
+<p><a href="https://amg-solution.jp/blog/26703">こちら</a>の記事を参考にGoogle Cloud Platoformを設定し、スプレッドシートに反映させました。</p>
 <!-- 
+- プロジェクトを作成する。
+
 Google Cloud のコンソール画面を開いたらまず最初に新しいプロジェクトを作成します。
 ナビゲーションメニューから以下の黄色い枠で囲われた部分をクリックします。
-![](../images/prototype/prototype1/gcp_1.jpg#center)
+![](../images/prototype/prototype1/gcp/gcp_1.jpg#center)
 
 プロジェクト選択・新規作成のウィンドウが表示されるため、新しいプロジェクトをクリックします。
-![](../images/prototype/prototype1/gcp_2.jpg#center)
+![](../images/prototype/prototype1/gcp/gcp_2.jpg#center)
 
 新しいプロジェクト作成ページに遷移するため、プロジェクト名を入力して作成ボタンをクリックします。
-![](../images/prototype/prototype1/gcp_3.jpg#center)
+![](../images/prototype/prototype1/gcp/gcp_3.jpg#center)
 
 プロジェクトができると、ナビゲーションバーの通知からプロジェクトを確認できるため、「プロジェクトを選択」をクリックして、作成したプロジェクトに移動しましょう。
-![](../images/prototype/prototype1/gcp_4.jpg#center)
+![](../images/prototype/prototype1/gcp/gcp_4.jpg#center)
 
 移動すると、対象のプロジェクトのダッシュボードページに遷移します。
-![](../images/prototype/prototype1/gcp_5.jpg#center)
+![](../images/prototype/prototype1/gcp/gcp_5.jpg#center)
 
 2. Spreadsheet APIとGoogle Drive APIを有効にする。
 
 ハンバーガーメニューをクリックして「APIとサービス」-> 「ライブラリ」を選択します。
-![](../images/prototype/prototype1/gcp_6.jpg#center)
+![](../images/prototype/prototype1/gcp/gcp_6.jpg#center)
 
 以下のライブラリ検索ページが表示されるため、検索ボックスに「spreadsheet」と入力して「Google Sheets API」を表示します。
-![](../images/prototype/prototype1/gcp_7.jpg#center)
+![](../images/prototype/prototype1/gcp/gcp_7.jpg#center)
 
 Google Sheets APIを有効にするため、「有効にする」ボタンをクリックします。
-![](../images/prototype/prototype1/gcp_8.jpg#center)
+![](../images/prototype/prototype1/gcp/gcp_8.jpg#center)
 
 
 次に、上記と同様にGoogle Drive APIを検索して、有効化します。
-![](../images/prototype/prototype1/gcp_9.jpg#center)
+![](../images/prototype/prototype1/gcp/gcp_9.jpg#center)
 
-![](../images/prototype/prototype1/gcp_10.jpg#center)
+![](../images/prototype/prototype1/gcp/gcp_10.jpg#center)
 
 「APIとサービス」-> 「有効なAPIとサービス」から有効化されていることを確認することができます。
-![](../images/prototype/prototype1/gcp_11.jpg#center)
+![](../images/prototype/prototype1/gcp/gcp_11.jpg#center)
 
-
-![](../images/prototype/prototype1/gcp_12.jpg#center)
-
+![](../images/prototype/prototype1/gcp/gcp_12.jpg#center)
 
 5. 「認証情報」-> 「サービスアカウント名」-> 「役割: 編集者」, 「キータイプ: JSON」で作成する。 -->
 
 <h4 id="spreadsheet">Spreadsheet設定<a class="headerlink" href="#spreadsheet" title="Permanent link">&para;</a></h4>
-<p>サンプルで部品名とその個数を入力するシートを作成する。
+<p>今回はプロトタイプのため、部品名とその個数を入力するシートを作成します。また対応する2つの収納箱を作成します。
 <img alt="" src="../images/prototype/prototype1/spreadsheet/spreadsheet_1.jpg#center" /></p>
 <h4 id="_2">電子回路<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h4>
 <p>電子回路は以下の図のような構成にしております。RapsberrypiのGPIO2, 3, 4, 5を各タクトスイッチと接続しております。また、タクトスイッチはRaspberryPi内部のプルアップ抵抗とも接続しております。</p>
@@ -718,11 +745,24 @@ Google Sheets APIを有効にするため、「有効にする」ボタンをク
 </code></pre></div>
 
 <h4 id="_3">ボディ設計<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
-<p>Fusion360で収納ケースを作成しました。</p>
+<p>Fusion360で以下のように収納ケースを作成しました。</p>
 <p><img alt="" src="../images/prototype/prototype1/fusion360/fusion360_1.jpg#center" /></p>
 <p><img alt="" src="../images/prototype/prototype1/fusion360/fusion360_2.jpg#center" /></p>
 <p>作成したデータはDXF形式で出力して、加工はMDF2.5mmを使用しレーザーカッターを用いて行いて行いました。</p>
-<h2 id="_4">参考資料<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<p>電子回路は以下のように半田付けして格納しております。
+<img alt="" src="../images/prototype/prototype1/circuit/circuit_2.jpg#center" /></p>
+<h4 id="_4">プロトタイプ<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
+<p>以下の動画のように+,-ボタンを押した回数分、カウントアップ、カウントダウンし、値がリアルタイムでスプレッドシートに反映されます。</p>
+<video width="100%" height="400px" id="center" controls>
+  <source src="../videos/test/project1/prototype_1.mp4" type="video/mp4">
+</video>
+
+<h2 id="_5">データ<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="../files/prototype1/case.ai">case.ai</a></li>
+<li><a href="../files/prototype1/case.pdf">case.pdf</a></li>
+</ul>
+<h2 id="_6">参考資料<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
 <ul>
 <li><a href="https://docs.gspread.org/en/latest/user-guide.html">Examples of gspread Usage</a></li>
 <li><a href="https://developers.google.com/sheets/api">Google Sheets for Developers sheet API</a></li>
