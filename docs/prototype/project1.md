@@ -95,7 +95,7 @@ $ source .env/bin/activate
 $ pip install gspread oauth2client
 ```
 
-### Pythonプログラム
+#### Pythonプログラム
 ```python
 import gspread
 import time
@@ -163,6 +163,7 @@ Fusion360で以下のように収納ケースを作成しました。
   <source src="../videos/test/project1/prototype_1.mp4" type="video/mp4">
 </video>
 
+ここまでで第一段階のプロトタイプの作成を完了しました。
 
 ## データ
 - [case.ai](../files/prototype1/case.ai)
