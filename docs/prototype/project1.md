@@ -4,15 +4,14 @@
 
 # ラボ内の在庫管理を自動化してみる (WIP)
 
+ラボ内では多くの電子パーツあり、在庫管理に非常に多くの時間を要するため、自動化することができないかどうか考えました。
+在庫はスプレッドシートで管理しているため、各棚と対象のスプレッドシートの各パーツの在庫数が同期されるような仕組みを作り自動化することができたら作業が大幅に効率化されると考えました。
+
 ![](../images/prototype/prototype1/idea_sketch/idea_sketch.jpg#center)
 
-ラボ内では多くの電子パーツあり、在庫管理に非常に多くの時間を要するため、自動化することができないかどうか考えた。
-在庫はスプレッドシートで管理しているため、各棚と対象のスプレッドシートの各パーツの在庫数が同期されるような仕組みを作り自動化することができたら作業が大幅に効率化されると考えた。
+今回はラボ内の電子パーツが限られているため、第一段階目として、上記のように収納箱の前面に+ボタン、-ボタンを取り付け、使った分+,-のボタンを押すことでスプレッドシートに数を反映させるプロトタイプを作成します。
 
 ![](../images/prototype/prototype1/idea_sketch/idea_sketch_2.jpg#center)
-
-今回はラボ内の電子パーツが限られているため、第一段階目として、上記のように収納箱の前面に+ボタン、-ボタンを取り付け、使った分+,-のボタンを押すことでスプレッドシートに数を反映させるプロトタイプを作成する。
-
 
 ## スプレッドシートをpythonで操作する
 
@@ -20,54 +19,54 @@
 
 #### Google Cloud Platformの設定
 
-- プロジェクトを作成する。
+[こちら](https://amg-solution.jp/blog/26703)の記事を参考にGoogle Cloud Platoformを設定し、スプレッドシートに反映させました。
+
 <!-- 
+- プロジェクトを作成する。
+
 Google Cloud のコンソール画面を開いたらまず最初に新しいプロジェクトを作成します。
 ナビゲーションメニューから以下の黄色い枠で囲われた部分をクリックします。
-![](../images/prototype/prototype1/gcp_1.jpg#center)
+![](../images/prototype/prototype1/gcp/gcp_1.jpg#center)
 
 プロジェクト選択・新規作成のウィンドウが表示されるため、新しいプロジェクトをクリックします。
-![](../images/prototype/prototype1/gcp_2.jpg#center)
+![](../images/prototype/prototype1/gcp/gcp_2.jpg#center)
 
 新しいプロジェクト作成ページに遷移するため、プロジェクト名を入力して作成ボタンをクリックします。
-![](../images/prototype/prototype1/gcp_3.jpg#center)
+![](../images/prototype/prototype1/gcp/gcp_3.jpg#center)
 
 プロジェクトができると、ナビゲーションバーの通知からプロジェクトを確認できるため、「プロジェクトを選択」をクリックして、作成したプロジェクトに移動しましょう。
-![](../images/prototype/prototype1/gcp_4.jpg#center)
+![](../images/prototype/prototype1/gcp/gcp_4.jpg#center)
 
 移動すると、対象のプロジェクトのダッシュボードページに遷移します。
-![](../images/prototype/prototype1/gcp_5.jpg#center)
+![](../images/prototype/prototype1/gcp/gcp_5.jpg#center)
 
 2. Spreadsheet APIとGoogle Drive APIを有効にする。
 
 ハンバーガーメニューをクリックして「APIとサービス」-> 「ライブラリ」を選択します。
-![](../images/prototype/prototype1/gcp_6.jpg#center)
+![](../images/prototype/prototype1/gcp/gcp_6.jpg#center)
 
 以下のライブラリ検索ページが表示されるため、検索ボックスに「spreadsheet」と入力して「Google Sheets API」を表示します。
-![](../images/prototype/prototype1/gcp_7.jpg#center)
+![](../images/prototype/prototype1/gcp/gcp_7.jpg#center)
 
 Google Sheets APIを有効にするため、「有効にする」ボタンをクリックします。
-![](../images/prototype/prototype1/gcp_8.jpg#center)
+![](../images/prototype/prototype1/gcp/gcp_8.jpg#center)
 
 
 次に、上記と同様にGoogle Drive APIを検索して、有効化します。
-![](../images/prototype/prototype1/gcp_9.jpg#center)
+![](../images/prototype/prototype1/gcp/gcp_9.jpg#center)
 
-![](../images/prototype/prototype1/gcp_10.jpg#center)
+![](../images/prototype/prototype1/gcp/gcp_10.jpg#center)
 
 「APIとサービス」-> 「有効なAPIとサービス」から有効化されていることを確認することができます。
-![](../images/prototype/prototype1/gcp_11.jpg#center)
+![](../images/prototype/prototype1/gcp/gcp_11.jpg#center)
 
-
-![](../images/prototype/prototype1/gcp_12.jpg#center)
-
+![](../images/prototype/prototype1/gcp/gcp_12.jpg#center)
 
 5. 「認証情報」-> 「サービスアカウント名」-> 「役割: 編集者」, 「キータイプ: JSON」で作成する。 -->
 
 
 #### Spreadsheet設定
-サンプルで部品名とその個数を入力するシートを作成する。
-今回はプロトタイプのため、2つの部品を収納する箱を作成する。
+今回はプロトタイプのため、部品名とその個数を入力するシートを作成します。また対応する2つの収納箱を作成します。
 ![](../images/prototype/prototype1/spreadsheet/spreadsheet_1.jpg#center)
 
 #### 電子回路
@@ -145,7 +144,7 @@ while True:
 
 #### ボディ設計
 
-Fusion360で収納ケースを作成しました。
+Fusion360で以下のように収納ケースを作成しました。
 
 ![](../images/prototype/prototype1/fusion360/fusion360_1.jpg#center)
 
@@ -153,15 +152,21 @@ Fusion360で収納ケースを作成しました。
 
 作成したデータはDXF形式で出力して、加工はMDF2.5mmを使用しレーザーカッターを用いて行いて行いました。
 
+電子回路は以下のように半田付けして格納しております。
+![](../images/prototype/prototype1/circuit/circuit_2.jpg#center)
 
 #### プロトタイプ
 
-以下の動画のようにボタンを押した回数分リアルタイムでスプレッドシートに反映されます。
+以下の動画のように+,-ボタンを押した回数分、カウントアップ、カウントダウンし、値がリアルタイムでスプレッドシートに反映されます。
 
 <video width="100%" height="400px" id="center" controls>
   <source src="../videos/test/project1/prototype_1.mp4" type="video/mp4">
 </video>
 
+
+## データ
+- [case.ai](../files/prototype1/case.ai)
+- [case.pdf](../files/prototype1/case.pdf)
 
 ## 参考資料
 - [Examples of gspread Usage](https://docs.gspread.org/en/latest/user-guide.html)
