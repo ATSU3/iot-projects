@@ -18,6 +18,23 @@ CNCを用いた加工の際は加工材料にドリルの半径分の丸みが�
 
 
 
+### スパイラル設定
+第一段階として[Kerf Check Parts Generator](https://doyolab.net/appli/kerf_check/kerf_check.html)の処理を学び、理解し同じ機能を有したアプリを作成したいと思います。
+
+次の段階としては、他のパラメータを変更できる機能を徐々に追加していきたいと思います。
+
+
+### 作成する上で必要な知識
+
+#### SVGの構造の理解
+#### SVGをプログラミングで操作できる
+#### 作成したSVGデータをダウンロードすることができる
+
+### 環境
+今回アプリを作成する上で使用する言語はHTML, CSS, JavaScript
+サーバーはGitHub Pagesを利用したいと思います。
+
+
 ## 参考資料
 - [mozilla svg path](https://developer.mozilla.org/ja/docs/Web/SVG/Tutorial/Paths)
 - [svg要素の基本的な使い方まとめ](http://defghi1977.html.xdomain.jp/tech/svgMemo/svgMemo_03.htm)
