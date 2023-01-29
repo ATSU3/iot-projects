@@ -21,6 +21,8 @@
 
 [こちら](https://amg-solution.jp/blog/26703)の記事を参考にGoogle Cloud Platoformを設定し、スプレッドシートに反映させました。
 
+[SpreadSheet APIをPythonで利用する方法](docs/basic/setting/gcp_spreadsheet.html)に詳細な設定方法を記載しております。
+
 <!-- 
 - プロジェクトを作成する。
 
@@ -74,6 +76,14 @@ Google Sheets APIを有効にするため、「有効にする」ボタンをク
 電子回路は以下の図のような構成にしております。RapsberrypiのGPIO2, 3, 4, 5を各タクトスイッチと接続しております。また、タクトスイッチはRaspberryPi内部のプルアップ抵抗とも接続しております。
 
 ![](../images/prototype/prototype1/circuit/circuit_1.jpg#center)
+
+#### 配線接続
+|    GPIO   | タクトスイッチ | 
+| --------- | ----------- |
+| 2 | タクトスイッチ1 |
+| 3 | タクトスイッチ2 |
+| 4 | タクトスイッチ3 |
+| 5 | タクトスイッチ4 |
 
 #### Python環境構築
 - Raspberry Pi 3B
@@ -168,6 +178,14 @@ Fusion360で以下のように収納ケースを作成しました。
 ## データ
 - [case.ai](../files/prototype1/case.ai)
 - [case.pdf](../files/prototype1/case.pdf)
+
+## 部品
+|    部品    | 販売先 |  金額 | 必要個数 |   合計金額   | リンク |
+| --------- | ------ | ---- | ------ | ---------- | ----- |
+| RaspberryPi3B | ------ | ---- | ------ | ---------- | ----- |
+| タクトスイッチ | ------ | ---- | ------ | ---------- | ----- |
+| ジャンパワイヤ | ------ | ---- | ------ | ---------- | ----- |
+| ブレッドボード | ------ | ---- | ------ | ---------- | ----- |
 
 ## 参考資料
 - [Examples of gspread Usage](https://docs.gspread.org/en/latest/user-guide.html)
