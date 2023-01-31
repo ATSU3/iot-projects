@@ -13,25 +13,23 @@
 
 ![](../images/prototype/prototype1/idea_sketch/idea_sketch_2.jpg#center)
 
-## スプレッドシートをpythonで操作する
+## スプレッドシートをRaspberryPi&タクトスイッチを用いてpythonで操作する
 
-### 環境
-
-#### Google Cloud Platformの設定
+### Google Cloud Platformの設定
 
 [Google Cloud PlatformでPythonを用いてスプレッドシートを操作する方法](/basic/setting/gcp_spreadsheet.html#google-cloud-platformgcp)に詳細な設定方法を記載しております。
 
-#### Spreadsheet設定
+### Spreadsheet設定
 今回はプロトタイプのため、部品名とその個数を入力するシートを作成します。また対応する2つの収納箱を作成します。
 ![](../images/prototype/prototype1/spreadsheet/spreadsheet_1.jpg#center)
 
-#### 電子回路
+### 電子回路
 
 電子回路は以下の図のような構成にしております。RapsberrypiのGPIO2, 3, 4, 5を各タクトスイッチと接続しております。また、タクトスイッチはRaspberryPi内部のプルアップ抵抗とも接続しております。
 
 ![](../images/prototype/prototype1/circuit/circuit_1.jpg#center)
 
-#### 配線接続
+### 配線接続
 |    GPIO   | タクトスイッチ | 
 | --------- | ----------- |
 | 2 | タクトスイッチ1 (+ボタン) |
@@ -47,6 +45,8 @@
 RaspberryPiの公式ドキュメンテーションよりGPIOのピン番号が確認できます。
 ![](../images/prototype/prototype1/circuit/circuit_4.jpg#center)
 出典: [Raspberry Pi Documentation](https://www.raspberrypi.com/documentation/computers/os.html)
+
+### Python
 
 #### Python環境構築
 
@@ -121,7 +121,7 @@ while True:
 セルの操作方法に関して解説しております。
 
 
-#### ボディ設計
+### ボディ設計
 
 Fusion360で以下のように収納ケースを作成しました。
 
@@ -134,7 +134,7 @@ Fusion360で以下のように収納ケースを作成しました。
 電子回路は以下のように半田付けして格納しております。
 ![](../images/prototype/prototype1/circuit/circuit_2.jpg#center)
 
-#### 評価
+### 評価
 
 以下の動画のように+,-ボタンを押した回数分、カウントアップ、カウントダウンし、値がリアルタイムでスプレッドシートに反映することができました。
 
