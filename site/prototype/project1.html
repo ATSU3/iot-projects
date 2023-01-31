@@ -549,6 +549,53 @@
 
             
           
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_2" type="checkbox" id="__nav_3_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_2">
+          Setting
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Setting" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_2">
+          <span class="md-nav__icon md-icon"></span>
+          Setting
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../basic/setting/gcp_spreadsheet.html" class="md-nav__link">
+        Gcp spreadsheet
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
         </ul>
       </nav>
     </li>
@@ -710,6 +757,13 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    配線接続
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#python_1" class="md-nav__link">
     Python環境構築
   </a>
@@ -724,14 +778,14 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+  <a href="#_4" class="md-nav__link">
     ボディ設計
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
+  <a href="#_5" class="md-nav__link">
     評価
   </a>
   
@@ -748,14 +802,21 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
+  <a href="#_6" class="md-nav__link">
     データ
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
+  <a href="#_7" class="md-nav__link">
+    部品
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
     参考資料
   </a>
   
@@ -840,6 +901,13 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    配線接続
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#python_1" class="md-nav__link">
     Python環境構築
   </a>
@@ -854,14 +922,14 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+  <a href="#_4" class="md-nav__link">
     ボディ設計
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
+  <a href="#_5" class="md-nav__link">
     評価
   </a>
   
@@ -878,14 +946,21 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
+  <a href="#_6" class="md-nav__link">
     データ
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
+  <a href="#_7" class="md-nav__link">
+    部品
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
     参考資料
   </a>
   
@@ -919,6 +994,7 @@
 <h3 id="_1">環境<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h3>
 <h4 id="google-cloud-platform">Google Cloud Platformの設定<a class="headerlink" href="#google-cloud-platform" title="Permanent link">&para;</a></h4>
 <p><a href="https://amg-solution.jp/blog/26703">こちら</a>の記事を参考にGoogle Cloud Platoformを設定し、スプレッドシートに反映させました。</p>
+<p><a href="docs/basic/setting/gcp_spreadsheet.html">SpreadSheet APIをPythonで利用する方法</a>に詳細な設定方法を記載しております。</p>
 <!-- 
 - プロジェクトを作成する。
 
@@ -968,6 +1044,33 @@ Google Sheets APIを有効にするため、「有効にする」ボタンをク
 <h4 id="_2">電子回路<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h4>
 <p>電子回路は以下の図のような構成にしております。RapsberrypiのGPIO2, 3, 4, 5を各タクトスイッチと接続しております。また、タクトスイッチはRaspberryPi内部のプルアップ抵抗とも接続しております。</p>
 <p><img alt="" src="../images/prototype/prototype1/circuit/circuit_1.jpg#center" /></p>
+<h4 id="_3">配線接続<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th>GPIO</th>
+<th>タクトスイッチ</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2</td>
+<td>タクトスイッチ1</td>
+</tr>
+<tr>
+<td>3</td>
+<td>タクトスイッチ2</td>
+</tr>
+<tr>
+<td>4</td>
+<td>タクトスイッチ3</td>
+</tr>
+<tr>
+<td>5</td>
+<td>タクトスイッチ4</td>
+</tr>
+</tbody>
+</table>
 <h4 id="python_1">Python環境構築<a class="headerlink" href="#python_1" title="Permanent link">&para;</a></h4>
 <ul>
 <li>Raspberry Pi 3B<ul>
@@ -1034,26 +1137,73 @@ Google Sheets APIを有効にするため、「有効にする」ボタンをク
         <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.1</span><span class="p">)</span>
 </code></pre></div>
 
-<h4 id="_3">ボディ設計<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
+<h4 id="_4">ボディ設計<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
 <p>Fusion360で以下のように収納ケースを作成しました。</p>
 <p><img alt="" src="../images/prototype/prototype1/fusion360/fusion360_1.jpg#center" /></p>
 <p><img alt="" src="../images/prototype/prototype1/fusion360/fusion360_2.jpg#center" /></p>
 <p>作成したデータはDXF形式で出力して、加工はMDF2.5mmを使用しレーザーカッターを用いて行いて行いました。データは<a href="../files/prototype1/case.pdf">こちら</a>からダウンロードできます。</p>
 <p>電子回路は以下のように半田付けして格納しております。
 <img alt="" src="../images/prototype/prototype1/circuit/circuit_2.jpg#center" /></p>
-<h4 id="_4">評価<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
+<h4 id="_5">評価<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
 <p>以下の動画のように+,-ボタンを押した回数分、カウントアップ、カウントダウンし、値がリアルタイムでスプレッドシートに反映することができました。</p>
 <video width="100%" height="400px" id="center" controls>
   <source src="../videos/test/project1/prototype_1.mp4" type="video/mp4">
 </video>
 
 <p>ここまでで第一段階のプロトタイプの作成を終了します。</p>
-<h2 id="_5">データ<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<h2 id="_6">データ<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
 <ul>
 <li><a href="../files/prototype1/case.ai">case.ai</a></li>
 <li><a href="../files/prototype1/case.pdf">case.pdf</a></li>
 </ul>
-<h2 id="_6">参考資料<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
+<h2 id="_7">部品<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>部品</th>
+<th>販売先</th>
+<th>金額</th>
+<th>必要個数</th>
+<th>合計金額</th>
+<th>リンク</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>RaspberryPi3B</td>
+<td>------</td>
+<td>----</td>
+<td>------</td>
+<td>----------</td>
+<td>-----</td>
+</tr>
+<tr>
+<td>タクトスイッチ</td>
+<td>------</td>
+<td>----</td>
+<td>------</td>
+<td>----------</td>
+<td>-----</td>
+</tr>
+<tr>
+<td>ジャンパワイヤ</td>
+<td>------</td>
+<td>----</td>
+<td>------</td>
+<td>----------</td>
+<td>-----</td>
+</tr>
+<tr>
+<td>ブレッドボード</td>
+<td>------</td>
+<td>----</td>
+<td>------</td>
+<td>----------</td>
+<td>-----</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_8">参考資料<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
 <ul>
 <li><a href="https://docs.gspread.org/en/latest/user-guide.html">Examples of gspread Usage</a></li>
 <li><a href="https://developers.google.com/sheets/api">Google Sheets for Developers sheet API</a></li>

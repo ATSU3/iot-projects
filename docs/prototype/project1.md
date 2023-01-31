@@ -19,53 +19,7 @@
 
 #### Google Cloud Platformの設定
 
-[こちら](https://amg-solution.jp/blog/26703)の記事を参考にGoogle Cloud Platoformを設定し、スプレッドシートに反映させました。
-
-[SpreadSheet APIをPythonで利用する方法](docs/basic/setting/gcp_spreadsheet.html)に詳細な設定方法を記載しております。
-
-<!-- 
-- プロジェクトを作成する。
-
-Google Cloud のコンソール画面を開いたらまず最初に新しいプロジェクトを作成します。
-ナビゲーションメニューから以下の黄色い枠で囲われた部分をクリックします。
-![](../images/prototype/prototype1/gcp/gcp_1.jpg#center)
-
-プロジェクト選択・新規作成のウィンドウが表示されるため、新しいプロジェクトをクリックします。
-![](../images/prototype/prototype1/gcp/gcp_2.jpg#center)
-
-新しいプロジェクト作成ページに遷移するため、プロジェクト名を入力して作成ボタンをクリックします。
-![](../images/prototype/prototype1/gcp/gcp_3.jpg#center)
-
-プロジェクトができると、ナビゲーションバーの通知からプロジェクトを確認できるため、「プロジェクトを選択」をクリックして、作成したプロジェクトに移動しましょう。
-![](../images/prototype/prototype1/gcp/gcp_4.jpg#center)
-
-移動すると、対象のプロジェクトのダッシュボードページに遷移します。
-![](../images/prototype/prototype1/gcp/gcp_5.jpg#center)
-
-2. Spreadsheet APIとGoogle Drive APIを有効にする。
-
-ハンバーガーメニューをクリックして「APIとサービス」-> 「ライブラリ」を選択します。
-![](../images/prototype/prototype1/gcp/gcp_6.jpg#center)
-
-以下のライブラリ検索ページが表示されるため、検索ボックスに「spreadsheet」と入力して「Google Sheets API」を表示します。
-![](../images/prototype/prototype1/gcp/gcp_7.jpg#center)
-
-Google Sheets APIを有効にするため、「有効にする」ボタンをクリックします。
-![](../images/prototype/prototype1/gcp/gcp_8.jpg#center)
-
-
-次に、上記と同様にGoogle Drive APIを検索して、有効化します。
-![](../images/prototype/prototype1/gcp/gcp_9.jpg#center)
-
-![](../images/prototype/prototype1/gcp/gcp_10.jpg#center)
-
-「APIとサービス」-> 「有効なAPIとサービス」から有効化されていることを確認することができます。
-![](../images/prototype/prototype1/gcp/gcp_11.jpg#center)
-
-![](../images/prototype/prototype1/gcp/gcp_12.jpg#center)
-
-5. 「認証情報」-> 「サービスアカウント名」-> 「役割: 編集者」, 「キータイプ: JSON」で作成する。 -->
-
+[Google Cloud PlatformでPythonを用いてスプレッドシートを操作する方法](/basic/setting/gcp_spreadsheet.html#google-cloud-platformgcp)に詳細な設定方法を記載しております。
 
 #### Spreadsheet設定
 今回はプロトタイプのため、部品名とその個数を入力するシートを作成します。また対応する2つの収納箱を作成します。
@@ -80,12 +34,20 @@ Google Sheets APIを有効にするため、「有効にする」ボタンをク
 #### 配線接続
 |    GPIO   | タクトスイッチ | 
 | --------- | ----------- |
-| 2 | タクトスイッチ1 |
-| 3 | タクトスイッチ2 |
-| 4 | タクトスイッチ3 |
-| 5 | タクトスイッチ4 |
+| 2 | タクトスイッチ1 (+ボタン) |
+| 3 | タクトスイッチ2 (-ボタン) |
+| 4 | タクトスイッチ3 (+ボタン) |
+| 5 | タクトスイッチ4 (-ボタン) |
+
+実際の写真は以下のものになります。
+![](../images/prototype/prototype1/circuit/circuit_3.jpg#center)
+
+RaspberryPiの公式ドキュメンテーションよりGPIOのピン番号が確認できます。
+![](../images/prototype/prototype1/circuit/circuit_4.jpg#center)
+出典: [Raspberry Pi Documentation](https://www.raspberrypi.com/documentation/computers/os.html)
 
 #### Python環境構築
+
 - Raspberry Pi 3B
     - ディストリビューション: Raspbian GNU/Linux 11 (bullseye)
     - python version 3.9.2
@@ -101,6 +63,7 @@ $ source .env/bin/activate
 ```
 
 今回はpythonでスプレッドシートを操作するため、gspreadと、Oauth認証関連のoauth2clientを使用します。
+
 ```bash
 $ pip install gspread oauth2client
 ```
@@ -152,6 +115,10 @@ while True:
         time.sleep(0.1)
 ```
 
+[Pythonを用いたスプレッドシートのセルの操作](/basic/setting/gcp_spreadsheet.html#python)でこちらのプログラムの解説と
+セルの操作方法に関して解説しております。
+
+
 #### ボディ設計
 
 Fusion360で以下のように収納ケースを作成しました。
@@ -182,9 +149,10 @@ Fusion360で以下のように収納ケースを作成しました。
 ## 部品
 |    部品    | 販売先 |  金額 | 必要個数 |   合計金額   | リンク |
 | --------- | ------ | ---- | ------ | ---------- | ----- |
-| RaspberryPi3B | ------ | ---- | ------ | ---------- | ----- |
+| RaspberryPi3B | digikey | 4804 | 1 | 4804円 | [Link](https://www.digikey.jp/ja/products/detail/raspberry-pi/RASPBERRY-PI-3/6152799?s=N4IgTCBcDaIIwDYCcAGAtHFW0DkAiIAugL5A&src=raspberrypi) |
 | タクトスイッチ | ------ | ---- | ------ | ---------- | ----- |
-| ジャンパワイヤ | ------ | ---- | ------ | ---------- | ----- |
+| ジャンパワイヤ(オス - メス) PRT-12794 | digikey | 288円
+ | 1セット | 288円 | [Link](https://www.digikey.jp/ja/products/detail/sparkfun-electronics/PRT-12794/5993859?utm_adgroup=Jumper%20Wire&utm_source=google&utm_medium=cpc&utm_campaign=Google%20Shopping_Product_Prototyping%2C%20Fabrication%20Products&utm_term=&productid=5993859&gclid=Cj0KCQiA8t2eBhDeARIsAAVEga2WpJF2fZCiK6KCYi6duY9cQ6ShpnppK59_f4vvOBICh0MZELYKF7waAqUkEALw_wcB) |
 | ブレッドボード | ------ | ---- | ------ | ---------- | ----- |
 
 ## 参考資料
