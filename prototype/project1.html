@@ -582,7 +582,7 @@
   
     <li class="md-nav__item">
       <a href="../basic/setting/gcp_spreadsheet.html" class="md-nav__link">
-        Gcp spreadsheet
+        Google Cloud PlatformでPythonを用いてスプレッドシートを操作する方法
       </a>
     </li>
   
@@ -993,51 +993,7 @@
 <h2 id="python">スプレッドシートをpythonで操作する<a class="headerlink" href="#python" title="Permanent link">&para;</a></h2>
 <h3 id="_1">環境<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h3>
 <h4 id="google-cloud-platform">Google Cloud Platformの設定<a class="headerlink" href="#google-cloud-platform" title="Permanent link">&para;</a></h4>
-<p><a href="https://amg-solution.jp/blog/26703">こちら</a>の記事を参考にGoogle Cloud Platoformを設定し、スプレッドシートに反映させました。</p>
-<p><a href="docs/basic/setting/gcp_spreadsheet.html">SpreadSheet APIをPythonで利用する方法</a>に詳細な設定方法を記載しております。</p>
-<!-- 
-- プロジェクトを作成する。
-
-Google Cloud のコンソール画面を開いたらまず最初に新しいプロジェクトを作成します。
-ナビゲーションメニューから以下の黄色い枠で囲われた部分をクリックします。
-![](../images/prototype/prototype1/gcp/gcp_1.jpg#center)
-
-プロジェクト選択・新規作成のウィンドウが表示されるため、新しいプロジェクトをクリックします。
-![](../images/prototype/prototype1/gcp/gcp_2.jpg#center)
-
-新しいプロジェクト作成ページに遷移するため、プロジェクト名を入力して作成ボタンをクリックします。
-![](../images/prototype/prototype1/gcp/gcp_3.jpg#center)
-
-プロジェクトができると、ナビゲーションバーの通知からプロジェクトを確認できるため、「プロジェクトを選択」をクリックして、作成したプロジェクトに移動しましょう。
-![](../images/prototype/prototype1/gcp/gcp_4.jpg#center)
-
-移動すると、対象のプロジェクトのダッシュボードページに遷移します。
-![](../images/prototype/prototype1/gcp/gcp_5.jpg#center)
-
-2. Spreadsheet APIとGoogle Drive APIを有効にする。
-
-ハンバーガーメニューをクリックして「APIとサービス」-> 「ライブラリ」を選択します。
-![](../images/prototype/prototype1/gcp/gcp_6.jpg#center)
-
-以下のライブラリ検索ページが表示されるため、検索ボックスに「spreadsheet」と入力して「Google Sheets API」を表示します。
-![](../images/prototype/prototype1/gcp/gcp_7.jpg#center)
-
-Google Sheets APIを有効にするため、「有効にする」ボタンをクリックします。
-![](../images/prototype/prototype1/gcp/gcp_8.jpg#center)
-
-
-次に、上記と同様にGoogle Drive APIを検索して、有効化します。
-![](../images/prototype/prototype1/gcp/gcp_9.jpg#center)
-
-![](../images/prototype/prototype1/gcp/gcp_10.jpg#center)
-
-「APIとサービス」-> 「有効なAPIとサービス」から有効化されていることを確認することができます。
-![](../images/prototype/prototype1/gcp/gcp_11.jpg#center)
-
-![](../images/prototype/prototype1/gcp/gcp_12.jpg#center)
-
-5. 「認証情報」-> 「サービスアカウント名」-> 「役割: 編集者」, 「キータイプ: JSON」で作成する。 -->
-
+<p><a href="/basic/setting/gcp_spreadsheet.html#google-cloud-platformgcp">Google Cloud PlatformでPythonを用いてスプレッドシートを操作する方法</a>に詳細な設定方法を記載しております。</p>
 <h4 id="spreadsheet">Spreadsheet設定<a class="headerlink" href="#spreadsheet" title="Permanent link">&para;</a></h4>
 <p>今回はプロトタイプのため、部品名とその個数を入力するシートを作成します。また対応する2つの収納箱を作成します。
 <img alt="" src="../images/prototype/prototype1/spreadsheet/spreadsheet_1.jpg#center" /></p>
@@ -1055,22 +1011,27 @@ Google Sheets APIを有効にするため、「有効にする」ボタンをク
 <tbody>
 <tr>
 <td>2</td>
-<td>タクトスイッチ1</td>
+<td>タクトスイッチ1 (+ボタン)</td>
 </tr>
 <tr>
 <td>3</td>
-<td>タクトスイッチ2</td>
+<td>タクトスイッチ2 (-ボタン)</td>
 </tr>
 <tr>
 <td>4</td>
-<td>タクトスイッチ3</td>
+<td>タクトスイッチ3 (+ボタン)</td>
 </tr>
 <tr>
 <td>5</td>
-<td>タクトスイッチ4</td>
+<td>タクトスイッチ4 (-ボタン)</td>
 </tr>
 </tbody>
 </table>
+<p>実際の写真は以下のものになります。
+<img alt="" src="../images/prototype/prototype1/circuit/circuit_3.jpg#center" /></p>
+<p>RaspberryPiの公式ドキュメンテーションよりGPIOのピン番号が確認できます。
+<img alt="" src="../images/prototype/prototype1/circuit/circuit_4.jpg#center" />
+出典: <a href="https://www.raspberrypi.com/documentation/computers/os.html">Raspberry Pi Documentation</a></p>
 <h4 id="python_1">Python環境構築<a class="headerlink" href="#python_1" title="Permanent link">&para;</a></h4>
 <ul>
 <li>Raspberry Pi 3B<ul>
@@ -1137,6 +1098,8 @@ Google Sheets APIを有効にするため、「有効にする」ボタンをク
         <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.1</span><span class="p">)</span>
 </code></pre></div>
 
+<p><a href="/basic/setting/gcp_spreadsheet.html#python">Pythonを用いたスプレッドシートのセルの操作</a>でこちらのプログラムの解説と
+セルの操作方法に関して解説しております。</p>
 <h4 id="_4">ボディ設計<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
 <p>Fusion360で以下のように収納ケースを作成しました。</p>
 <p><img alt="" src="../images/prototype/prototype1/fusion360/fusion360_1.jpg#center" /></p>
@@ -1171,11 +1134,11 @@ Google Sheets APIを有効にするため、「有効にする」ボタンをク
 <tbody>
 <tr>
 <td>RaspberryPi3B</td>
-<td>------</td>
-<td>----</td>
-<td>------</td>
-<td>----------</td>
-<td>-----</td>
+<td>digikey</td>
+<td>4804</td>
+<td>1</td>
+<td>4804円</td>
+<td><a href="https://www.digikey.jp/ja/products/detail/raspberry-pi/RASPBERRY-PI-3/6152799?s=N4IgTCBcDaIIwDYCcAGAtHFW0DkAiIAugL5A&amp;src=raspberrypi">Link</a></td>
 </tr>
 <tr>
 <td>タクトスイッチ</td>
@@ -1186,12 +1149,20 @@ Google Sheets APIを有効にするため、「有効にする」ボタンをク
 <td>-----</td>
 </tr>
 <tr>
-<td>ジャンパワイヤ</td>
-<td>------</td>
-<td>----</td>
-<td>------</td>
-<td>----------</td>
-<td>-----</td>
+<td>ジャンパワイヤ(オス - メス) PRT-12794</td>
+<td>digikey</td>
+<td>288円</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>1セット</td>
+<td>288円</td>
+<td><a href="https://www.digikey.jp/ja/products/detail/sparkfun-electronics/PRT-12794/5993859?utm_adgroup=Jumper%20Wire&amp;utm_source=google&amp;utm_medium=cpc&amp;utm_campaign=Google%20Shopping_Product_Prototyping%2C%20Fabrication%20Products&amp;utm_term=&amp;productid=5993859&amp;gclid=Cj0KCQiA8t2eBhDeARIsAAVEga2WpJF2fZCiK6KCYi6duY9cQ6ShpnppK59_f4vvOBICh0MZELYKF7waAqUkEALw_wcB">Link</a></td>
+<td></td>
+<td></td>
+<td></td>
 </tr>
 <tr>
 <td>ブレッドボード</td>
