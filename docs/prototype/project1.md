@@ -71,6 +71,13 @@ $ pip install gspread oauth2client
 ```
 
 #### Pythonプログラム
+
+以下のPythonプログラムの解説に関してはこちらの記事に記載しております。
+
+- [Pythonを用いたスプレッドシートのセルの操作](/basic/setting/gcp_spreadsheet.html#python#python)
+
+- [Raspberry Pi GPIOに関して](/basic/programming/RaspberryPi/raspberrypi.html#gpio)
+
 ```python
 import gspread
 import time
@@ -116,9 +123,6 @@ while True:
         worksheet.update('B3', val2)
         time.sleep(0.1)
 ```
-
-[Pythonを用いたスプレッドシートのセルの操作](/basic/setting/gcp_spreadsheet.html#python#python)でこちらのプログラムの解説、
-セルの操作方法に関して解説しております。
 
 
 ### ボディ設計
