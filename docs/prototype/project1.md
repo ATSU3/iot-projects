@@ -40,6 +40,8 @@
 | 5 | タクトスイッチ4 (-ボタン) |
 
 実際の写真は以下のものになります。
+![](../images/prototype/prototype1/circuit/circuit_5.jpg#center)
+
 ![](../images/prototype/prototype1/circuit/circuit_3.jpg#center)
 
 RaspberryPiの公式ドキュメンテーションよりGPIOのピン番号が確認できます。

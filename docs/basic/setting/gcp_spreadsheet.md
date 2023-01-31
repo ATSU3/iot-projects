@@ -55,8 +55,6 @@ Google Sheets APIを有効にするため、「有効にする」ボタンをク
 
 ### Pythonを用いてスプレッドシートのセルの操作
 
-### スプレッドシートの操作のためのライブラリを使用する
-
 参考: [gspread documentation](https://docs.gspread.org/en/v5.7.0/)
 
 今回はpythonでスプレッドシートを操作するため、gspreadと、Oauth認証関連のoauth2clientを使用します。
@@ -100,5 +98,16 @@ worksheet = gs.open_by_key(SPREADSHEET_KEY).worksheet("stock")
 acellメソッドを用いると引数でセットしたセルの値を文字列(string)で取得できます。
 ```
 worksheet.acell("A1").value
+```
+
+[ラボ内の在庫管理を自動化してみるのプログラム](../../prototype/project1.html#python_2)では、セルの値は文字列(string)で取得されているため、各セルの数値を計算するためにint関数で整数に変換して取得しております。
+```python
+val_1 = worksheet.acell("B2").value
+val1 = int(val_1) + 1
+```
+
+updateメソッドを用いることでセル内の値を更新することができます。
+```python
+worksheet.update('B2', val1)
 ```
 
