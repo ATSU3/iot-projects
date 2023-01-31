@@ -524,6 +524,19 @@
     GPIO
   </a>
   
+    <nav class="md-nav" aria-label="GPIO">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gpio-x-python" class="md-nav__link">
+    GPIO x Python
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
     </ul>
@@ -823,6 +836,19 @@
     GPIO
   </a>
   
+    <nav class="md-nav" aria-label="GPIO">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gpio-x-python" class="md-nav__link">
+    GPIO x Python
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
     </ul>
@@ -842,6 +868,19 @@
 
 <h1 id="raspberry-pi">Raspberry Pi<a class="headerlink" href="#raspberry-pi" title="Permanent link">&para;</a></h1>
 <h2 id="gpio">GPIO<a class="headerlink" href="#gpio" title="Permanent link">&para;</a></h2>
+<p>GPIOとは汎用入出力(General Purpose Input/Output)を意味しており、RaspberryPiに搭載されている信号ピンのことで40本のピンがあります。</p>
+<p><img alt="" src="../../../images/prototype/prototype1/circuit/circuit_4.jpg#center" /></p>
+<h3 id="gpio-x-python">GPIO x Python<a class="headerlink" href="#gpio-x-python" title="Permanent link">&para;</a></h3>
+<p>RaspberryPiを用いてPythonでGPIOを使用するには
+<a href="https://pypi.org/project/RPi.GPIO/">RPi.GPIO</a>パッケージを利用します。</p>
+<div class="codehilite"><pre><span></span><code>import RPi.GPIO as GPIO
+</code></pre></div>
+
+<p>GPIOのピン番号指定を「BCM」に設定します。</p>
+<div class="codehilite"><pre><span></span><code>GPIO.setmode(GPIO.BCM)
+</code></pre></div>
+
+<p>GPIO.setmodeの引数には、GPIO.BOARD、GPIO.BCMの2種類が選択できますが、GPIO.BOARDを選択した場合、ピン番号がピンの配置の順番で番号が割り振られますが、GPIO.BCMの場合、GPIOの数字での指定となります。</p>
 
 
 
