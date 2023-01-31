@@ -117,7 +117,7 @@ while True:
         time.sleep(0.1)
 ```
 
-[Pythonを用いたスプレッドシートのセルの操作](/basic/setting/gcp_spreadsheet.html#python)でこちらのプログラムの解説、
+[Pythonを用いたスプレッドシートのセルの操作](/basic/setting/gcp_spreadsheet.html#python#python)でこちらのプログラムの解説、
 セルの操作方法に関して解説しております。
 
 
@@ -153,8 +153,7 @@ Fusion360で以下のように収納ケースを作成しました。
 | --------- | ------ | ---- | ------ | ---------- | ----- |
 | RaspberryPi3B | digikey | 4804 | 1 | 4804円 | [Link](https://www.digikey.jp/ja/products/detail/raspberry-pi/RASPBERRY-PI-3/6152799?s=N4IgTCBcDaIIwDYCcAGAtHFW0DkAiIAugL5A&src=raspberrypi) |
 | タクトスイッチ | ------ | ---- | ------ | ---------- | ----- |
-| ジャンパワイヤ(オス - メス) PRT-12794 | digikey | 288円
- | 1セット | 288円 | [Link](https://www.digikey.jp/ja/products/detail/sparkfun-electronics/PRT-12794/5993859?utm_adgroup=Jumper%20Wire&utm_source=google&utm_medium=cpc&utm_campaign=Google%20Shopping_Product_Prototyping%2C%20Fabrication%20Products&utm_term=&productid=5993859&gclid=Cj0KCQiA8t2eBhDeARIsAAVEga2WpJF2fZCiK6KCYi6duY9cQ6ShpnppK59_f4vvOBICh0MZELYKF7waAqUkEALw_wcB) |
+| ジャンパワイヤ(オス - メス) PRT-12794 | digikey | 288円| 1セット | 288円 | [Link](https://www.digikey.jp/ja/products/detail/sparkfun-electronics/PRT-12794/5993859?utm_adgroup=Jumper%20Wire&utm_source=google&utm_medium=cpc&utm_campaign=Google%20Shopping_Product_Prototyping%2C%20Fabrication%20Products&utm_term=&productid=5993859&gclid=Cj0KCQiA8t2eBhDeARIsAAVEga2WpJF2fZCiK6KCYi6duY9cQ6ShpnppK59_f4vvOBICh0MZELYKF7waAqUkEALw_wcB) |
 | ブレッドボード | ------ | ---- | ------ | ---------- | ----- |
 
 ## 参考資料
