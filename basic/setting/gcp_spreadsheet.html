@@ -647,13 +647,6 @@
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    スプレッドシートの操作のためのライブラリを使用する
-  </a>
-  
-</li>
-        
       </ul>
     </nav>
   
@@ -832,13 +825,6 @@
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    スプレッドシートの操作のためのライブラリを使用する
-  </a>
-  
-</li>
-        
       </ul>
     </nav>
   
@@ -901,7 +887,6 @@
 </ol>
 <h3 id="gcp">スプレッドシートを作成しGCPとの紐付け<a class="headerlink" href="#gcp" title="Permanent link">&para;</a></h3>
 <h3 id="python">Pythonを用いてスプレッドシートのセルの操作<a class="headerlink" href="#python" title="Permanent link">&para;</a></h3>
-<h3 id="_2">スプレッドシートの操作のためのライブラリを使用する<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
 <p>参考: <a href="https://docs.gspread.org/en/v5.7.0/">gspread documentation</a></p>
 <p>今回はpythonでスプレッドシートを操作するため、gspreadと、Oauth認証関連のoauth2clientを使用します。</p>
 <div class="codehilite"><pre><span></span><code>$ pip install gspread oauth2client
@@ -933,6 +918,15 @@ ServiceAccountCredentialsのfrom_json_keyfile_nameメソッドを用いてjson�
 
 <p>acellメソッドを用いると引数でセットしたセルの値を文字列(string)で取得できます。</p>
 <div class="codehilite"><pre><span></span><code>worksheet.acell(&quot;A1&quot;).value
+</code></pre></div>
+
+<p><a href="../../prototype/project1.html#python_2">ラボ内の在庫管理を自動化してみるのプログラム</a>では、セルの値は文字列(string)で取得されているため、各セルの数値を計算するためにint関数で整数に変換して取得しております。</p>
+<div class="codehilite"><pre><span></span><code><span class="n">val_1</span> <span class="o">=</span> <span class="n">worksheet</span><span class="o">.</span><span class="n">acell</span><span class="p">(</span><span class="s2">&quot;B2&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">value</span>
+<span class="n">val1</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">val_1</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
+</code></pre></div>
+
+<p>updateメソッドを用いることでセル内の値を更新することができます。</p>
+<div class="codehilite"><pre><span></span><code><span class="n">worksheet</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="s1">&#39;B2&#39;</span><span class="p">,</span> <span class="n">val1</span><span class="p">)</span>
 </code></pre></div>
 
 
