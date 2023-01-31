@@ -54,3 +54,51 @@ Google Sheets APIを有効にするため、「有効にする」ボタンをク
 
 
 ### Pythonを用いてスプレッドシートのセルの操作
+
+### スプレッドシートの操作のためのライブラリを使用する
+
+参考: [gspread documentation](https://docs.gspread.org/en/v5.7.0/)
+
+今回はpythonでスプレッドシートを操作するため、gspreadと、Oauth認証関連のoauth2clientを使用します。
+
+```bash
+$ pip install gspread oauth2client
+```
+
+Pythonファイルを作成して以下のようにgspread、oauth2clientのライブラリをインポートします。
+
+```python
+import gspread
+from google.oauth2.service_account import Credentials
+```
+
+ServiceAccountCredentialsはここではGCPのスプレッドシート、Googleドライブへアクセスできる変数を生成します。
+ServiceAccountCredentialsのfrom_json_keyfile_nameメソッドを用いてjsonファイルを変数cに代入し、設定しております。
+
+```python
+
+scope = ['https://spreadsheets.google.com/feeds','https://www.googleapis.com/auth/drive']
+
+c = ServiceAccountCredentials.from_json_keyfile_name('対象のjsonファイル', scope)
+```
+
+OAuth2.0の資格情報を使用してGCP SpreadSheet APIにログインします。
+```python
+gs = gspread.authorize(c)
+```
+
+設定・共有したスプレッドシートキーを変数 SPREADSHEET_KEYに格納します。
+```Python
+SPREADSHEET_KEY = 'スプレッドシートキー'
+```
+
+スプレッドシートキーと紐づいているspreadsheetのワークシート名がstockのシート情報を取得して変数worksheetに格納します。
+```python
+worksheet = gs.open_by_key(SPREADSHEET_KEY).worksheet("stock")
+```
+
+acellメソッドを用いると引数でセットしたセルの値を文字列(string)で取得できます。
+```
+worksheet.acell("A1").value
+```
+

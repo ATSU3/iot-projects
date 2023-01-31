@@ -15,7 +15,7 @@
     
     
       
-        <title>Gcp spreadsheet - IoT Projects</title>
+        <title>Google Cloud PlatformでPythonを用いてスプレッドシートを操作する方法 - IoT Projects</title>
       
     
     
@@ -69,6 +69,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#google-cloud-platformpython" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -98,7 +103,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Gcp spreadsheet
+              Google Cloud PlatformでPythonを用いてスプレッドシートを操作する方法
             
           </span>
         </div>
@@ -586,10 +591,70 @@
       <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
       
       
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Google Cloud PlatformでPythonを用いてスプレッドシートを操作する方法
+          <span class="md-nav__icon md-icon"></span>
+        </label>
       
       <a href="gcp_spreadsheet.html" class="md-nav__link md-nav__link--active">
-        Gcp spreadsheet
+        Google Cloud PlatformでPythonを用いてスプレッドシートを操作する方法
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    行うこと
+  </a>
+  
+    <nav class="md-nav" aria-label="行うこと">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#google-cloud-platformgcp" class="md-nav__link">
+    Google Cloud Platform(GCP)の設定
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gcp" class="md-nav__link">
+    スプレッドシートを作成しGCPとの紐付け
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#python" class="md-nav__link">
+    Pythonを用いてスプレッドシートのセルの操作
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -722,6 +787,50 @@
   
   
   
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    行うこと
+  </a>
+  
+    <nav class="md-nav" aria-label="行うこと">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#google-cloud-platformgcp" class="md-nav__link">
+    Google Cloud Platform(GCP)の設定
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gcp" class="md-nav__link">
+    スプレッドシートを作成しGCPとの紐付け
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#python" class="md-nav__link">
+    Pythonを用いてスプレッドシートのセルの操作
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
   
 </nav>
                   </div>
@@ -736,9 +845,48 @@
                   
 
 
-  <h1>Gcp spreadsheet</h1>
-
-
+<h1 id="google-cloud-platformpython">Google Cloud PlatformでPythonを用いてスプレッドシートを操作する方法<a class="headerlink" href="#google-cloud-platformpython" title="Permanent link">&para;</a></h1>
+<h2 id="_1">行うこと<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Pythonを用いてスプレッドシートを操作できるように設定します。<ul>
+<li>Google Cloud Platform(GCP)の設定</li>
+<li>スプレッドシートを作成しGCPとの紐付け</li>
+<li>Pythonを用いてスプレッドシートのセルの操作</li>
+</ul>
+</li>
+</ul>
+<h3 id="google-cloud-platformgcp">Google Cloud Platform(GCP)の設定<a class="headerlink" href="#google-cloud-platformgcp" title="Permanent link">&para;</a></h3>
+<p>Google Cloud のコンソール画面を開いたらまず最初に新しいプロジェクトを作成します。
+ナビゲーションメニューから以下の黄色い枠で囲われた部分をクリックします。
+<img alt="" src="../../images/prototype/prototype1/gcp/gcp_1.jpg#center" /></p>
+<p>プロジェクト選択・新規作成のウィンドウが表示されるため、新しいプロジェクトをクリックします。
+<img alt="" src="../../images/prototype/prototype1/gcp/gcp_2.jpg#center" /></p>
+<p>新しいプロジェクト作成ページに遷移するため、プロジェクト名を入力して作成ボタンをクリックします。
+<img alt="" src="../../images/prototype/prototype1/gcp/gcp_3.jpg#center" /></p>
+<p>プロジェクトができると、ナビゲーションバーの通知からプロジェクトを確認できるため、「プロジェクトを選択」をクリックして、作成したプロジェクトに移動しましょう。
+<img alt="" src="../../images/prototype/prototype1/gcp/gcp_4.jpg#center" /></p>
+<p>移動すると、対象のプロジェクトのダッシュボードページに遷移します。
+<img alt="" src="../../images/prototype/prototype1/gcp/gcp_5.jpg#center" /></p>
+<ol>
+<li>Spreadsheet APIとGoogle Drive APIを有効にする。</li>
+</ol>
+<p>ハンバーガーメニューをクリックして「APIとサービス」-&gt; 「ライブラリ」を選択します。
+<img alt="" src="../../images/prototype/prototype1/gcp/gcp_6.jpg#center" /></p>
+<p>以下のライブラリ検索ページが表示されるため、検索ボックスに「spreadsheet」と入力して「Google Sheets API」を表示します。
+<img alt="" src="../../images/prototype/prototype1/gcp/gcp_7.jpg#center" /></p>
+<p>Google Sheets APIを有効にするため、「有効にする」ボタンをクリックします。
+<img alt="" src="../../images/prototype/prototype1/gcp/gcp_8.jpg#center" /></p>
+<p>次に、上記と同様にGoogle Drive APIを検索して、有効化します。
+<img alt="" src="../../images/prototype/prototype1/gcp/gcp_9.jpg#center" /></p>
+<p><img alt="" src="../../images/prototype/prototype1/gcp/gcp_10.jpg#center" /></p>
+<p>「APIとサービス」-&gt; 「有効なAPIとサービス」から有効化されていることを確認することができます。
+<img alt="" src="../../images/prototype/prototype1/gcp/gcp_11.jpg#center" /></p>
+<p><img alt="" src="../../images/prototype/prototype1/gcp/gcp_12.jpg#center" /></p>
+<ol>
+<li>「認証情報」-&gt; 「サービスアカウント名」-&gt; 「役割: 編集者」, 「キータイプ: JSON」で作成する。</li>
+</ol>
+<h3 id="gcp">スプレッドシートを作成しGCPとの紐付け<a class="headerlink" href="#gcp" title="Permanent link">&para;</a></h3>
+<h3 id="python">Pythonを用いてスプレッドシートのセルの操作<a class="headerlink" href="#python" title="Permanent link">&para;</a></h3>
 
 
 

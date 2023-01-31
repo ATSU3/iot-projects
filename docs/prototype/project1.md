@@ -115,7 +115,7 @@ while True:
         time.sleep(0.1)
 ```
 
-[Pythonを用いたスプレッドシートのセルの操作](/basic/setting/gcp_spreadsheet.html#python)でこちらのプログラムの解説と
+[Pythonを用いたスプレッドシートのセルの操作](/basic/setting/gcp_spreadsheet.html#python)でこちらのプログラムの解説、
 セルの操作方法に関して解説しております。
 
 
