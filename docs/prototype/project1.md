@@ -131,11 +131,13 @@ while True:
 
 Fusion360で以下のように収納ケースを作成しました。
 
+- [収納ケースpdfデータ](../files/prototype1/case.pdf)からダウンロードできます。
+
 ![](../images/prototype/prototype1/fusion360/fusion360_1.jpg#center)
 
 ![](../images/prototype/prototype1/fusion360/fusion360_2.jpg#center)
 
-作成したデータはDXF形式で出力して、加工はMDF2.5mmを使用しレーザーカッターを用いて行いて行いました。データは[こちら](../files/prototype1/case.pdf)からダウンロードできます。
+作成したデータはDXF形式で出力して、加工はMDF2.5mmを使用しレーザーカッターを用いて行いて行いました。
 
 電子回路は以下のように半田付けして格納しております。
 ![](../images/prototype/prototype1/circuit/circuit_2.jpg#center)
