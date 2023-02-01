@@ -137,20 +137,40 @@ Google Sheets APIを有効にするため、「有効にする」ボタンをク
 ![](../../images/prototype/prototype1/gcp/gcp_18.jpg#center)
 
 <br>
+以下のキー設定の画面に遷移するため、「鍵を追加」をクリックします。
+<br>
 
 ![](../../images/prototype/prototype1/gcp/gcp_19.jpg#center)
 
+<br>
+秘密鍵の作成のためのウィンドウが表示されるためキーのタイプで「JSON」を選択して「作成」ボタンをクリックします。
+
+作成ボタンをクリックすると、.json形式でファイルがダウンロードされます。
 <br>
 
 ![](../../images/prototype/prototype1/gcp/gcp_20.jpg#center)
 
 <br>
+キー作成後は同ページでキーが確認できます。
+<br>
 
 ![](../../images/prototype/prototype1/gcp/gcp_21.jpg#center)
 
+ここまでで、 Google Cloud Platformの設定は終了となります。
 
 ### スプレッドシートを作成しGCPとの紐付け
 
+<br>
+"Client_email"の値をコピーします。
+<br>
+
+![](../../images/prototype/prototype1/gcp/gcp_22.jpg#center)
+
+<br>
+対象のスプレッドシートで「共有」ボタンをクリックして、ユーザーを追加するウィンドウを表示し、Client_email"の値をペーストして「完了」ボタンを押すことで追加することができます。
+<br>
+
+![](../../images/prototype/prototype1/gcp/gcp_23.jpg#center)
 
 ### Pythonを用いてスプレッドシートのセルの操作
 

@@ -904,34 +904,89 @@
 </ul>
 <h3 id="google-cloud-platformgcp">Google Cloud Platform(GCP)の設定<a class="headerlink" href="#google-cloud-platformgcp" title="Permanent link">&para;</a></h3>
 <p>Google Cloud のコンソール画面を開いたらまず最初に新しいプロジェクトを作成します。
-ナビゲーションメニューから以下の黄色い枠で囲われた部分をクリックします。
+ナビゲーションメニューから以下の黄色い枠で囲われた部分をクリックします。</p>
+<p><br>
 <img alt="" src="../../images/prototype/prototype1/gcp/gcp_1.jpg#center" /></p>
-<p>プロジェクト選択・新規作成のウィンドウが表示されるため、新しいプロジェクトをクリックします。
-<img alt="" src="../../images/prototype/prototype1/gcp/gcp_2.jpg#center" /></p>
-<p>新しいプロジェクト作成ページに遷移するため、プロジェクト名を入力して作成ボタンをクリックします。
-<img alt="" src="../../images/prototype/prototype1/gcp/gcp_3.jpg#center" /></p>
-<p>プロジェクトができると、ナビゲーションバーの通知からプロジェクトを確認できるため、「プロジェクトを選択」をクリックして、作成したプロジェクトに移動しましょう。
-<img alt="" src="../../images/prototype/prototype1/gcp/gcp_4.jpg#center" /></p>
-<p>移動すると、対象のプロジェクトのダッシュボードページに遷移します。
-<img alt="" src="../../images/prototype/prototype1/gcp/gcp_5.jpg#center" /></p>
-<ol>
-<li>Spreadsheet APIとGoogle Drive APIを有効にする。</li>
-</ol>
-<p>ハンバーガーメニューをクリックして「APIとサービス」-&gt; 「ライブラリ」を選択します。
-<img alt="" src="../../images/prototype/prototype1/gcp/gcp_6.jpg#center" /></p>
-<p>以下のライブラリ検索ページが表示されるため、検索ボックスに「spreadsheet」と入力して「Google Sheets API」を表示します。
-<img alt="" src="../../images/prototype/prototype1/gcp/gcp_7.jpg#center" /></p>
-<p>Google Sheets APIを有効にするため、「有効にする」ボタンをクリックします。
-<img alt="" src="../../images/prototype/prototype1/gcp/gcp_8.jpg#center" /></p>
-<p>次に、上記と同様にGoogle Drive APIを検索して、有効化します。
-<img alt="" src="../../images/prototype/prototype1/gcp/gcp_9.jpg#center" /></p>
+<p><br></p>
+<p>プロジェクト選択・新規作成のウィンドウが表示されるため、新しいプロジェクトをクリックします。</p>
+<p><br></p>
+<p><img alt="" src="../../images/prototype/prototype1/gcp/gcp_2.jpg#center" /></p>
+<p><br></p>
+<p>新しいプロジェクト作成ページに遷移するため、プロジェクト名を入力して作成ボタンをクリックします。</p>
+<p><br></p>
+<p><img alt="" src="../../images/prototype/prototype1/gcp/gcp_3.jpg#center" /></p>
+<p><br></p>
+<p>プロジェクトができると、ナビゲーションバーの通知からプロジェクトを確認できるため、「プロジェクトを選択」をクリックして、作成したプロジェクトに移動しましょう。</p>
+<p><br></p>
+<p><img alt="" src="../../images/prototype/prototype1/gcp/gcp_4.jpg#center" /></p>
+<p><br></p>
+<p>移動すると、対象のプロジェクトのダッシュボードページに遷移します。</p>
+<p><br></p>
+<p><img alt="" src="../../images/prototype/prototype1/gcp/gcp_5.jpg#center" /></p>
+<p><br></p>
+<p>Spreadsheet APIとGoogle Drive APIを有効にする。</p>
+<p>ハンバーガーメニューをクリックして「APIとサービス」-&gt; 「ライブラリ」を選択します。</p>
+<p><br></p>
+<p><img alt="" src="../../images/prototype/prototype1/gcp/gcp_6.jpg#center" /></p>
+<p><br></p>
+<p>以下のライブラリ検索ページが表示されるため、検索ボックスに「spreadsheet」と入力して「Google Sheets API」を表示します。</p>
+<p><br></p>
+<p><img alt="" src="../../images/prototype/prototype1/gcp/gcp_7.jpg#center" /></p>
+<p><br></p>
+<p>Google Sheets APIを有効にするため、「有効にする」ボタンをクリックします。</p>
+<p><br></p>
+<p><img alt="" src="../../images/prototype/prototype1/gcp/gcp_8.jpg#center" /></p>
+<p><br></p>
+<p>次に、上記と同様にGoogle Drive APIを検索して、有効化します。</p>
+<p><br></p>
+<p><img alt="" src="../../images/prototype/prototype1/gcp/gcp_9.jpg#center" /></p>
+<p><br></p>
 <p><img alt="" src="../../images/prototype/prototype1/gcp/gcp_10.jpg#center" /></p>
-<p>「APIとサービス」-&gt; 「有効なAPIとサービス」から有効化されていることを確認することができます。
-<img alt="" src="../../images/prototype/prototype1/gcp/gcp_11.jpg#center" /></p>
+<p><br></p>
+<p>「APIとサービス」-&gt; 「有効なAPIとサービス」から有効化されていることを確認することができます。</p>
+<p><br></p>
+<p><img alt="" src="../../images/prototype/prototype1/gcp/gcp_11.jpg#center" /></p>
+<p><br></p>
 <p><img alt="" src="../../images/prototype/prototype1/gcp/gcp_12.jpg#center" /></p>
-<ol>
-<li>「認証情報」-&gt; 「サービスアカウント名」-&gt; 「役割: 編集者」, 「キータイプ: JSON」で作成する。</li>
-</ol>
+<p><br>
+次にAPIとサービスから「認証情報」-&gt; 「認証情報を作成」-&gt;「サービスアカウント」を選択します。
+<br></p>
+<p><img alt="" src="../../images/prototype/prototype1/gcp/gcp_13.jpg#center" /></p>
+<p><br>
+「サービスアカウントの作成」ページに遷移するため、「サービスアカウント名」「サービスアカウントID」を入力し「完了」ボタンを押します。
+<br></p>
+<p><img alt="" src="../../images/prototype/prototype1/gcp/gcp_14.jpg#center" /></p>
+<p><br>
+「このサービスアカウントにプロジェクトへのアクセスを許可する」の「ロール」を「編集者」に設定します。
+<br></p>
+<p><img alt="" src="../../images/prototype/prototype1/gcp/gcp_15.jpg#center" /></p>
+<p><br>
+「ユーザーにこのサービスアカウントへの合うセスを許可」は省略して構いません。
+「完了」ボタンを押します。
+<br></p>
+<p><img alt="" src="../../images/prototype/prototype1/gcp/gcp_16.jpg#center" /></p>
+<p><br>
+以下の画面のように「サービスアカウント」の「メール」
+にメールアドレスが追加されていることが確認できます。
+<br></p>
+<p><img alt="" src="../../images/prototype/prototype1/gcp/gcp_17.jpg#center" /></p>
+<p><br>
+「メール」の対象のメールアドレスのリンクをクリックすると以下の画面に遷移するため、画面右側の「操作」のメニューから「鍵を管理」を選択します。
+<br></p>
+<p><img alt="" src="../../images/prototype/prototype1/gcp/gcp_18.jpg#center" /></p>
+<p><br>
+以下のキー設定の画面に遷移するため、「鍵を追加」をクリックします。
+<br></p>
+<p><img alt="" src="../../images/prototype/prototype1/gcp/gcp_19.jpg#center" /></p>
+<p><br>
+秘密鍵の作成のためのウィンドウが表示されるためキーのタイプで「JSON」を選択して「作成」ボタンをクリックします。</p>
+<p>作成ボタンをクリックすると、.json形式でファイルがダウンロードされます。
+<br></p>
+<p><img alt="" src="../../images/prototype/prototype1/gcp/gcp_20.jpg#center" /></p>
+<p><br>
+キー作成後は同ページでキーが確認できます。
+<br></p>
+<p><img alt="" src="../../images/prototype/prototype1/gcp/gcp_21.jpg#center" /></p>
 <h3 id="gcp">スプレッドシートを作成しGCPとの紐付け<a class="headerlink" href="#gcp" title="Permanent link">&para;</a></h3>
 <h3 id="python">Pythonを用いてスプレッドシートのセルの操作<a class="headerlink" href="#python" title="Permanent link">&para;</a></h3>
 <p>参考: <a href="https://docs.gspread.org/en/v5.7.0/">gspread documentation</a></p>
