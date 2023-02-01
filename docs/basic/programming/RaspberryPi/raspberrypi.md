@@ -48,7 +48,6 @@ GPIO.setup(2, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 if GPIO.input(2) == GPIO.LOW
 ```
 
-
 ## 参考資料
 - [raspberry-gpio-python Wiki](https://sourceforge.net/p/raspberry-gpio-python/wiki/BasicUsage/)
 

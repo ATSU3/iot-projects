@@ -19,7 +19,7 @@
 
 以下にGoogle Cloud Platformを用いてPythonでスプレッドシートを操作する詳細な設定方法を記載しております。
 
-- [Google Cloud PlatformでPythonを用いてスプレッドシートを操作する方法](/basic/setting/gcp_spreadsheet.html#google-cloud-platformgcp)
+- [Google Cloud PlatformでPythonを用いてスプレッドシートを操作する方法](/../basic/setting/gcp_spreadsheet.html#google-cloud-platformgcp)
 
 ### Spreadsheet設定
 今回はプロトタイプのため、部品名とその個数を入力するシートを作成します。また対応する2つの収納箱を作成します。
@@ -76,9 +76,9 @@ $ pip install gspread oauth2client
 
 以下のPythonプログラムの解説に関してはこちらの記事に記載しております。
 
-- [Pythonを用いたスプレッドシートのセルの操作](/basic/setting/gcp_spreadsheet.html#python#python)
+- [Pythonを用いたスプレッドシートのセルの操作](../basic/setting/gcp_spreadsheet.html#python)
 
-- [Raspberry Pi GPIOに関して](/basic/programming/RaspberryPi/raspberrypi.html#gpio)
+- [Raspberry Pi GPIOに関して](../basic/programming/RaspberryPi/raspberrypi.html#gpio)
 
 ```python
 import gspread
