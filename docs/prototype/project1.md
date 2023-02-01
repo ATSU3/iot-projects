@@ -19,7 +19,7 @@
 
 以下にGoogle Cloud Platformを用いてPythonでスプレッドシートを操作する詳細な設定方法を記載しております。
 
-- [Google Cloud PlatformでPythonを用いてスプレッドシートを操作する方法](/../basic/setting/gcp_spreadsheet.html#google-cloud-platformgcp)
+- [Google Cloud PlatformでPythonを用いてスプレッドシートを操作する方法](../basic/setting/gcp_spreadsheet.html#google-cloud-platformgcp)
 
 ### Spreadsheet設定
 今回はプロトタイプのため、部品名とその個数を入力するシートを作成します。また対応する2つの収納箱を作成します。
