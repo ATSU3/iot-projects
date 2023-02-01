@@ -155,10 +155,10 @@ Fusion360で以下のように収納ケースを作成しました。
 ## 部品
 |    部品    | 販売先 |  金額 | 必要個数 |   合計金額   | リンク |
 | --------- | ------ | ---- | ------ | ---------- | ----- |
-| RaspberryPi3B | digikey | 4804円 | 1 | 4804円 | [Link](https://www.digikey.jp/ja/products/detail/raspberry-pi/RASPBERRY-PI-3/6152799?s=N4IgTCBcDaIIwDYCcAGAtHFW0DkAiIAugL5A&src=raspberrypi) |
-| タクトスイッチ | 共立エレショップ | 55円 | 4 | 220円 | [Link](https://eleshop.jp/shop/g/gF8K123/) |
-| ジャンパワイヤ(オス - メス) PRT-12794 | digikey | 288円| 1セット | 288円 | [Link](https://www.digikey.jp/ja/products/detail/sparkfun-electronics/PRT-12794/5993859?utm_adgroup=Jumper%20Wire&utm_source=google&utm_medium=cpc&utm_campaign=Google%20Shopping_Product_Prototyping%2C%20Fabrication%20Products&utm_term=&productid=5993859&gclid=Cj0KCQiA8t2eBhDeARIsAAVEga2WpJF2fZCiK6KCYi6duY9cQ6ShpnppK59_f4vvOBICh0MZELYKF7waAqUkEALw_wcB) |
-| ブレッドボード | digikey | 542円 | 1 | 542円 | [Link](https://www.digikey.jp/ja/products/detail/adafruit-industries-llc/65/7241428?utm_adgroup=Solderless%20Breadboards&utm_source=google&utm_medium=cpc&utm_campaign=Google%20Shopping_Product_Prototyping%2C%20Fabrication%20Products&utm_term=&productid=7241428&gclid=CjwKCAiAleOeBhBdEiwAfgmXf_ufodj00MLtWjrT7go4rg3LYam2UNdP2BIpQ75UDdoD-dOHOHZnERoCb1YQAvD_BwE) |
+| RaspberryPi3B | digikey | 4804円 | 1個 | 4804円 | [Link](https://www.digikey.jp/ja/products/detail/raspberry-pi/RASPBERRY-PI-3/6152799?s=N4IgTCBcDaIIwDYCcAGAtHFW0DkAiIAugL5A&src=raspberrypi) |
+| タクトスイッチ | 共立エレショップ | 55円 | 4個 | 220円 | [Link](https://eleshop.jp/shop/g/gF8K123/) |
+| ジャンパワイヤ(オス - メス) PRT-12794 | digikey | 288円| 1セット | 288円 | [Link](https://www.digikey.jp/ja/products/detail/sparkfun-electronics/PRT-12794/5993859?utm_adgroup=Jumper%20Wir&utm_source=google&utm_medium=cpc&utm_campaign=Google%20Shopping_Product_Prototyping%2C%20Fabrication%20Products&utm_term=&productid=5993859&gclid=Cj0KCQiA8t2eBhDeARIsAAVEga2WpJF2fZCiK6KCYi6duY9cQ6ShpnppK59_f4vvOBICh0MZELYKF7waAqUkEALw_wcB) |
+| ブレッドボード | digikey | 542円 | 1個 | 542円 | [Link](https://www.digikey.jp/ja/products/detail/adafruit-industries-llc/65/7241428?utm_adgroup=Solderless%20Breadboards&utm_source=google&utm_medium=cpc&utm_campaign=Google%20Shopping_Product_Prototyping%2C%20Fabrication%20Products&utm_term=&productid=7241428&gclid=CjwKCAiAleOeBhBdEiwAfgmXf_ufodj00MLtWjrT7go4rg3LYam2UNdP2BIpQ75UDdoD-dOHOHZnERoCb1YQAvD_BwE) |
 
 ## 参考資料
 - [Examples of gspread Usage](https://docs.gspread.org/en/latest/user-guide.html)
