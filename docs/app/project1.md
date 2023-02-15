@@ -1,6 +1,11 @@
 
 # カーフチェッカーアプリを作ってみる (WIP)
 
+#### ↓↓カーフチェッカーアプリ↓↓
+[Kerf Check Parts Generator](https://kerf-generator-v2.vercel.app/)
+
+<br>
+
 現在ラボでは新たに木材で家具を作成することができる大型CNCを導入し、レーザー加工機に加え、
 [プレスフィットコンストラクション](http://japan.fabcloud.io/FabAcademy-Tutorials/jp/week03_computer_controlled_cutting/press_fit_jp.html)(接着剤、釘、ネジなどの留め具を使わずに、パーツ同士をはめ合わせる技術)を使用したプロダクト開発ができる環境が充実してきました。
 
