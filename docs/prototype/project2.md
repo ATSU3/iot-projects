@@ -10,9 +10,20 @@
 ステッピングモーターは時計の秒針のように、一定の角度ずつ回転するモーターです。
 ステッピングモーターが回転する際に発生する振動を利用して音を鳴らすことができます。
 
+## MIDI信号について
+
 <!-- ステッピングモーターから発生する音で楽器を作成する。 -->
 
 <!-- kibakoの西村さんとのアイディアスケッチを参考に作成していく。 -->
+
+## 電子回路
+
+## プログラム
+
+## ボディ設計
+
+## パッケージング
+
 
 <!--  -->
 
@@ -22,7 +33,9 @@
 
 
 ### チェックリスト
-- 本プロトタイプはステッピングモータを利用して
+- 本プロトタイプはモータの振動による音を利用した楽器を作成できている
+- 対象者が容易に楽器を使用することができる
+- 
 
 
 ## データ
@@ -57,4 +70,15 @@
 - [Arduino-MIDI-Stepper-Motor-Instrument](https://github.com/jzkmath/Arduino-MIDI-Stepper-Motor-Instrument)
 
 - ["楽器"としてのステッピングモーター入門](https://tlo-olb.hatenablog.com/entry/2019/03/22/191524)
+
+- [MIDIのデータ構造](http://www1.plala.or.jp/yuuto/midi/p0200.html#:~:text=MIDI%20%E3%81%A7%E3%81%AF%E3%80%81%E6%BC%94%E5%A5%8F%E6%83%85%E5%A0%B1%E3%82%92,%E3%81%A6%E9%80%81%E3%82%89%E3%82%8C%E3%82%8B%E3%82%8F%E3%81%91%E3%81%A7%E3%81%99%E3%80%82)
+
+- [Arduino MIDI Library の使い方](https://qiita.com/yudai220/items/3bde9461f282d56d1ac2)
+
+- [DRV8825 Stepper Motor Driver Carrier, High Current](https://www.pololu.com/product/2133)
+
+- [Setting the Current Limit on Pololu Stepper Motor Driver Carriers](https://www.youtube.com/watch?v=89BHS9hfSUk)
+
+
+
 
