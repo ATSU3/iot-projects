@@ -21,8 +21,36 @@ FabLab Kuriyamaでは電子工作・プログラミングの機材もかなり�
 
 電子楽器を接続する際MIDI接続に比べUSBで接続できる方が汎用性が高いため、Arduinoのファームウェアを書き換え、USB接続のMIDIOUTができる端末にしていきたいと思います。
 
+ArduinoをUSB MIDIデバイスとして設定したい場合、AVRチップのファームウェアを変更する必要があります。
+
+### FLIPでファームフェアの書き換え
+
+![](../images/prototype/prototype1/flip/flip_1.jpg#center)
+
+![](../images/prototype/prototype1/flip/flip_2.jpg#center)
+
+![](../images/prototype/prototype1/flip/flip_3.jpg#center)
+
+![](../images/prototype/prototype1/flip/flip_4.jpg#center)
+
+![](../images/prototype/prototype1/flip/flip_5.jpg#center)
+
+![](../images/prototype/prototype1/flip/flip_6.jpg#center)
+
+![](../images/prototype/prototype1/flip/flip_7.jpg#center)
+
+![](../images/prototype/prototype1/flip/flip_8.jpg#center)
+
+![](../images/prototype/prototype1/flip/flip_9.jpg#center)
+
+![](../images/prototype/prototype1/flip/flip_10.jpg#center)
+
 
 ## プログラム
+
+プログラムは[こちら](https://github.com/jzkmath/Arduino-MIDI-Stepper-Motor-Instrument/blob/master/Arduino%20Code/MIDI%20Stepper%20V1/MIDI_Stepper_V1.ino)のプロジェクトを参考にさせていただきました。
+
+
 
 ## ボディ設計
 
