@@ -11,7 +11,11 @@ FabLab Kuriyamaでは電子工作・プログラミングの機材もかなり�
 ステッピングモーターは時計の秒針のように、一定の角度ずつ回転するモーターです。
 ステッピングモーターが回転する際に発生する振動を利用して音を鳴らすことができます。
 
-## MIDI信号について
+## MIDIについて
+
+今回プロジェクトを進める上でMIDIについての知識が少なかったため以下のサイトで学習させていただき、とても参考になりました。
+
+- [MIDIのデータ構造](http://www1.plala.or.jp/yuuto/midi/p0200.html#:~:text=MIDI%20%E3%81%A7%E3%81%AF%E3%80%81%E6%BC%94%E5%A5%8F%E6%83%85%E5%A0%B1%E3%82%92,%E3%81%A6%E9%80%81%E3%82%89%E3%82%8C%E3%82%8B%E3%82%8F%E3%81%91%E3%81%A7%E3%81%99%E3%80%82)
 
 <!-- ステッピングモーターから発生する音で楽器を作成する。 -->
 
@@ -24,6 +28,8 @@ FabLab Kuriyamaでは電子工作・プログラミングの機材もかなり�
 ArduinoをUSB MIDIデバイスとして設定したい場合、AVRチップのファームウェアを変更する必要があります。
 
 ### FLIPでファームフェアの書き換え
+
+[FLIPダウンロードリンク](https://www.microchip.com/en-us/development-tool/flip)
 
 ![](../images/prototype/prototype1/flip/flip_1.jpg#center)
 
@@ -56,12 +62,11 @@ ArduinoをUSB MIDIデバイスとして設定したい場合、AVRチップの�
 
 プログラムは[こちら](https://github.com/jzkmath/Arduino-MIDI-Stepper-Motor-Instrument/blob/master/Arduino%20Code/MIDI%20Stepper%20V1/MIDI_Stepper_V1.ino)のプロジェクトを参考にさせていただきました。
 
-
+## Domino(MIDI音楽ソフト)と連動させる
 
 ## ボディ設計
 
 ## パッケージング
-
 
 <!--  -->
 
@@ -94,6 +99,8 @@ ArduinoをUSB MIDIデバイスとして設定したい場合、AVRチップの�
 - [mocolufa](https://github.com/kuwatay/mocolufa)
 
 - [Arduino-MIDI-Stepper-Motor-Instrument](https://github.com/jzkmath/Arduino-MIDI-Stepper-Motor-Instrument)
+
+- [Domino](https://takabosoft.com/domino)
 
 
 ## 参考資料
