@@ -45,6 +45,12 @@ ArduinoをUSB MIDIデバイスとして設定したい場合、AVRチップの�
 
 ![](../images/prototype/prototype1/flip/flip_10.jpg#center)
 
+![](../images/prototype/prototype1/flip/flip_11.jpg#center)
+
+![](../images/prototype/prototype1/flip/flip_13.jpg#center)
+
+![](../images/prototype/prototype1/flip/flip_12.jpg#center)
+
 
 ## プログラム
 
