@@ -57,14 +57,36 @@ ArduinoをUSB MIDIデバイスとして設定したい場合、AVRチップの�
 
 ![](../images/prototype/prototype1/flip/flip_12.jpg#center)
 
+![](../images/prototype/prototype1/flip/flip_14.jpg#center)
+
+![](../images/prototype/prototype1/flip/flip_15.jpg#center)
+
 
 ## プログラム
 
 プログラムは[こちら](https://github.com/jzkmath/Arduino-MIDI-Stepper-Motor-Instrument/blob/master/Arduino%20Code/MIDI%20Stepper%20V1/MIDI_Stepper_V1.ino)のプロジェクトを参考にさせていただきました。
 
+[pitchs.h](https://github.com/jzkmath/Arduino-MIDI-Stepper-Motor-Instrument/blob/master/Arduino%20Code/MIDI%20Stepper%20V1/pitches.h)
+
+
+
 ## Domino(MIDI音楽ソフト)と連動させる
 
+![](../images/prototype/prototype1/domino/domino_1.jpg#center)
+
+![](../images/prototype/prototype1/domino/domino_2.jpg#center)
+
+![](../images/prototype/prototype1/domino/domino_3.jpg#center)
+
+![](../images/prototype/prototype1/domino/domino_4.jpg#center)
+
+![](../images/prototype/prototype1/domino/domino_5.jpg#center)
+
+![](../images/prototype/prototype1/domino/domino_6.jpg#center)
+
+
 ## ボディ設計
+
 
 ## パッケージング
 
@@ -113,6 +135,8 @@ ArduinoをUSB MIDIデバイスとして設定したい場合、AVRチップの�
 - [Arduino MIDI Stepper Synth](https://www.hackster.io/JonJonKayne/arduino-midi-stepper-synth-d291ae)
 
 - [Arduino-MIDI-Stepper-Motor-Instrument](https://github.com/jzkmath/Arduino-MIDI-Stepper-Motor-Instrument)
+
+- [Moco for LUFA](https://webmusicdevelopers.appspot.com/codelabs/arduino-mocolufa/index.html?ja-jp#5)
 
 - ["楽器"としてのステッピングモーター入門](https://tlo-olb.hatenablog.com/entry/2019/03/22/191524)
 
