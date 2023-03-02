@@ -72,11 +72,18 @@ ATMEL製のファームウェア書き込み用ソフトウェア FLIP 3.4.7を�
 
 ![](../images/prototype/prototype1/flip/flip_7.jpg#center)
 
+「midi stepper.hex」を選択します。
+
 ![](../images/prototype/prototype1/flip/flip_8.jpg#center)
+
+「Run」ボタンをクリックします。
 
 ![](../images/prototype/prototype1/flip/flip_9.jpg#center)
 
+書き込みが完了すると、デバイスマネージャーで「MIDI Stepper」が確認できます。
+
 ![](../images/prototype/prototype1/flip/flip_10.jpg#center)
+
 
 ![](../images/prototype/prototype1/flip/flip_11.jpg#center)
 
