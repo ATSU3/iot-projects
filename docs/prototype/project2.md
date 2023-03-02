@@ -17,6 +17,10 @@ FabLab Kuriyamaでは電子工作・プログラミングの機材もかなり�
 
 - [MIDIのデータ構造](http://www1.plala.or.jp/yuuto/midi/p0200.html#:~:text=MIDI%20%E3%81%A7%E3%81%AF%E3%80%81%E6%BC%94%E5%A5%8F%E6%83%85%E5%A0%B1%E3%82%92,%E3%81%A6%E9%80%81%E3%82%89%E3%82%8C%E3%82%8B%E3%82%8F%E3%81%91%E3%81%A7%E3%81%99%E3%80%82)
 
+本プロジェクトでは、以下の内容を理解していれば作成することができます。
+
+- 
+
 <!-- ステッピングモーターから発生する音で楽器を作成する。 -->
 
 <!-- kibakoの西村さんとのアイディアスケッチを参考に作成していく。 -->
@@ -29,19 +33,42 @@ ArduinoをUSB MIDIデバイスとして設定したい場合、AVRチップの�
 
 ### FLIPでファームフェアの書き換え
 
+ATMEL製のファームウェア書き込み用ソフトウェア FLIP 3.4.7を使用します。
+
 [FLIPダウンロードリンク](https://www.microchip.com/en-us/development-tool/flip)
+
 
 ![](../images/prototype/prototype1/flip/flip_1.jpg#center)
 
+ソフトのホーム画面は以下になります。
+
 ![](../images/prototype/prototype1/flip/flip_2.jpg#center)
+
+書き込み対象のデバイス名を選択します。
 
 ![](../images/prototype/prototype1/flip/flip_3.jpg#center)
 
+今回はArduino Unoを使用し作成しており、「ATmega16U2」が埋め込まれているためこちらを選択します。
+
+![](../images/prototype/prototype1/flip/flip_13.jpg#center)
+
+以下のようにマイコンの表面に「ATmega16U2」のように印刷されております。
+
+![](../images/prototype/prototype1/flip/flip_12.jpg#center)
+
+書き込み対象のマイコン名を選択後、USBマークを選択して「USB」を選択します。
+
 ![](../images/prototype/prototype1/flip/flip_4.jpg#center)
+
+「USB Port Connection」ウィンドウが開くため「Open」を選択します。
 
 ![](../images/prototype/prototype1/flip/flip_5.jpg#center)
 
+選択されるとHEX File欄の (ATMEL)の文字が青くなります。
+
 ![](../images/prototype/prototype1/flip/flip_6.jpg#center)
+
+「File」=>「Load HEX File」から読み込み対象のファイルを選択します。
 
 ![](../images/prototype/prototype1/flip/flip_7.jpg#center)
 
@@ -52,10 +79,6 @@ ArduinoをUSB MIDIデバイスとして設定したい場合、AVRチップの�
 ![](../images/prototype/prototype1/flip/flip_10.jpg#center)
 
 ![](../images/prototype/prototype1/flip/flip_11.jpg#center)
-
-![](../images/prototype/prototype1/flip/flip_13.jpg#center)
-
-![](../images/prototype/prototype1/flip/flip_12.jpg#center)
 
 ![](../images/prototype/prototype1/flip/flip_14.jpg#center)
 
