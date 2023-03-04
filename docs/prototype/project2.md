@@ -102,15 +102,23 @@ ATMEL製のファームウェア書き込み用ソフトウェア FLIP 3.4.7を�
 
 ## Domino(MIDI音楽ソフト)と連動させる
 
+Dominoを起動させると以下のようが画面が表示されます。
+
 ![](../images/prototype/prototype1/domino/domino_1.jpg#center)
+
+「ファイル」=>「環境設定」を開きます。
 
 ![](../images/prototype/prototype1/domino/domino_2.jpg#center)
 
+「MIDI-OUT」の項目で「ポート A」「MIDI OUT デバイス」に「MIDI Stepper」を選択します。
+
 ![](../images/prototype/prototype1/domino/domino_3.jpg#center)
 
-![](../images/prototype/prototype1/domino/domino_4.jpg#center)
+「トラックセレクトペインの表示切り替え」を選択すると左側にチャンネル設定の表示がされます。
 
 ![](../images/prototype/prototype1/domino/domino_5.jpg#center)
+
+今回は3つのステッピングモーターを
 
 ![](../images/prototype/prototype1/domino/domino_6.jpg#center)
 
