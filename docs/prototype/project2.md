@@ -84,7 +84,6 @@ ATMEL製のファームウェア書き込み用ソフトウェア FLIP 3.4.7を�
 
 ![](../images/prototype/prototype1/flip/flip_10.jpg#center)
 
-
 ![](../images/prototype/prototype1/flip/flip_11.jpg#center)
 
 ![](../images/prototype/prototype1/flip/flip_14.jpg#center)
@@ -97,7 +96,6 @@ ATMEL製のファームウェア書き込み用ソフトウェア FLIP 3.4.7を�
 プログラムは[こちら](https://github.com/jzkmath/Arduino-MIDI-Stepper-Motor-Instrument/blob/master/Arduino%20Code/MIDI%20Stepper%20V1/MIDI_Stepper_V1.ino)のプロジェクトを参考にさせていただきました。
 
 [pitchs.h](https://github.com/jzkmath/Arduino-MIDI-Stepper-Motor-Instrument/blob/master/Arduino%20Code/MIDI%20Stepper%20V1/pitches.h)
-
 
 
 ## Domino(MIDI音楽ソフト)と連動させる
@@ -118,7 +116,7 @@ Dominoを起動させると以下のようが画面が表示されます。
 
 ![](../images/prototype/prototype1/domino/domino_5.jpg#center)
 
-今回は3つのステッピングモーターを
+今回は3つのステッピングモーターを使用しております。
 
 ![](../images/prototype/prototype1/domino/domino_6.jpg#center)
 
@@ -129,22 +127,26 @@ Dominoを起動させると以下のようが画面が表示されます。
 
 ![](../images/prototype/prototype2/fusion360/fusion360_1.jpg#center)
 
+- プロトタイプ2
+  - 
+
 ## パッケージング
 
 ### 評価
 
 - 
 
-
 ### チェックリスト
+
 - 本プロトタイプはモータの振動による音を利用した楽器を作成できている
 - 対象者が容易に楽器を使用することができる
-- 
 
 
 ## データ
 
+- [fusion360 speacker prototype data](../files/prototype2/speacker-prototype1.f3d)
 
+- [speacker prototype lasercut data](../files/prototype2/speacker.pdf)
 
 ## 部品
 |    部品    | 販売先 |  金額 | 必要個数 |   合計金額   | リンク |
@@ -157,6 +159,7 @@ Dominoを起動させると以下のようが画面が表示されます。
 
 
 ## インストールするソフト・ライブラリ一覧
+
 - [FLIP](https://www.microchip.com/en-us/development-tool/flip#)
 
 - [mocolufa](https://github.com/kuwatay/mocolufa)
@@ -188,7 +191,4 @@ Dominoを起動させると以下のようが画面が表示されます。
 - [DRV8825 Stepper Motor Driver Carrier, High Current](https://www.pololu.com/product/2133)
 
 - [Setting the Current Limit on Pololu Stepper Motor Driver Carriers](https://www.youtube.com/watch?v=89BHS9hfSUk)
-
-
-
 
