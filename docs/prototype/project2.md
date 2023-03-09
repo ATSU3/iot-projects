@@ -40,7 +40,7 @@ ATMEL製のファームウェア書き込み用ソフトウェア FLIP 3.4.7を�
 
 ![](../images/prototype/prototype1/flip/flip_1.jpg#center)
 
-ソフトのホーム画面は以下になります。
+アプリのホーム画面は以下になります。
 
 ![](../images/prototype/prototype1/flip/flip_2.jpg#center)
 
@@ -95,7 +95,7 @@ ATMEL製のファームウェア書き込み用ソフトウェア FLIP 3.4.7を�
 
 プログラムは[こちら](https://github.com/jzkmath/Arduino-MIDI-Stepper-Motor-Instrument/blob/master/Arduino%20Code/MIDI%20Stepper%20V1/MIDI_Stepper_V1.ino)のプロジェクトを参考にさせていただきました。
 
-[pitchs.h](https://github.com/jzkmath/Arduino-MIDI-Stepper-Motor-Instrument/blob/master/Arduino%20Code/MIDI%20Stepper%20V1/pitches.h)
+[pitchs.h](https://github.com/jzkmath/Arduino-MIDI-Stepper-Motor-Instrument/blob/master/Arduino%20Code/MIDI%20Stepper%20V1/pitches.h)を読み込ませており、
 
 
 ## Domino(MIDI音楽ソフト)と連動させる
@@ -123,9 +123,28 @@ Dominoを起動させると以下のようが画面が表示されます。
 ## ボディ設計
 
 - プロトタイプ1
+
+以下のようにFusion360でモデリングしました。
+
   - ステッピングモーターの音を拡張させるため、入口が細く、出口が広がっていく構造を作成しました。
 
 ![](../images/prototype/prototype2/fusion360/fusion360_1.jpg#center)
+
+![](../images/prototype/prototype2/fusion360/fusion360_2.jpg#center)
+
+2.5mmの薄いMDFを敷いてその上にステッピングモーターを置いて振動音を増幅させるように作成しました。
+
+![](../images/prototype/prototype2/fusion360/fusion360_3.jpg#center)
+
+レーザー加工機でパーツをカットしました。
+
+![](../images/prototype/prototype2/laser/laser_1.jpg#center)
+
+レーザー加工機で以下のようにMDF5.5mmを重ね合わせてスピーカーを作成し、MDF2.5mmの板にステッピングモーターを固定しました。
+
+![](../images/prototype/prototype2/laser/laser_2.jpg#center)
+
+この構造ではステッピングモーターの板を薄くすることでより振動をより伝えることができると考えましたが、あまり効果はありませんでした。
 
 - プロトタイプ2
   - 
