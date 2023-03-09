@@ -890,6 +890,13 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    ステッピングモーター・モータードライバーの設定
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#flip" class="md-nav__link">
     FLIPでファームフェアの書き換え
   </a>
@@ -902,7 +909,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+  <a href="#_4" class="md-nav__link">
     プログラム
   </a>
   
@@ -916,14 +923,14 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
+  <a href="#_5" class="md-nav__link">
     ボディ設計
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
+  <a href="#_6" class="md-nav__link">
     パッケージング
   </a>
   
@@ -931,14 +938,14 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
+  <a href="#_7" class="md-nav__link">
     評価
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
+  <a href="#_8" class="md-nav__link">
     チェックリスト
   </a>
   
@@ -950,28 +957,28 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
+  <a href="#_9" class="md-nav__link">
     データ
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_9" class="md-nav__link">
+  <a href="#_10" class="md-nav__link">
     部品
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_10" class="md-nav__link">
+  <a href="#_11" class="md-nav__link">
     インストールするソフト・ライブラリ一覧
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_11" class="md-nav__link">
+  <a href="#_12" class="md-nav__link">
     参考資料
   </a>
   
@@ -1041,6 +1048,13 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    ステッピングモーター・モータードライバーの設定
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#flip" class="md-nav__link">
     FLIPでファームフェアの書き換え
   </a>
@@ -1053,7 +1067,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+  <a href="#_4" class="md-nav__link">
     プログラム
   </a>
   
@@ -1067,14 +1081,14 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
+  <a href="#_5" class="md-nav__link">
     ボディ設計
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
+  <a href="#_6" class="md-nav__link">
     パッケージング
   </a>
   
@@ -1082,14 +1096,14 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
+  <a href="#_7" class="md-nav__link">
     評価
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
+  <a href="#_8" class="md-nav__link">
     チェックリスト
   </a>
   
@@ -1101,28 +1115,28 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
+  <a href="#_9" class="md-nav__link">
     データ
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_9" class="md-nav__link">
+  <a href="#_10" class="md-nav__link">
     部品
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_10" class="md-nav__link">
+  <a href="#_11" class="md-nav__link">
     インストールするソフト・ライブラリ一覧
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_11" class="md-nav__link">
+  <a href="#_12" class="md-nav__link">
     参考資料
   </a>
   
@@ -1166,10 +1180,12 @@ FabLab Kuriyamaでは電子工作・プログラミングの機材もかなり�
 <!-- kibakoの西村さんとのアイディアスケッチを参考に作成していく。 -->
 
 <h2 id="_2">電子回路<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
-<p>電子楽器を接続する際MIDI接続に比べUSBで接続できる方が汎用性が高いため、Arduinoのファームウェアを書き換え、USB接続のMIDIOUTができる端末にしていきたいと思います。</p>
-<p>ArduinoをUSB MIDIデバイスとして設定したい場合、AVRチップのファームウェアを変更する必要があります。</p>
+<p>本プロジェクトではArduinoとCNCシールドを用いてステッピングモーターの制御を行っております。</p>
+<p><img alt="" src="../images/prototype/prototype2/circuit/circuit_1.jpg#center" /></p>
+<h3 id="_3">ステッピングモーター・モータードライバーの設定<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
 <h3 id="flip">FLIPでファームフェアの書き換え<a class="headerlink" href="#flip" title="Permanent link">&para;</a></h3>
-<p>ATMEL製のファームウェア書き込み用ソフトウェア FLIP 3.4.7を使用します。</p>
+<p>電子楽器を接続する際MIDI接続に比べUSBで接続できる方が汎用性が高いため、Arduinoのファームウェアを書き換え、USB接続のMIDIOUTができる端末にしていきたいと思います。</p>
+<p>ArduinoをUSB MIDIデバイスとして設定したい場合、AVRチップのファームウェアを変更する必要があります。その際にATMEL製のファームウェア書き込み用ソフトウェア FLIP 3.4.7を使用します。</p>
 <p><a href="https://www.microchip.com/en-us/development-tool/flip">FLIPダウンロードリンク</a></p>
 <p><img alt="" src="../images/prototype/prototype1/flip/flip_1.jpg#center" /></p>
 <p>アプリのホーム画面は以下になります。</p>
@@ -1197,7 +1213,7 @@ FabLab Kuriyamaでは電子工作・プログラミングの機材もかなり�
 <p><img alt="" src="../images/prototype/prototype1/flip/flip_11.jpg#center" /></p>
 <p><img alt="" src="../images/prototype/prototype1/flip/flip_14.jpg#center" /></p>
 <p><img alt="" src="../images/prototype/prototype1/flip/flip_15.jpg#center" /></p>
-<h2 id="_3">プログラム<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<h2 id="_4">プログラム<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
 <p>プログラムは<a href="https://github.com/jzkmath/Arduino-MIDI-Stepper-Motor-Instrument/blob/master/Arduino%20Code/MIDI%20Stepper%20V1/MIDI_Stepper_V1.ino">こちら</a>のプロジェクトを参考にさせていただきました。</p>
 <p><a href="https://github.com/jzkmath/Arduino-MIDI-Stepper-Motor-Instrument/blob/master/Arduino%20Code/MIDI%20Stepper%20V1/pitches.h">pitchs.h</a>を読み込ませており、</p>
 <h2 id="dominomidi">Domino(MIDI音楽ソフト)と連動させる<a class="headerlink" href="#dominomidi" title="Permanent link">&para;</a></h2>
@@ -1211,7 +1227,7 @@ FabLab Kuriyamaでは電子工作・プログラミングの機材もかなり�
 <p><img alt="" src="../images/prototype/prototype1/domino/domino_5.jpg#center" /></p>
 <p>今回は3つのステッピングモーターを使用しております。</p>
 <p><img alt="" src="../images/prototype/prototype1/domino/domino_6.jpg#center" /></p>
-<h2 id="_4">ボディ設計<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<h2 id="_5">ボディ設計<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
 <ul>
 <li>プロトタイプ1</li>
 </ul>
@@ -1232,17 +1248,17 @@ FabLab Kuriyamaでは電子工作・プログラミングの機材もかなり�
 <li>プロトタイプ2</li>
 <li></li>
 </ul>
-<h2 id="_5">パッケージング<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
-<h3 id="_6">評価<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<h2 id="_6">パッケージング<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
+<h3 id="_7">評価<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
 <ul>
 <li></li>
 </ul>
-<h3 id="_7">チェックリスト<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
+<h3 id="_8">チェックリスト<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
 <ul>
 <li>本プロトタイプはモータの振動による音を利用した楽器を作成できている</li>
 <li>対象者が容易に楽器を使用することができる</li>
 </ul>
-<h2 id="_8">データ<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
+<h2 id="_9">データ<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h2>
 <ul>
 <li>
 <p><a href="../files/prototype2/speacker-prototype1.f3d">fusion360 speacker prototype data</a></p>
@@ -1251,7 +1267,7 @@ FabLab Kuriyamaでは電子工作・プログラミングの機材もかなり�
 <p><a href="../files/prototype2/speacker.pdf">speacker prototype lasercut data</a></p>
 </li>
 </ul>
-<h2 id="_9">部品<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h2>
+<h2 id="_10">部品<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
 <tr>
@@ -1306,7 +1322,7 @@ FabLab Kuriyamaでは電子工作・プログラミングの機材もかなり�
 </tr>
 </tbody>
 </table>
-<h2 id="_10">インストールするソフト・ライブラリ一覧<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h2>
+<h2 id="_11">インストールするソフト・ライブラリ一覧<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h2>
 <ul>
 <li>
 <p><a href="https://www.microchip.com/en-us/development-tool/flip#">FLIP</a></p>
@@ -1321,7 +1337,7 @@ FabLab Kuriyamaでは電子工作・プログラミングの機材もかなり�
 <p><a href="https://takabosoft.com/domino">Domino</a></p>
 </li>
 </ul>
-<h2 id="_11">参考資料<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h2>
+<h2 id="_12">参考資料<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h2>
 <ul>
 <li>
 <p><a href="https://www.orientalmotor.co.jp/products/stepping/overview_1/">ステッピングモーターの概要と特徴</a></p>

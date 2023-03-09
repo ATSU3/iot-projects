@@ -4,6 +4,12 @@
 #### ↓↓カーフチェッカーアプリ↓↓
 [Kerf Check Parts Generator](https://kerf-generator-v2.vercel.app/)
 
+[GitHub リポジトリ](https://github.com/ATSU3/kerf-generator_v2)
+
+<br>
+
+![](../images/app/project1/project1.jpg#center)
+
 <br>
 
 現在ラボでは新たに木材で家具を作成することができる大型CNCを導入し、レーザー加工機に加え、
