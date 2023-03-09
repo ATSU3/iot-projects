@@ -1172,7 +1172,7 @@ FabLab Kuriyamaでは電子工作・プログラミングの機材もかなり�
 <p>ATMEL製のファームウェア書き込み用ソフトウェア FLIP 3.4.7を使用します。</p>
 <p><a href="https://www.microchip.com/en-us/development-tool/flip">FLIPダウンロードリンク</a></p>
 <p><img alt="" src="../images/prototype/prototype1/flip/flip_1.jpg#center" /></p>
-<p>ソフトのホーム画面は以下になります。</p>
+<p>アプリのホーム画面は以下になります。</p>
 <p><img alt="" src="../images/prototype/prototype1/flip/flip_2.jpg#center" /></p>
 <p>書き込み対象のデバイス名を選択します。</p>
 <p><img alt="" src="../images/prototype/prototype1/flip/flip_3.jpg#center" /></p>
@@ -1199,7 +1199,7 @@ FabLab Kuriyamaでは電子工作・プログラミングの機材もかなり�
 <p><img alt="" src="../images/prototype/prototype1/flip/flip_15.jpg#center" /></p>
 <h2 id="_3">プログラム<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
 <p>プログラムは<a href="https://github.com/jzkmath/Arduino-MIDI-Stepper-Motor-Instrument/blob/master/Arduino%20Code/MIDI%20Stepper%20V1/MIDI_Stepper_V1.ino">こちら</a>のプロジェクトを参考にさせていただきました。</p>
-<p><a href="https://github.com/jzkmath/Arduino-MIDI-Stepper-Motor-Instrument/blob/master/Arduino%20Code/MIDI%20Stepper%20V1/pitches.h">pitchs.h</a></p>
+<p><a href="https://github.com/jzkmath/Arduino-MIDI-Stepper-Motor-Instrument/blob/master/Arduino%20Code/MIDI%20Stepper%20V1/pitches.h">pitchs.h</a>を読み込ませており、</p>
 <h2 id="dominomidi">Domino(MIDI音楽ソフト)と連動させる<a class="headerlink" href="#dominomidi" title="Permanent link">&para;</a></h2>
 <p>Dominoを起動させると以下のようが画面が表示されます。</p>
 <p><img alt="" src="../images/prototype/prototype1/domino/domino_1.jpg#center" /></p>
@@ -1209,14 +1209,29 @@ FabLab Kuriyamaでは電子工作・プログラミングの機材もかなり�
 <p><img alt="" src="../images/prototype/prototype1/domino/domino_3.jpg#center" /></p>
 <p>「トラックセレクトペインの表示切り替え」を選択すると左側にチャンネル設定の表示がされます。</p>
 <p><img alt="" src="../images/prototype/prototype1/domino/domino_5.jpg#center" /></p>
-<p>今回は3つのステッピングモーターを</p>
+<p>今回は3つのステッピングモーターを使用しております。</p>
 <p><img alt="" src="../images/prototype/prototype1/domino/domino_6.jpg#center" /></p>
 <h2 id="_4">ボディ設計<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
 <ul>
 <li>プロトタイプ1</li>
+</ul>
+<p>以下のようにFusion360でモデリングしました。</p>
+<ul>
 <li>ステッピングモーターの音を拡張させるため、入口が細く、出口が広がっていく構造を作成しました。</li>
 </ul>
 <p><img alt="" src="../images/prototype/prototype2/fusion360/fusion360_1.jpg#center" /></p>
+<p><img alt="" src="../images/prototype/prototype2/fusion360/fusion360_2.jpg#center" /></p>
+<p>2.5mmの薄いMDFを敷いてその上にステッピングモーターを置いて振動音を増幅させるように作成しました。</p>
+<p><img alt="" src="../images/prototype/prototype2/fusion360/fusion360_3.jpg#center" /></p>
+<p>レーザー加工機でパーツをカットしました。</p>
+<p><img alt="" src="../images/prototype/prototype2/laser/laser_1.jpg#center" /></p>
+<p>レーザー加工機で以下のようにMDF5.5mmを重ね合わせてスピーカーを作成し、MDF2.5mmの板にステッピングモーターを固定しました。</p>
+<p><img alt="" src="../images/prototype/prototype2/laser/laser_2.jpg#center" /></p>
+<p>この構造ではステッピングモーターの板を薄くすることでより振動をより伝えることができると考えましたが、あまり効果はありませんでした。</p>
+<ul>
+<li>プロトタイプ2</li>
+<li></li>
+</ul>
 <h2 id="_5">パッケージング<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
 <h3 id="_6">評価<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
 <ul>
@@ -1226,9 +1241,16 @@ FabLab Kuriyamaでは電子工作・プログラミングの機材もかなり�
 <ul>
 <li>本プロトタイプはモータの振動による音を利用した楽器を作成できている</li>
 <li>対象者が容易に楽器を使用することができる</li>
-<li></li>
 </ul>
 <h2 id="_8">データ<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
+<ul>
+<li>
+<p><a href="../files/prototype2/speacker-prototype1.f3d">fusion360 speacker prototype data</a></p>
+</li>
+<li>
+<p><a href="../files/prototype2/speacker.pdf">speacker prototype lasercut data</a></p>
+</li>
+</ul>
 <h2 id="_9">部品<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h2>
 <table>
 <thead>

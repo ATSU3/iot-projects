@@ -27,13 +27,20 @@ FabLab Kuriyamaでは電子工作・プログラミングの機材もかなり�
 
 ## 電子回路
 
-電子楽器を接続する際MIDI接続に比べUSBで接続できる方が汎用性が高いため、Arduinoのファームウェアを書き換え、USB接続のMIDIOUTができる端末にしていきたいと思います。
+本プロジェクトではArduinoとCNCシールドを用いてステッピングモーターの制御を行っております。
 
-ArduinoをUSB MIDIデバイスとして設定したい場合、AVRチップのファームウェアを変更する必要があります。
+![](../images/prototype/prototype2/circuit/circuit_1.jpg#center)
+
+
+
+### ステッピングモーター・モータードライバーの設定
+
 
 ### FLIPでファームフェアの書き換え
 
-ATMEL製のファームウェア書き込み用ソフトウェア FLIP 3.4.7を使用します。
+電子楽器を接続する際MIDI接続に比べUSBで接続できる方が汎用性が高いため、Arduinoのファームウェアを書き換え、USB接続のMIDIOUTができる端末にしていきたいと思います。
+
+ArduinoをUSB MIDIデバイスとして設定したい場合、AVRチップのファームウェアを変更する必要があります。その際にATMEL製のファームウェア書き込み用ソフトウェア FLIP 3.4.7を使用します。
 
 [FLIPダウンロードリンク](https://www.microchip.com/en-us/development-tool/flip)
 
