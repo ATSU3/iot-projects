@@ -17,9 +17,6 @@ FabLab Kuriyamaでは電子工作・プログラミングの機材もかなり�
 
 - [MIDIのデータ構造](http://www1.plala.or.jp/yuuto/midi/p0200.html#:~:text=MIDI%20%E3%81%A7%E3%81%AF%E3%80%81%E6%BC%94%E5%A5%8F%E6%83%85%E5%A0%B1%E3%82%92,%E3%81%A6%E9%80%81%E3%82%89%E3%82%8C%E3%82%8B%E3%82%8F%E3%81%91%E3%81%A7%E3%81%99%E3%80%82)
 
-本プロジェクトでは、以下の内容を理解していれば作成することができます。
-
-- 
 
 <!-- ステッピングモーターから発生する音で楽器を作成する。 -->
 
@@ -30,7 +27,6 @@ FabLab Kuriyamaでは電子工作・プログラミングの機材もかなり�
 本プロジェクトではArduinoとCNCシールドを用いてステッピングモーターの制御を行っております。
 
 ![](../images/prototype/prototype2/circuit/circuit_1.jpg#center)
-
 
 
 ### ステッピングモータ・モータードライバの設定
@@ -133,7 +129,173 @@ ArduinoをUSB MIDIデバイスとして設定したい場合、AVRチップの�
 
 プログラムは[こちら](https://github.com/jzkmath/Arduino-MIDI-Stepper-Motor-Instrument/blob/master/Arduino%20Code/MIDI%20Stepper%20V1/MIDI_Stepper_V1.ino)のプロジェクトを参考にさせていただきました。
 
-[pitchs.h](https://github.com/jzkmath/Arduino-MIDI-Stepper-Motor-Instrument/blob/master/Arduino%20Code/MIDI%20Stepper%20V1/pitches.h)を読み込ませており、
+このプログラムでは、MIDIピッチ値を周波数に変換し、その周波数に対応するステッピングモーターの速度値を決定します。この速度値は、モーターが指定された周波数の音を生成するために必要なパルスの間隔を表します。
+
+[pitchs.h](https://github.com/jzkmath/Arduino-MIDI-Stepper-Motor-Instrument/blob/master/Arduino%20Code/MIDI%20Stepper%20V1/pitches.h)を読み込ませており、プログラムで周波数に対応するステッピングモーターの速度値を決定します。
+
+
+MIDIメッセージに応じて、各ステッピングモーターの速度を変更することができます。これは、MIDIノートオンメッセージが受信された場合に、ピッチに基づいてスピードを設定します。また、MIDIノートオフメッセージが受信された場合に、モータースピードをゼロに設定します。
+
+```c++
+#include <MIDI.h>
+#include "pitches.h"
+
+#define stepPin_M1 2
+#define stepPin_M2 3
+#define stepPin_M3 4
+
+#define dirPin_M1 5 
+#define dirPin_M2 6
+#define dirPin_M3 7
+
+#define enPin 8 
+
+#define TIMEOUT 10000 
+unsigned long motorSpeeds[] = {0, 0, 0, 0}; 
+unsigned long prevStepMicros[] = {0, 0, 0, 0}; 
+const bool motorDirection = LOW; 
+bool disableSteppers = HIGH; 
+unsigned long WDT; 
+MIDI_CREATE_DEFAULT_INSTANCE(); 
+
+void setup() 
+{
+  pinMode(stepPin_M1, OUTPUT);
+  pinMode(stepPin_M2, OUTPUT);
+  pinMode(stepPin_M3, OUTPUT);
+
+  pinMode(dirPin_M1, OUTPUT);
+  pinMode(dirPin_M2, OUTPUT);
+  pinMode(dirPin_M3, OUTPUT);
+
+  digitalWrite(dirPin_M1, motorDirection);
+  digitalWrite(dirPin_M2, motorDirection);
+  digitalWrite(dirPin_M3, motorDirection);
+
+  pinMode(enPin, OUTPUT);
+
+  MIDI.begin(MIDI_CHANNEL_OMNI); 
+  MIDI.setHandleNoteOn(handleNoteOn); 
+  MIDI.setHandleNoteOff(handleNoteOff); 
+}
+
+void loop() 
+{
+  MIDI.read(); 
+  digitalWrite(enPin, disableSteppers); 
+  singleStep(1, stepPin_M1); 
+  singleStep(2, stepPin_M2);
+  singleStep(3, stepPin_M3);
+
+  if (millis() - WDT >= TIMEOUT)
+  {
+    disableSteppers = HIGH; 
+  }
+}
+
+void handleNoteOn(byte channel, byte pitch, byte velocity) 
+{
+  disableSteppers = LOW; 
+  motorSpeeds[channel] = pitchVals[pitch]; 
+}
+
+void handleNoteOff(byte channel, byte pitch, byte velocity) 
+{
+  motorSpeeds[channel] = 0; 
+}
+
+void singleStep(byte motorNum, byte stepPin)
+{
+  if ((micros() - prevStepMicros[motorNum] >= motorSpeeds[motorNum]) && (motorSpeeds[motorNum] != 0)) 
+  { 
+    prevStepMicros[motorNum] += motorSpeeds[motorNum];
+    WDT = millis(); 
+    digitalWrite(stepPin, HIGH);
+    digitalWrite(stepPin, LOW);
+  }
+}
+```
+
+MIDIライブラリとpitches.hを読み込んでます。
+
+```c++
+#include <MIDI.h>
+#include "pitches.h"
+```
+
+ステッピングモータ1~3のstepピン、dirピンの番号をわかりやすいように定義します。
+
+```c++
+#define stepPin_M1 2
+#define stepPin_M2 3
+#define stepPin_M3 4
+
+#define dirPin_M1 5 
+#define dirPin_M2 6
+#define dirPin_M3 7
+```
+
+（EN）ピンにHIGHの信号が入力されると、モーターが動作します。8番ピンをわかりやすいようにenPinという名前で定義しております。
+
+```c++
+#define enPin 8
+```
+
+プログラムで使用されるタイムアウト値を定義するために必要な行です。このタイムアウト値は、何らかの処理が完了するまでに許容される最大待機時間、(このプログラムの場合10秒)を決定します。
+
+```
+#define TIMEOUT 10000 
+```
+
+それぞれ3つのステッピングモータの速度と前のステップの時間を記録して格納するための配列を宣言しています。
+
+motorSpeeds配列は、各モータの速度をマイクロ秒単位で格納するために使用されます。各要素は、各ステッピングモータの現在の速度を保持するために使用します。
+
+prevStepMicros配列は、各モータの前回のステップ時刻を格納するために使用されます。これらの値は、次のステップの間隔を決定するために使用されます。前回のステップからの経過時間は、現在の時間と前回のステップ時刻の差分を取ることで計算されます。
+
+それぞれ配列の一つ目の要素は使用しません。(index番号とモータの番号を合わせるため。)
+
+```c++
+unsigned long motorSpeeds[] = {0, 0, 0, 0}; 
+unsigned long prevStepMicros[] = {0, 0, 0, 0}; 
+```
+
+以下の2つの変数は、ステッピングモーターの制御に関する情報を格納するために使用します。
+motorDirectionは、ステッピングモーターの回転方向を指定するための変数で、LOWに設定されている場合は、モーターが正方向（通常は時計回り）に回転し、HIGHに設定されている場合は、逆方向（通常は反時計回り）に回転します。
+
+disableSteppersは、ステッピングモーターの動作を有効または無効にするためのフラグで、HIGHに設定されている場合は、モーターは動作しなくなります。この変数は、handleNoteOn関数によってLOWに設定され、モーターを動作させるようになります。また、一定時間（TIMEOUTで定義された値）が経過すると、loop関数内の条件文によって再びHIGHに設定され、モーターを停止させます。
+
+```c++
+const bool motorDirection = LOW; 
+bool disableSteppers = HIGH; 
+```
+
+WDT（Watchdog Timer）は、モーターを動かすステッピングモータードライバーが正しく動作していることを確認するために使用されます。この変数は、最後にステップが実行された時間を記録し、それが一定期間（TIMEOUT変数で定義されています）更新されなかった場合、モータードライバーが無効になります。これは、モータードライバーに問題がある場合、例えばステッピングモーターが詰まっている場合、モーターが破損するのを防ぐために役立ちます。
+
+```c++
+unsigned long WDT; 
+```
+
+MIDIライブラリを使用するため、MIDIライブラリで定義されたデフォルト設定を使用して、MIDIインスタンスを作成します。
+
+```c++
+MIDI_CREATE_DEFAULT_INSTANCE(); 
+```
+
+
+
+タイムアウトが発生した場合にステッパーモーターを無効にするために使用します。プログラムが長時間実行される場合、ステッパーモーターを継続的に動かす必要がありますが、これはモーターにとっては負荷が大きく、長時間使用すると過熱する場合があるため、一定の時間経過後、自動的にステッパーモーターを停止する必要があります。
+
+このコードでは、millis()関数を使用して現在の時間とWDT変数の値の差を計算し、TIMEOUT定数で設定された時間（10秒）よりも大きい場合に、disableSteppers変数をHIGHに設定しています。その後、この変数はステッパーモーターを無効にするために使用されます。このようにして、プログラムの実行時間が長くなっても、ステッピングモータが安全に制御できるようにします。
+
+```c++
+if (millis() - WDT >= TIMEOUT)
+  {
+    disableSteppers = HIGH; 
+  }
+```
+
+
 
 
 ## Domino(MIDI音楽ソフト)と連動させる
