@@ -33,8 +33,40 @@ FabLab Kuriyamaでは電子工作・プログラミングの機材もかなり�
 
 
 
-### ステッピングモーター・モータードライバーの設定
+### ステッピングモータ・モータードライバの設定
 
+#### モータードライバ(DRV8825)の電流調整
+
+↓以下の資料が大変参考になります。
+<br>
+参考資料: [Drv8825 Stepper Motor Driver Arduino Tutorial](https://lastminuteengineers.com/drv8825-stepper-motor-driver-arduino-tutorial/)
+
+ステッピングモーターに流れる最大電流は、定格電流を超えないように制限する必要がありますので、ドライバーのポテンショメーターで以下のように調整します。
+
+![](../images/prototype/prototype2/circuit/stepper_2.jpg#center)
+
+
+この方法では、「ref」ピンの電圧（Vref）を測定することで電流制限を設定します。
+
+![](../images/prototype/prototype2/circuit/stepper_3.jpg#center)
+
+1. NEMA 17 200steps/rev、12V 350mAを使用しているため、定格電流は
+
+2. 3本のマイクロステップ選択ピンを外して、ドライバをフルステップモードにします。
+
+3. STEP入力をクロックしないようにして、モーターを定位置に保持する。
+
+4. 金属製のトリマーポット自体の電圧（Vref）を測定しながら調整する。
+
+5. 5.次の式でVref電圧を調整します。
+
+```
+Current Limit = Vref x 2
+```
+
+Nema 17ステッピングモーターの定格は350mAなので、基準電圧を175mVに調整することになります。
+
+![](../images/prototype/prototype2/circuit/stepper_4.jpg#center)
 
 ### FLIPでファームフェアの書き換え
 
@@ -43,7 +75,6 @@ FabLab Kuriyamaでは電子工作・プログラミングの機材もかなり�
 ArduinoをUSB MIDIデバイスとして設定したい場合、AVRチップのファームウェアを変更する必要があります。その際にATMEL製のファームウェア書き込み用ソフトウェア FLIP 3.4.7を使用します。
 
 [FLIPダウンロードリンク](https://www.microchip.com/en-us/development-tool/flip)
-
 
 ![](../images/prototype/prototype1/flip/flip_1.jpg#center)
 
@@ -217,4 +248,6 @@ Dominoを起動させると以下のようが画面が表示されます。
 - [DRV8825 Stepper Motor Driver Carrier, High Current](https://www.pololu.com/product/2133)
 
 - [Setting the Current Limit on Pololu Stepper Motor Driver Carriers](https://www.youtube.com/watch?v=89BHS9hfSUk)
+
+- [Drv8825 Stepper Motor Driver Arduino Tutorial](https://lastminuteengineers.com/drv8825-stepper-motor-driver-arduino-tutorial/)
 
