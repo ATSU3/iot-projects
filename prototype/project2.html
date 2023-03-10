@@ -891,8 +891,21 @@
         
           <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
-    ステッピングモーター・モータードライバーの設定
+    ステッピングモータ・モータードライバの設定
   </a>
+  
+    <nav class="md-nav" aria-label="ステッピングモータ・モータードライバの設定">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#drv8825" class="md-nav__link">
+    モータードライバ(DRV8825)の電流調整
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -1049,8 +1062,21 @@
         
           <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
-    ステッピングモーター・モータードライバーの設定
+    ステッピングモータ・モータードライバの設定
   </a>
+  
+    <nav class="md-nav" aria-label="ステッピングモータ・モータードライバの設定">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#drv8825" class="md-nav__link">
+    モータードライバ(DRV8825)の電流調整
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -1182,7 +1208,37 @@ FabLab Kuriyamaでは電子工作・プログラミングの機材もかなり�
 <h2 id="_2">電子回路<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
 <p>本プロジェクトではArduinoとCNCシールドを用いてステッピングモーターの制御を行っております。</p>
 <p><img alt="" src="../images/prototype/prototype2/circuit/circuit_1.jpg#center" /></p>
-<h3 id="_3">ステッピングモーター・モータードライバーの設定<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<h3 id="_3">ステッピングモータ・モータードライバの設定<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<h4 id="drv8825">モータードライバ(DRV8825)の電流調整<a class="headerlink" href="#drv8825" title="Permanent link">&para;</a></h4>
+<p>↓以下の資料が大変参考になります。
+<br>
+参考資料: <a href="https://lastminuteengineers.com/drv8825-stepper-motor-driver-arduino-tutorial/">Drv8825 Stepper Motor Driver Arduino Tutorial</a></p>
+<p>ステッピングモーターに流れる最大電流は、定格電流を超えないように制限する必要がありますので、ドライバーのポテンショメーターで以下のように調整します。</p>
+<p><img alt="" src="../images/prototype/prototype2/circuit/stepper_2.jpg#center" /></p>
+<p>この方法では、「ref」ピンの電圧（Vref）を測定することで電流制限を設定します。</p>
+<p><img alt="" src="../images/prototype/prototype2/circuit/stepper_3.jpg#center" /></p>
+<ol>
+<li>
+<p>NEMA 17 200steps/rev、12V 350mAを使用しているため、定格電流は</p>
+</li>
+<li>
+<p>3本のマイクロステップ選択ピンを外して、ドライバをフルステップモードにします。</p>
+</li>
+<li>
+<p>STEP入力をクロックしないようにして、モーターを定位置に保持する。</p>
+</li>
+<li>
+<p>金属製のトリマーポット自体の電圧（Vref）を測定しながら調整する。</p>
+</li>
+<li>
+<p>5.次の式でVref電圧を調整します。</p>
+</li>
+</ol>
+<div class="codehilite"><pre><span></span><code>Current Limit = Vref x 2
+</code></pre></div>
+
+<p>Nema 17ステッピングモーターの定格は350mAなので、基準電圧を175mVに調整することになります。</p>
+<p><img alt="" src="../images/prototype/prototype2/circuit/stepper_4.jpg#center" /></p>
 <h3 id="flip">FLIPでファームフェアの書き換え<a class="headerlink" href="#flip" title="Permanent link">&para;</a></h3>
 <p>電子楽器を接続する際MIDI接続に比べUSBで接続できる方が汎用性が高いため、Arduinoのファームウェアを書き換え、USB接続のMIDIOUTができる端末にしていきたいと思います。</p>
 <p>ArduinoをUSB MIDIデバイスとして設定したい場合、AVRチップのファームウェアを変更する必要があります。その際にATMEL製のファームウェア書き込み用ソフトウェア FLIP 3.4.7を使用します。</p>
@@ -1371,6 +1427,9 @@ FabLab Kuriyamaでは電子工作・プログラミングの機材もかなり�
 </li>
 <li>
 <p><a href="https://www.youtube.com/watch?v=89BHS9hfSUk">Setting the Current Limit on Pololu Stepper Motor Driver Carriers</a></p>
+</li>
+<li>
+<p><a href="https://lastminuteengineers.com/drv8825-stepper-motor-driver-arduino-tutorial/">Drv8825 Stepper Motor Driver Arduino Tutorial</a></p>
 </li>
 </ul>
 
