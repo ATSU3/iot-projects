@@ -1369,7 +1369,7 @@ FabLab Kuriyamaでは電子工作・プログラミングの機材もかなり�
 </code></pre></div>
 
 <p>プログラムで使用されるタイムアウト値を定義するために必要な行です。このタイムアウト値は、何らかの処理が完了するまでに許容される最大待機時間、(このプログラムの場合10秒)を決定します。</p>
-<div class="codehilite"><pre><span></span><code>#define TIMEOUT 10000 
+<div class="codehilite"><pre><span></span><code><span class="cp">#define TIMEOUT 10000 </span>
 </code></pre></div>
 
 <p>それぞれ3つのステッピングモータの速度と前のステップの時間を記録して格納するための配列を宣言しています。</p>
@@ -1395,12 +1395,94 @@ motorDirectionは、ステッピングモーターの回転方向を指定する
 <div class="codehilite"><pre><span></span><code><span class="n">MIDI_CREATE_DEFAULT_INSTANCE</span><span class="p">();</span><span class="w"> </span>
 </code></pre></div>
 
-<p>タイムアウトが発生した場合にステッパーモーターを無効にするために使用します。プログラムが長時間実行される場合、ステッパーモーターを継続的に動かす必要がありますが、これはモーターにとっては負荷が大きく、長時間使用すると過熱する場合があるため、一定の時間経過後、自動的にステッパーモーターを停止する必要があります。</p>
+<p>次に、void setup() 関数の中の処理</p>
+<p>このプログラムの setup() 関数で初期化を行います。
+まず、pinMode() 関数が使用して、各ステッピングモーターのステップピンと方向ピンを出力ピンに設定します。</p>
+<div class="codehilite"><pre><span></span><code><span class="w">  </span><span class="n">pinMode</span><span class="p">(</span><span class="n">stepPin_M1</span><span class="p">,</span><span class="w"> </span><span class="n">OUTPUT</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">pinMode</span><span class="p">(</span><span class="n">stepPin_M2</span><span class="p">,</span><span class="w"> </span><span class="n">OUTPUT</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">pinMode</span><span class="p">(</span><span class="n">stepPin_M3</span><span class="p">,</span><span class="w"> </span><span class="n">OUTPUT</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">  </span><span class="n">pinMode</span><span class="p">(</span><span class="n">dirPin_M1</span><span class="p">,</span><span class="w"> </span><span class="n">OUTPUT</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">pinMode</span><span class="p">(</span><span class="n">dirPin_M2</span><span class="p">,</span><span class="w"> </span><span class="n">OUTPUT</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">pinMode</span><span class="p">(</span><span class="n">dirPin_M3</span><span class="p">,</span><span class="w"> </span><span class="n">OUTPUT</span><span class="p">);</span><span class="w"></span>
+</code></pre></div>
+
+<p>次に、各モーターの方向を設定します。ここで、digitalWrite() 関数を使用して、各方向ピンに motorDirection 変数の値を書き込んでいます。motorDirection の初期値は LOW であるため、すべてのモーターは同じ方向に回転するように設定されます。</p>
+<div class="codehilite"><pre><span></span><code><span class="w">  </span><span class="n">digitalWrite</span><span class="p">(</span><span class="n">dirPin_M1</span><span class="p">,</span><span class="w"> </span><span class="n">motorDirection</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">digitalWrite</span><span class="p">(</span><span class="n">dirPin_M2</span><span class="p">,</span><span class="w"> </span><span class="n">motorDirection</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">digitalWrite</span><span class="p">(</span><span class="n">dirPin_M3</span><span class="p">,</span><span class="w"> </span><span class="n">motorDirection</span><span class="p">);</span><span class="w"></span>
+</code></pre></div>
+
+<p>タイムアウトが発生した場合にステッパーモータを無効にするために使用します。プログラムが長時間実行される場合、ステッパーモータを継続的に動かす必要がありますが、これはモータにとっては負荷が大きく、長時間使用すると過熱する場合があるため、一定の時間経過後、自動的にステッパーモーターを停止する必要があります。</p>
 <p>このコードでは、millis()関数を使用して現在の時間とWDT変数の値の差を計算し、TIMEOUT定数で設定された時間（10秒）よりも大きい場合に、disableSteppers変数をHIGHに設定しています。その後、この変数はステッパーモーターを無効にするために使用されます。このようにして、プログラムの実行時間が長くなっても、ステッピングモータが安全に制御できるようにします。</p>
 <div class="codehilite"><pre><span></span><code><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">millis</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">WDT</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="n">TIMEOUT</span><span class="p">)</span><span class="w"></span>
 <span class="w">  </span><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="n">disableSteppers</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">HIGH</span><span class="p">;</span><span class="w"> </span>
 <span class="w">  </span><span class="p">}</span><span class="w"></span>
+</code></pre></div>
+
+<p>次に、Enピンを出力モードに設定します。</p>
+<div class="codehilite"><pre><span></span><code><span class="w"> </span><span class="n">pinMode</span><span class="p">(</span><span class="n">enPin</span><span class="p">,</span><span class="w"> </span><span class="n">OUTPUT</span><span class="p">);</span><span class="w"></span>
+</code></pre></div>
+
+<p>MIDI ライブラリの初期化を行います。MIDI.begin() 関数は、MIDI 通信を開始し、MIDI_CHANNEL_OMNI を指定して、すべての MIDI チャンネルからの MIDI イベントを受信するように設定します。また、MIDI.setHandleNoteOn() 関数と MIDI.setHandleNoteOff() 関数は、ノートオンイベントとノートオフイベントを処理するためのコールバック関数を設定します。</p>
+<div class="codehilite"><pre><span></span><code><span class="w">  </span><span class="n">MIDI</span><span class="p">.</span><span class="n">begin</span><span class="p">(</span><span class="n">MIDI_CHANNEL_OMNI</span><span class="p">);</span><span class="w"> </span>
+<span class="w">  </span><span class="n">MIDI</span><span class="p">.</span><span class="n">setHandleNoteOn</span><span class="p">(</span><span class="n">handleNoteOn</span><span class="p">);</span><span class="w"> </span>
+<span class="w">  </span><span class="n">MIDI</span><span class="p">.</span><span class="n">setHandleNoteOff</span><span class="p">(</span><span class="n">handleNoteOff</span><span class="p">);</span><span class="w"> </span>
+</code></pre></div>
+
+<p>次にvoid loop()内の処理を見ていきます。
+このプログラムは、MIDIからの入力に応じてステッピングモーターを制御し、タイムアウトが発生した場合はモータを無効にする処理となっております。</p>
+<p>MIDI.read() 関数を使用して、MIDIデータを読み取ります。</p>
+<div class="codehilite"><pre><span></span><code><span class="w">  </span><span class="n">MIDI</span><span class="p">.</span><span class="n">read</span><span class="p">();</span><span class="w"> </span>
+</code></pre></div>
+
+<p>digitalWrite()関数を使用して、enPinピンの状態をdisableSteppers変数によって制御します。</p>
+<div class="codehilite"><pre><span></span><code><span class="w">  </span><span class="n">digitalWrite</span><span class="p">(</span><span class="n">enPin</span><span class="p">,</span><span class="w"> </span><span class="n">disableSteppers</span><span class="p">);</span><span class="w"> </span>
+</code></pre></div>
+
+<p>singleStep()関数を使用して、3つのステッピングモーターを制御します。
+singleStep()関数はこの下で説明しております。</p>
+<div class="codehilite"><pre><span></span><code><span class="w">  </span><span class="n">singleStep</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">stepPin_M1</span><span class="p">);</span><span class="w"> </span>
+<span class="w">  </span><span class="n">singleStep</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="n">stepPin_M2</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">singleStep</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="n">stepPin_M3</span><span class="p">);</span><span class="w"></span>
+</code></pre></div>
+
+<p>millis() 関数を使用して、WDT変数を更新します。
+TIMEOUT(10秒)を過ぎた場合、disableSteppers変数をHIGHに設定して、モータを無効にします。</p>
+<div class="codehilite"><pre><span></span><code><span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">millis</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">WDT</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="n">TIMEOUT</span><span class="p">)</span><span class="w"></span>
+<span class="w">  </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">disableSteppers</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">HIGH</span><span class="p">;</span><span class="w"> </span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+</code></pre></div>
+
+<p>handleNoteOn関数は、MIDI信号のノートオンメッセージを処理するためのハンドラーです。モータを有効にするために disableSteppers 変数を LOW に設定し、pitchVals 配列からピッチ値を取得して motorSpeeds 配列の対応するチャンネルに保存します。ピッチ値は、MIDIノート番号に対応しています。</p>
+<div class="codehilite"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">handleNoteOn</span><span class="p">(</span><span class="n">byte</span><span class="w"> </span><span class="n">channel</span><span class="p">,</span><span class="w"> </span><span class="n">byte</span><span class="w"> </span><span class="n">pitch</span><span class="p">,</span><span class="w"> </span><span class="n">byte</span><span class="w"> </span><span class="n">velocity</span><span class="p">)</span><span class="w"> </span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">disableSteppers</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">LOW</span><span class="p">;</span><span class="w"> </span>
+<span class="w">  </span><span class="n">motorSpeeds</span><span class="p">[</span><span class="n">channel</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pitchVals</span><span class="p">[</span><span class="n">pitch</span><span class="p">];</span><span class="w"> </span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
+
+<p>この関数は、MIDIノートオフコマンドが受信されたときに呼び出されます。MIDIノートオフコマンドは、MIDIノートオンコマンドとは対照的に、特定のノートが放されたことを示します。この関数では、引数として渡されたチャンネルとピッチのインデックスを使用して、ステッピングモータの速度を0に設定します。これにより、ノートオフコマンドが送信されたときに、モーターが停止するようになります。</p>
+<div class="codehilite"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">handleNoteOff</span><span class="p">(</span><span class="n">byte</span><span class="w"> </span><span class="n">channel</span><span class="p">,</span><span class="w"> </span><span class="n">byte</span><span class="w"> </span><span class="n">pitch</span><span class="p">,</span><span class="w"> </span><span class="n">byte</span><span class="w"> </span><span class="n">velocity</span><span class="p">)</span><span class="w"> </span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">motorSpeeds</span><span class="p">[</span><span class="n">channel</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
+
+<p>singleStep()関数で1つのステッピングモーターを1ステップだけ動かします。関数には2つの引数があります。motorNumはモータの番号を、stepPinはステップパルスを生成するピン番号を指定します。</p>
+<p>関数内部では、現在の時間（マイクロ秒単位）と前回のステップからの経過時間を比較して、指定された速度に達したかどうかを確認します。速度に達している場合は、前回のステップ時間に速度を加算し、ウォッチドッグタイマーをリセットし、ステップパルスを生成します。ステップパルスは、ステップピンをHIGHに設定してからLOWに戻すことによって生成されます。ステップパルスを生成することで、モーターは1ステップ進みます。</p>
+<div class="codehilite"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">singleStep</span><span class="p">(</span><span class="n">byte</span><span class="w"> </span><span class="n">motorNum</span><span class="p">,</span><span class="w"> </span><span class="n">byte</span><span class="w"> </span><span class="n">stepPin</span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">((</span><span class="n">micros</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">prevStepMicros</span><span class="p">[</span><span class="n">motorNum</span><span class="p">]</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="n">motorSpeeds</span><span class="p">[</span><span class="n">motorNum</span><span class="p">])</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="p">(</span><span class="n">motorSpeeds</span><span class="p">[</span><span class="n">motorNum</span><span class="p">]</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">0</span><span class="p">))</span><span class="w"> </span>
+<span class="w">  </span><span class="p">{</span><span class="w"> </span>
+<span class="w">    </span><span class="n">prevStepMicros</span><span class="p">[</span><span class="n">motorNum</span><span class="p">]</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">motorSpeeds</span><span class="p">[</span><span class="n">motorNum</span><span class="p">];</span><span class="w"></span>
+<span class="w">    </span><span class="n">WDT</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">millis</span><span class="p">();</span><span class="w"> </span>
+<span class="w">    </span><span class="n">digitalWrite</span><span class="p">(</span><span class="n">stepPin</span><span class="p">,</span><span class="w"> </span><span class="n">HIGH</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">digitalWrite</span><span class="p">(</span><span class="n">stepPin</span><span class="p">,</span><span class="w"> </span><span class="n">LOW</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </code></pre></div>
 
 <h2 id="dominomidi">Domino(MIDI音楽ソフト)と連動させる<a class="headerlink" href="#dominomidi" title="Permanent link">&para;</a></h2>
@@ -1546,6 +1628,9 @@ motorDirectionは、ステッピングモーターの回転方向を指定する
 </li>
 <li>
 <p><a href="https://tlo-olb.hatenablog.com/entry/2019/03/22/191524">&ldquo;楽器&rdquo;としてのステッピングモーター入門</a></p>
+</li>
+<li>
+<p><a href="https://www.asahi-net.or.jp/~hb9t-ktd/music/Japan/Research/DTM/freq_map.html">MIDIノート番号</a></p>
 </li>
 <li>
 <p><a href="http://www1.plala.or.jp/yuuto/midi/p0200.html#:~:text=MIDI%20%E3%81%A7%E3%81%AF%E3%80%81%E6%BC%94%E5%A5%8F%E6%83%85%E5%A0%B1%E3%82%92,%E3%81%A6%E9%80%81%E3%82%89%E3%82%8C%E3%82%8B%E3%82%8F%E3%81%91%E3%81%A7%E3%81%99%E3%80%82">MIDIのデータ構造</a></p>
