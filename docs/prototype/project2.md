@@ -243,7 +243,7 @@ MIDIライブラリとpitches.hを読み込んでます。
 
 プログラムで使用されるタイムアウト値を定義するために必要な行です。このタイムアウト値は、何らかの処理が完了するまでに許容される最大待機時間、(このプログラムの場合10秒)を決定します。
 
-```
+```c++
 #define TIMEOUT 10000 
 ```
 
@@ -283,8 +283,32 @@ MIDI_CREATE_DEFAULT_INSTANCE();
 ```
 
 
+次に、void setup() 関数の中の処理
 
-タイムアウトが発生した場合にステッパーモーターを無効にするために使用します。プログラムが長時間実行される場合、ステッパーモーターを継続的に動かす必要がありますが、これはモーターにとっては負荷が大きく、長時間使用すると過熱する場合があるため、一定の時間経過後、自動的にステッパーモーターを停止する必要があります。
+このプログラムの setup() 関数で初期化を行います。
+まず、pinMode() 関数が使用して、各ステッピングモーターのステップピンと方向ピンを出力ピンに設定します。
+
+```c++
+  pinMode(stepPin_M1, OUTPUT);
+  pinMode(stepPin_M2, OUTPUT);
+  pinMode(stepPin_M3, OUTPUT);
+
+  pinMode(dirPin_M1, OUTPUT);
+  pinMode(dirPin_M2, OUTPUT);
+  pinMode(dirPin_M3, OUTPUT);
+```
+
+次に、各モーターの方向を設定します。ここで、digitalWrite() 関数を使用して、各方向ピンに motorDirection 変数の値を書き込んでいます。motorDirection の初期値は LOW であるため、すべてのモーターは同じ方向に回転するように設定されます。
+```c++
+  digitalWrite(dirPin_M1, motorDirection);
+  digitalWrite(dirPin_M2, motorDirection);
+  digitalWrite(dirPin_M3, motorDirection);
+```
+
+
+
+
+タイムアウトが発生した場合にステッパーモータを無効にするために使用します。プログラムが長時間実行される場合、ステッパーモータを継続的に動かす必要がありますが、これはモータにとっては負荷が大きく、長時間使用すると過熱する場合があるため、一定の時間経過後、自動的にステッパーモーターを停止する必要があります。
 
 このコードでは、millis()関数を使用して現在の時間とWDT変数の値の差を計算し、TIMEOUT定数で設定された時間（10秒）よりも大きい場合に、disableSteppers変数をHIGHに設定しています。その後、この変数はステッパーモーターを無効にするために使用されます。このようにして、プログラムの実行時間が長くなっても、ステッピングモータが安全に制御できるようにします。
 
@@ -293,6 +317,90 @@ if (millis() - WDT >= TIMEOUT)
   {
     disableSteppers = HIGH; 
   }
+```
+
+次に、Enピンを出力モードに設定します。
+
+```c++
+ pinMode(enPin, OUTPUT);
+```
+
+MIDI ライブラリの初期化を行います。MIDI.begin() 関数は、MIDI 通信を開始し、MIDI_CHANNEL_OMNI を指定して、すべての MIDI チャンネルからの MIDI イベントを受信するように設定します。また、MIDI.setHandleNoteOn() 関数と MIDI.setHandleNoteOff() 関数は、ノートオンイベントとノートオフイベントを処理するためのコールバック関数を設定します。
+
+```c++
+  MIDI.begin(MIDI_CHANNEL_OMNI); 
+  MIDI.setHandleNoteOn(handleNoteOn); 
+  MIDI.setHandleNoteOff(handleNoteOff); 
+```
+
+次にvoid loop()内の処理を見ていきます。
+このプログラムは、MIDIからの入力に応じてステッピングモーターを制御し、タイムアウトが発生した場合はモータを無効にする処理となっております。
+
+MIDI.read() 関数を使用して、MIDIデータを読み取ります。
+
+```c++
+  MIDI.read(); 
+```
+
+digitalWrite()関数を使用して、enPinピンの状態をdisableSteppers変数によって制御します。
+
+```c++
+  digitalWrite(enPin, disableSteppers); 
+```
+
+singleStep()関数を使用して、3つのステッピングモーターを制御します。
+singleStep()関数はこの下で説明しております。
+
+```c++
+  singleStep(1, stepPin_M1); 
+  singleStep(2, stepPin_M2);
+  singleStep(3, stepPin_M3);
+```
+
+millis() 関数を使用して、WDT変数を更新します。
+TIMEOUT(10秒)を過ぎた場合、disableSteppers変数をHIGHに設定して、モータを無効にします。
+
+```c++
+  if (millis() - WDT >= TIMEOUT)
+  {
+    disableSteppers = HIGH; 
+  }
+```
+
+handleNoteOn関数は、MIDI信号のノートオンメッセージを処理するためのハンドラーです。モータを有効にするために disableSteppers 変数を LOW に設定し、pitchVals 配列からピッチ値を取得して motorSpeeds 配列の対応するチャンネルに保存します。ピッチ値は、MIDIノート番号に対応しています。
+
+```c++
+void handleNoteOn(byte channel, byte pitch, byte velocity) 
+{
+  disableSteppers = LOW; 
+  motorSpeeds[channel] = pitchVals[pitch]; 
+}
+```
+
+この関数は、MIDIノートオフコマンドが受信されたときに呼び出されます。MIDIノートオフコマンドは、MIDIノートオンコマンドとは対照的に、特定のノートが放されたことを示します。この関数では、引数として渡されたチャンネルとピッチのインデックスを使用して、ステッピングモータの速度を0に設定します。これにより、ノートオフコマンドが送信されたときに、モーターが停止するようになります。
+
+```c++
+void handleNoteOff(byte channel, byte pitch, byte velocity) 
+{
+  motorSpeeds[channel] = 0; 
+}
+```
+
+singleStep()関数で1つのステッピングモーターを1ステップだけ動かします。関数には2つの引数があります。motorNumはモータの番号を、stepPinはステップパルスを生成するピン番号を指定します。
+
+関数内部では、現在の時間（マイクロ秒単位）と前回のステップからの経過時間を比較して、指定された速度に達したかどうかを確認します。速度に達している場合は、前回のステップ時間に速度を加算し、ウォッチドッグタイマーをリセットし、ステップパルスを生成します。ステップパルスは、ステップピンをHIGHに設定してからLOWに戻すことによって生成されます。ステップパルスを生成することで、モーターは1ステップ進みます。
+
+```c++
+void singleStep(byte motorNum, byte stepPin)
+{
+  if ((micros() - prevStepMicros[motorNum] >= motorSpeeds[motorNum]) && (motorSpeeds[motorNum] != 0)) 
+  { 
+    prevStepMicros[motorNum] += motorSpeeds[motorNum];
+    WDT = millis(); 
+    digitalWrite(stepPin, HIGH);
+    digitalWrite(stepPin, LOW);
+  }
+}
 ```
 
 
@@ -402,6 +510,8 @@ Dominoを起動させると以下のようが画面が表示されます。
 - [Moco for LUFA](https://webmusicdevelopers.appspot.com/codelabs/arduino-mocolufa/index.html?ja-jp#5)
 
 - ["楽器"としてのステッピングモーター入門](https://tlo-olb.hatenablog.com/entry/2019/03/22/191524)
+
+- [MIDIノート番号](https://www.asahi-net.or.jp/~hb9t-ktd/music/Japan/Research/DTM/freq_map.html)
 
 - [MIDIのデータ構造](http://www1.plala.or.jp/yuuto/midi/p0200.html#:~:text=MIDI%20%E3%81%A7%E3%81%AF%E3%80%81%E6%BC%94%E5%A5%8F%E6%83%85%E5%A0%B1%E3%82%92,%E3%81%A6%E9%80%81%E3%82%89%E3%82%8C%E3%82%8B%E3%82%8F%E3%81%91%E3%81%A7%E3%81%99%E3%80%82)
 

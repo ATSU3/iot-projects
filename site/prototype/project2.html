@@ -1197,10 +1197,6 @@ FabLab Kuriyamaでは電子工作・プログラミングの機材もかなり�
 <ul>
 <li><a href="http://www1.plala.or.jp/yuuto/midi/p0200.html#:~:text=MIDI%20%E3%81%A7%E3%81%AF%E3%80%81%E6%BC%94%E5%A5%8F%E6%83%85%E5%A0%B1%E3%82%92,%E3%81%A6%E9%80%81%E3%82%89%E3%82%8C%E3%82%8B%E3%82%8F%E3%81%91%E3%81%A7%E3%81%99%E3%80%82">MIDIのデータ構造</a></li>
 </ul>
-<p>本プロジェクトでは、以下の内容を理解していれば作成することができます。</p>
-<ul>
-<li></li>
-</ul>
 <!-- ステッピングモーターから発生する音で楽器を作成する。 -->
 
 <!-- kibakoの西村さんとのアイディアスケッチを参考に作成していく。 -->
@@ -1271,7 +1267,142 @@ FabLab Kuriyamaでは電子工作・プログラミングの機材もかなり�
 <p><img alt="" src="../images/prototype/prototype1/flip/flip_15.jpg#center" /></p>
 <h2 id="_4">プログラム<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
 <p>プログラムは<a href="https://github.com/jzkmath/Arduino-MIDI-Stepper-Motor-Instrument/blob/master/Arduino%20Code/MIDI%20Stepper%20V1/MIDI_Stepper_V1.ino">こちら</a>のプロジェクトを参考にさせていただきました。</p>
-<p><a href="https://github.com/jzkmath/Arduino-MIDI-Stepper-Motor-Instrument/blob/master/Arduino%20Code/MIDI%20Stepper%20V1/pitches.h">pitchs.h</a>を読み込ませており、</p>
+<p>このプログラムでは、MIDIピッチ値を周波数に変換し、その周波数に対応するステッピングモーターの速度値を決定します。この速度値は、モーターが指定された周波数の音を生成するために必要なパルスの間隔を表します。</p>
+<p><a href="https://github.com/jzkmath/Arduino-MIDI-Stepper-Motor-Instrument/blob/master/Arduino%20Code/MIDI%20Stepper%20V1/pitches.h">pitchs.h</a>を読み込ませており、プログラムで周波数に対応するステッピングモーターの速度値を決定します。</p>
+<p>MIDIメッセージに応じて、各ステッピングモーターの速度を変更することができます。これは、MIDIノートオンメッセージが受信された場合に、ピッチに基づいてスピードを設定します。また、MIDIノートオフメッセージが受信された場合に、モータースピードをゼロに設定します。</p>
+<div class="codehilite"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;MIDI.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;pitches.h&quot;</span><span class="cp"></span>
+
+<span class="cp">#define stepPin_M1 2</span>
+<span class="cp">#define stepPin_M2 3</span>
+<span class="cp">#define stepPin_M3 4</span>
+
+<span class="cp">#define dirPin_M1 5 </span>
+<span class="cp">#define dirPin_M2 6</span>
+<span class="cp">#define dirPin_M3 7</span>
+
+<span class="cp">#define enPin 8 </span>
+
+<span class="cp">#define TIMEOUT 10000 </span>
+<span class="kt">unsigned</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">motorSpeeds</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">};</span><span class="w"> </span>
+<span class="kt">unsigned</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">prevStepMicros</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">};</span><span class="w"> </span>
+<span class="k">const</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">motorDirection</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">LOW</span><span class="p">;</span><span class="w"> </span>
+<span class="kt">bool</span><span class="w"> </span><span class="n">disableSteppers</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">HIGH</span><span class="p">;</span><span class="w"> </span>
+<span class="kt">unsigned</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">WDT</span><span class="p">;</span><span class="w"> </span>
+<span class="n">MIDI_CREATE_DEFAULT_INSTANCE</span><span class="p">();</span><span class="w"> </span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">setup</span><span class="p">()</span><span class="w"> </span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">pinMode</span><span class="p">(</span><span class="n">stepPin_M1</span><span class="p">,</span><span class="w"> </span><span class="n">OUTPUT</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">pinMode</span><span class="p">(</span><span class="n">stepPin_M2</span><span class="p">,</span><span class="w"> </span><span class="n">OUTPUT</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">pinMode</span><span class="p">(</span><span class="n">stepPin_M3</span><span class="p">,</span><span class="w"> </span><span class="n">OUTPUT</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">  </span><span class="n">pinMode</span><span class="p">(</span><span class="n">dirPin_M1</span><span class="p">,</span><span class="w"> </span><span class="n">OUTPUT</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">pinMode</span><span class="p">(</span><span class="n">dirPin_M2</span><span class="p">,</span><span class="w"> </span><span class="n">OUTPUT</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">pinMode</span><span class="p">(</span><span class="n">dirPin_M3</span><span class="p">,</span><span class="w"> </span><span class="n">OUTPUT</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">  </span><span class="n">digitalWrite</span><span class="p">(</span><span class="n">dirPin_M1</span><span class="p">,</span><span class="w"> </span><span class="n">motorDirection</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">digitalWrite</span><span class="p">(</span><span class="n">dirPin_M2</span><span class="p">,</span><span class="w"> </span><span class="n">motorDirection</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">digitalWrite</span><span class="p">(</span><span class="n">dirPin_M3</span><span class="p">,</span><span class="w"> </span><span class="n">motorDirection</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">  </span><span class="n">pinMode</span><span class="p">(</span><span class="n">enPin</span><span class="p">,</span><span class="w"> </span><span class="n">OUTPUT</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">  </span><span class="n">MIDI</span><span class="p">.</span><span class="n">begin</span><span class="p">(</span><span class="n">MIDI_CHANNEL_OMNI</span><span class="p">);</span><span class="w"> </span>
+<span class="w">  </span><span class="n">MIDI</span><span class="p">.</span><span class="n">setHandleNoteOn</span><span class="p">(</span><span class="n">handleNoteOn</span><span class="p">);</span><span class="w"> </span>
+<span class="w">  </span><span class="n">MIDI</span><span class="p">.</span><span class="n">setHandleNoteOff</span><span class="p">(</span><span class="n">handleNoteOff</span><span class="p">);</span><span class="w"> </span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">loop</span><span class="p">()</span><span class="w"> </span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">MIDI</span><span class="p">.</span><span class="n">read</span><span class="p">();</span><span class="w"> </span>
+<span class="w">  </span><span class="n">digitalWrite</span><span class="p">(</span><span class="n">enPin</span><span class="p">,</span><span class="w"> </span><span class="n">disableSteppers</span><span class="p">);</span><span class="w"> </span>
+<span class="w">  </span><span class="n">singleStep</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">stepPin_M1</span><span class="p">);</span><span class="w"> </span>
+<span class="w">  </span><span class="n">singleStep</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="n">stepPin_M2</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">singleStep</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="n">stepPin_M3</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">millis</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">WDT</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="n">TIMEOUT</span><span class="p">)</span><span class="w"></span>
+<span class="w">  </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">disableSteppers</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">HIGH</span><span class="p">;</span><span class="w"> </span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">handleNoteOn</span><span class="p">(</span><span class="n">byte</span><span class="w"> </span><span class="n">channel</span><span class="p">,</span><span class="w"> </span><span class="n">byte</span><span class="w"> </span><span class="n">pitch</span><span class="p">,</span><span class="w"> </span><span class="n">byte</span><span class="w"> </span><span class="n">velocity</span><span class="p">)</span><span class="w"> </span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">disableSteppers</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">LOW</span><span class="p">;</span><span class="w"> </span>
+<span class="w">  </span><span class="n">motorSpeeds</span><span class="p">[</span><span class="n">channel</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pitchVals</span><span class="p">[</span><span class="n">pitch</span><span class="p">];</span><span class="w"> </span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">handleNoteOff</span><span class="p">(</span><span class="n">byte</span><span class="w"> </span><span class="n">channel</span><span class="p">,</span><span class="w"> </span><span class="n">byte</span><span class="w"> </span><span class="n">pitch</span><span class="p">,</span><span class="w"> </span><span class="n">byte</span><span class="w"> </span><span class="n">velocity</span><span class="p">)</span><span class="w"> </span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">motorSpeeds</span><span class="p">[</span><span class="n">channel</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">singleStep</span><span class="p">(</span><span class="n">byte</span><span class="w"> </span><span class="n">motorNum</span><span class="p">,</span><span class="w"> </span><span class="n">byte</span><span class="w"> </span><span class="n">stepPin</span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">((</span><span class="n">micros</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">prevStepMicros</span><span class="p">[</span><span class="n">motorNum</span><span class="p">]</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="n">motorSpeeds</span><span class="p">[</span><span class="n">motorNum</span><span class="p">])</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="p">(</span><span class="n">motorSpeeds</span><span class="p">[</span><span class="n">motorNum</span><span class="p">]</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">0</span><span class="p">))</span><span class="w"> </span>
+<span class="w">  </span><span class="p">{</span><span class="w"> </span>
+<span class="w">    </span><span class="n">prevStepMicros</span><span class="p">[</span><span class="n">motorNum</span><span class="p">]</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">motorSpeeds</span><span class="p">[</span><span class="n">motorNum</span><span class="p">];</span><span class="w"></span>
+<span class="w">    </span><span class="n">WDT</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">millis</span><span class="p">();</span><span class="w"> </span>
+<span class="w">    </span><span class="n">digitalWrite</span><span class="p">(</span><span class="n">stepPin</span><span class="p">,</span><span class="w"> </span><span class="n">HIGH</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">digitalWrite</span><span class="p">(</span><span class="n">stepPin</span><span class="p">,</span><span class="w"> </span><span class="n">LOW</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
+
+<p>MIDIライブラリとpitches.hを読み込んでます。</p>
+<div class="codehilite"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;MIDI.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;pitches.h&quot;</span><span class="cp"></span>
+</code></pre></div>
+
+<p>ステッピングモータ1~3のstepピン、dirピンの番号をわかりやすいように定義します。</p>
+<div class="codehilite"><pre><span></span><code><span class="cp">#define stepPin_M1 2</span>
+<span class="cp">#define stepPin_M2 3</span>
+<span class="cp">#define stepPin_M3 4</span>
+
+<span class="cp">#define dirPin_M1 5 </span>
+<span class="cp">#define dirPin_M2 6</span>
+<span class="cp">#define dirPin_M3 7</span>
+</code></pre></div>
+
+<p>（EN）ピンにHIGHの信号が入力されると、モーターが動作します。8番ピンをわかりやすいようにenPinという名前で定義しております。</p>
+<div class="codehilite"><pre><span></span><code><span class="cp">#define enPin 8</span>
+</code></pre></div>
+
+<p>プログラムで使用されるタイムアウト値を定義するために必要な行です。このタイムアウト値は、何らかの処理が完了するまでに許容される最大待機時間、(このプログラムの場合10秒)を決定します。</p>
+<div class="codehilite"><pre><span></span><code>#define TIMEOUT 10000 
+</code></pre></div>
+
+<p>それぞれ3つのステッピングモータの速度と前のステップの時間を記録して格納するための配列を宣言しています。</p>
+<p>motorSpeeds配列は、各モータの速度をマイクロ秒単位で格納するために使用されます。各要素は、各ステッピングモータの現在の速度を保持するために使用します。</p>
+<p>prevStepMicros配列は、各モータの前回のステップ時刻を格納するために使用されます。これらの値は、次のステップの間隔を決定するために使用されます。前回のステップからの経過時間は、現在の時間と前回のステップ時刻の差分を取ることで計算されます。</p>
+<p>それぞれ配列の一つ目の要素は使用しません。(index番号とモータの番号を合わせるため。)</p>
+<div class="codehilite"><pre><span></span><code><span class="kt">unsigned</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">motorSpeeds</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">};</span><span class="w"> </span>
+<span class="kt">unsigned</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">prevStepMicros</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">};</span><span class="w"> </span>
+</code></pre></div>
+
+<p>以下の2つの変数は、ステッピングモーターの制御に関する情報を格納するために使用します。
+motorDirectionは、ステッピングモーターの回転方向を指定するための変数で、LOWに設定されている場合は、モーターが正方向（通常は時計回り）に回転し、HIGHに設定されている場合は、逆方向（通常は反時計回り）に回転します。</p>
+<p>disableSteppersは、ステッピングモーターの動作を有効または無効にするためのフラグで、HIGHに設定されている場合は、モーターは動作しなくなります。この変数は、handleNoteOn関数によってLOWに設定され、モーターを動作させるようになります。また、一定時間（TIMEOUTで定義された値）が経過すると、loop関数内の条件文によって再びHIGHに設定され、モーターを停止させます。</p>
+<div class="codehilite"><pre><span></span><code><span class="k">const</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">motorDirection</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">LOW</span><span class="p">;</span><span class="w"> </span>
+<span class="kt">bool</span><span class="w"> </span><span class="n">disableSteppers</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">HIGH</span><span class="p">;</span><span class="w"> </span>
+</code></pre></div>
+
+<p>WDT（Watchdog Timer）は、モーターを動かすステッピングモータードライバーが正しく動作していることを確認するために使用されます。この変数は、最後にステップが実行された時間を記録し、それが一定期間（TIMEOUT変数で定義されています）更新されなかった場合、モータードライバーが無効になります。これは、モータードライバーに問題がある場合、例えばステッピングモーターが詰まっている場合、モーターが破損するのを防ぐために役立ちます。</p>
+<div class="codehilite"><pre><span></span><code><span class="kt">unsigned</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">WDT</span><span class="p">;</span><span class="w"> </span>
+</code></pre></div>
+
+<p>MIDIライブラリを使用するため、MIDIライブラリで定義されたデフォルト設定を使用して、MIDIインスタンスを作成します。</p>
+<div class="codehilite"><pre><span></span><code><span class="n">MIDI_CREATE_DEFAULT_INSTANCE</span><span class="p">();</span><span class="w"> </span>
+</code></pre></div>
+
+<p>タイムアウトが発生した場合にステッパーモーターを無効にするために使用します。プログラムが長時間実行される場合、ステッパーモーターを継続的に動かす必要がありますが、これはモーターにとっては負荷が大きく、長時間使用すると過熱する場合があるため、一定の時間経過後、自動的にステッパーモーターを停止する必要があります。</p>
+<p>このコードでは、millis()関数を使用して現在の時間とWDT変数の値の差を計算し、TIMEOUT定数で設定された時間（10秒）よりも大きい場合に、disableSteppers変数をHIGHに設定しています。その後、この変数はステッパーモーターを無効にするために使用されます。このようにして、プログラムの実行時間が長くなっても、ステッピングモータが安全に制御できるようにします。</p>
+<div class="codehilite"><pre><span></span><code><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">millis</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">WDT</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="n">TIMEOUT</span><span class="p">)</span><span class="w"></span>
+<span class="w">  </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">disableSteppers</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">HIGH</span><span class="p">;</span><span class="w"> </span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+</code></pre></div>
+
 <h2 id="dominomidi">Domino(MIDI音楽ソフト)と連動させる<a class="headerlink" href="#dominomidi" title="Permanent link">&para;</a></h2>
 <p>Dominoを起動させると以下のようが画面が表示されます。</p>
 <p><img alt="" src="../images/prototype/prototype1/domino/domino_1.jpg#center" /></p>
