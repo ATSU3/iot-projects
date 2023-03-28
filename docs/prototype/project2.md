@@ -29,6 +29,19 @@
 
 ![](../images/prototype/prototype2/circuit/circuit_1.jpg#center)
 
+使用したCNCシールドとArduinoのピンの対応は以下になります。
+
+![](../images/prototype/prototype2/circuit/circuit_2.jpg#center)
+
+|  Arduino Uno  |     CNCシールド     |  
+| ------------- | ------------------ |
+|      2        |  Step Pulse X-Axis |
+|      3        |  Step Pulse Y-Axis |
+|      4        |  Step Pulse Z-Axis |
+|      5        |  Direction X-Axis  |
+|      6        |  Direction Y-Axis  |
+|      7        |  Direction Z-Axis  |
+|      8        |  Stepper Enable/Disable  |
 
 ### ステッピングモータ・モータードライバの設定
 
@@ -407,8 +420,6 @@ void singleStep(byte motorNum, byte stepPin)
 ```
 
 
-
-
 ## Domino(MIDI音楽ソフト)と連動させる
 
 Dominoを起動させると以下のようが画面が表示されます。
@@ -525,3 +536,8 @@ Dominoを起動させると以下のようが画面が表示されます。
 - [Setting the Current Limit on Pololu Stepper Motor Driver Carriers](https://www.youtube.com/watch?v=89BHS9hfSUk)
 
 - [Drv8825 Stepper Motor Driver Arduino Tutorial](https://lastminuteengineers.com/drv8825-stepper-motor-driver-arduino-tutorial/)
+
+- [CNCシールドを流用するにあたってのメモ](https://cottonmachine-remodeling.blogspot.com/2018/05/cnc.html)
+
+- [Arduino CNC Shield – 100% GRBL Compatable](https://blog.protoneer.co.nz/arduino-cnc-shield/)
+
