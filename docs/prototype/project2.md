@@ -5,11 +5,12 @@
 # 楽器を作ってみる (WIP)
 
 本プロジェクトは[木箱-kibaco-さん](https://kitorina.com/wp/kibaco/)にご協力いただき進めているプロジェクトになります。
-FabLab Kuriyamaでは電子工作・プログラミングの機材もかなり充実しておりますが、活用される方が少ないため、電子楽器を作成し、音楽で広めていきたいと思います。
+栗山町を拠点に活動する[木箱-kibaco-さん]と電子機器を組み合わせた新たな楽器を制作し、町内のライブ活動に活用したい、という個人の課題を、最終的に人口が減少している中で、アーティストを中心に「栗山町 = クリエイティブなまち」を広めることで関係人口創出し、人口増加をしていくという栗山町の課題の解決をに繋げていきたいと思います。
+
 
 ## ステッピングモータを楽器として利用する
 ステッピングモーターは時計の秒針のように、一定の角度ずつ回転するモーターです。
-ステッピングモーターが回転する際に発生する振動を利用して音を鳴らすことができます。
+ステッピングモーターが回転する際に発生する振動を利用して音を鳴らしております。
 
 ## MIDIについて
 
@@ -426,7 +427,7 @@ Dominoを起動させると以下のようが画面が表示されます。
 
 ![](../images/prototype/prototype1/domino/domino_5.jpg#center)
 
-今回は3つのステッピングモーターを使用しております。
+今回は3つのステッピングモーターを使用しており、それぞれA-01, A-02, A-03の3つのチャンネルで制御しております。
 
 ![](../images/prototype/prototype1/domino/domino_6.jpg#center)
 
@@ -454,7 +455,7 @@ Dominoを起動させると以下のようが画面が表示されます。
 
 ![](../images/prototype/prototype2/laser/laser_2.jpg#center)
 
-この構造ではステッピングモーターの板を薄くすることでより振動をより伝えることができると考えましたが、あまり効果はありませんでした。
+この構造ではステッピングモーターの板を薄くすることでより振動をより伝えることができると考えましたが、大きな効果はありませんでした。
 
 - プロトタイプ2
   - 
@@ -524,4 +525,3 @@ Dominoを起動させると以下のようが画面が表示されます。
 - [Setting the Current Limit on Pololu Stepper Motor Driver Carriers](https://www.youtube.com/watch?v=89BHS9hfSUk)
 
 - [Drv8825 Stepper Motor Driver Arduino Tutorial](https://lastminuteengineers.com/drv8825-stepper-motor-driver-arduino-tutorial/)
-

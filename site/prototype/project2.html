@@ -1264,6 +1264,7 @@ FabLab Kuriyamaでは電子工作・プログラミングの機材もかなり�
 <p><img alt="" src="../images/prototype/prototype1/flip/flip_10.jpg#center" /></p>
 <p><img alt="" src="../images/prototype/prototype1/flip/flip_11.jpg#center" /></p>
 <p><img alt="" src="../images/prototype/prototype1/flip/flip_14.jpg#center" /></p>
+<p>デバイスをArduino Unoとして認識して書き込みできるようにするためには、以下の写真のように2本のピンを繋ぎます。</p>
 <p><img alt="" src="../images/prototype/prototype1/flip/flip_15.jpg#center" /></p>
 <h2 id="_4">プログラム<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
 <p>プログラムは<a href="https://github.com/jzkmath/Arduino-MIDI-Stepper-Motor-Instrument/blob/master/Arduino%20Code/MIDI%20Stepper%20V1/MIDI_Stepper_V1.ino">こちら</a>のプロジェクトを参考にさせていただきました。</p>
@@ -1472,7 +1473,7 @@ TIMEOUT(10秒)を過ぎた場合、disableSteppers変数をHIGHに設定して�
 </code></pre></div>
 
 <p>singleStep()関数で1つのステッピングモーターを1ステップだけ動かします。関数には2つの引数があります。motorNumはモータの番号を、stepPinはステップパルスを生成するピン番号を指定します。</p>
-<p>関数内部では、現在の時間（マイクロ秒単位）と前回のステップからの経過時間を比較して、指定された速度に達したかどうかを確認します。速度に達している場合は、前回のステップ時間に速度を加算し、ウォッチドッグタイマーをリセットし、ステップパルスを生成します。ステップパルスは、ステップピンをHIGHに設定してからLOWに戻すことによって生成されます。ステップパルスを生成することで、モーターは1ステップ進みます。</p>
+<p>関数内部では、現在の時間（マイクロ秒単位）と前回のステップからの経過時間を比較して、指定された速度に達したかどうかを確認します。速度に達している場合は、前回のステップ時間に速度を加算し、ウォッチドッグタイマーをリセットし、ステップパルスを生成します。ステップパルスは、ステップピンをHIGHに設定してからLOWに戻すことによって生成されます。ステップパルスを生成することで、モータは1ステップ進みます。</p>
 <div class="codehilite"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">singleStep</span><span class="p">(</span><span class="n">byte</span><span class="w"> </span><span class="n">motorNum</span><span class="p">,</span><span class="w"> </span><span class="n">byte</span><span class="w"> </span><span class="n">stepPin</span><span class="p">)</span><span class="w"></span>
 <span class="p">{</span><span class="w"></span>
 <span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">((</span><span class="n">micros</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">prevStepMicros</span><span class="p">[</span><span class="n">motorNum</span><span class="p">]</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="n">motorSpeeds</span><span class="p">[</span><span class="n">motorNum</span><span class="p">])</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="p">(</span><span class="n">motorSpeeds</span><span class="p">[</span><span class="n">motorNum</span><span class="p">]</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">0</span><span class="p">))</span><span class="w"> </span>
