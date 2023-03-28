@@ -1204,6 +1204,46 @@
 <h2 id="_2">電子回路<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
 <p>本プロジェクトではArduinoとCNCシールドを用いてステッピングモーターの制御を行っております。</p>
 <p><img alt="" src="../images/prototype/prototype2/circuit/circuit_1.jpg#center" /></p>
+<p>使用したCNCシールドとArduinoのピンの対応は以下になります。</p>
+<p><img alt="" src="../images/prototype/prototype2/circuit/circuit_2.jpg#center" /></p>
+<table>
+<thead>
+<tr>
+<th>Arduino Uno</th>
+<th>CNCシールド</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2</td>
+<td>Step Pulse X-Axis</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Step Pulse Y-Axis</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Step Pulse Z-Axis</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Direction X-Axis</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Direction Y-Axis</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Direction Z-Axis</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Stepper Enable/Disable</td>
+</tr>
+</tbody>
+</table>
 <h3 id="_3">ステッピングモータ・モータードライバの設定<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
 <h4 id="drv8825">モータードライバ(DRV8825)の電流調整<a class="headerlink" href="#drv8825" title="Permanent link">&para;</a></h4>
 <p>↓以下の資料が大変参考になります。
@@ -1647,6 +1687,12 @@ TIMEOUT(10秒)を過ぎた場合、disableSteppers変数をHIGHに設定して�
 </li>
 <li>
 <p><a href="https://lastminuteengineers.com/drv8825-stepper-motor-driver-arduino-tutorial/">Drv8825 Stepper Motor Driver Arduino Tutorial</a></p>
+</li>
+<li>
+<p><a href="https://cottonmachine-remodeling.blogspot.com/2018/05/cnc.html">CNCシールドを流用するにあたってのメモ</a></p>
+</li>
+<li>
+<p><a href="https://blog.protoneer.co.nz/arduino-cnc-shield/">Arduino CNC Shield – 100% GRBL Compatable</a></p>
 </li>
 </ul>
 
