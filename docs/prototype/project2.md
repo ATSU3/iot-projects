@@ -443,6 +443,11 @@ Dominoを起動させると以下のようが画面が表示されます。
 
 ![](../images/prototype/prototype1/domino/domino_6.jpg#center)
 
+また、キーボードなどのデバイスを接続する際には「MIDI-IN」の項目で対象のデバイス（今回はmicroKEY-25）を選択することができます。
+
+![](../images/prototype/prototype1/domino/domino_7.jpg#center)
+
+
 ## ボディ設計
 
 - プロトタイプ1
@@ -467,12 +472,21 @@ Dominoを起動させると以下のようが画面が表示されます。
 
 ![](../images/prototype/prototype2/laser/laser_2.jpg#center)
 
-この構造ではステッピングモーターの板を薄くすることでより振動をより伝えることができると考えましたが、大きな効果はありませんでした。
+<!-- この構造ではステッピングモーターの板を薄くすることでより振動をより伝えることができると考えましたが、大きな効果はありませんでした。 -->
+
+以下のようにキーボードでステッピングモータを演奏することができます。
+
+<!-- ![](../images/prototype/prototype2/device/device_1.jpg#center) -->
+
+<video width="100%" height="400px" id="center" controls>
+  <source src="../videos/prototype_2/prototype_2.mp4" type="video/mp4">
+</video>
 
 - プロトタイプ2
   - 
 
 ## パッケージング
+
 
 ### 評価
 
