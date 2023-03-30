@@ -370,67 +370,13 @@
       
         <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
-    作成する上で必要な知識
-  </a>
-  
-    <nav class="md-nav" aria-label="作成する上で必要な知識">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#svg" class="md-nav__link">
-    SVGの構造の理解
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#svg_1" class="md-nav__link">
-    SVGをプログラミングで操作できる
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#svg_2" class="md-nav__link">
-    作成したSVGデータをダウンロードすることができる
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#svg_3" class="md-nav__link">
-    SVGの構造の理解
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#svg_4" class="md-nav__link">
-    SVGをプログラミングで操作できる
-  </a>
-  
-    <nav class="md-nav" aria-label="SVGをプログラミングで操作できる">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
     環境
   </a>
   
 </li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
       
         <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
+  <a href="#_3" class="md-nav__link">
     参考資料
   </a>
   
@@ -992,67 +938,13 @@
       
         <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
-    作成する上で必要な知識
-  </a>
-  
-    <nav class="md-nav" aria-label="作成する上で必要な知識">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#svg" class="md-nav__link">
-    SVGの構造の理解
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#svg_1" class="md-nav__link">
-    SVGをプログラミングで操作できる
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#svg_2" class="md-nav__link">
-    作成したSVGデータをダウンロードすることができる
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#svg_3" class="md-nav__link">
-    SVGの構造の理解
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#svg_4" class="md-nav__link">
-    SVGをプログラミングで操作できる
-  </a>
-  
-    <nav class="md-nav" aria-label="SVGをプログラミングで操作できる">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
     環境
   </a>
   
 </li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
       
         <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
+  <a href="#_3" class="md-nav__link">
     参考資料
   </a>
   
@@ -1088,45 +980,242 @@
 <p>既にFabLab Minatomiraiの道用先生が<a href="https://doyolab.net/appli/kerf_check/kerf_check.html">Kerf Check Parts Generator</a>を作成されており、シンプルでわかりやすいKerf Checkerを作成されており、私自身もFabAcademyでレーザー加工機を使用した段ボールでのプレスフィットコンストラクションを作成した週の課題(<a href="https://fabacademy.org/2022/labs/kamakura/students/atsufumi-suzuki/assignments/week03.html">こちら</a>)と大型CNC(ShopBot)でスタンディングテーブルを作成した週の課題(<a href="https://fabacademy.org/2022/labs/kamakura/students/atsufumi-suzuki/assignments/week07.html">こちら</a>)に利用させていただきました。</p>
 <p>こちらのカーフチェッカーは非常に便利ですが、基準幅、刻み幅、繰り返しの3つのパラメータのみの変更のため、チェッカーの大きさや間隔、CNCを利用した際の<a href="https://www.sanyumokuzai.com/wp/wp-content/uploads/2020/12/%E3%82%B7%E3%83%A7%E3%83%83%E3%83%97%E3%83%9C%E3%83%83%E3%83%88%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A0%85.pdf">ドッグボーン</a>などに対応されていないため、これらの機能を有したツールの開発をしようと思いました。</p>
 <p>CNCを用いた加工の際は加工材料にドリルの半径分の丸みが生じるという特性があります。そのため、プレスフィットコンストラクションのようなはめ合わせる技術を用いる場合は半径分の丸みが干渉してしまいます。そのため、一部の接合部分にドリルを逃せるような形状を作成して加工するため、ドッグボーンフィレットというフィレットを作ってあげる必要があります。</p>
-<h2 id="_2">作成する上で必要な知識<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
-<h3 id="svg">SVGの構造の理解<a class="headerlink" href="#svg" title="Permanent link">&para;</a></h3>
-<h3 id="svg_1">SVGをプログラミングで操作できる<a class="headerlink" href="#svg_1" title="Permanent link">&para;</a></h3>
-<h3 id="svg_2">作成したSVGデータをダウンロードすることができる<a class="headerlink" href="#svg_2" title="Permanent link">&para;</a></h3>
-<h3 id="svg_3">SVGの構造の理解<a class="headerlink" href="#svg_3" title="Permanent link">&para;</a></h3>
-<h3 id="svg_4">SVGをプログラミングで操作できる<a class="headerlink" href="#svg_4" title="Permanent link">&para;</a></h3>
-<p>SVGを操作するのはHTMLで作成したフォームの値を用いて、JavaScriptで値を可変的に変更できるようにして作成するのが良さそうなため以下の環境でWebアプリの作成をしていきたいと思います。</p>
-<h4 id="_3">環境<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
-<p>今回アプリを作成する上で使用する言語はHTML, CSS, JavaScript, Python
+<h4 id="_2">環境<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h4>
+<p>今回アプリを作成する上で使用する言語はJavaScript(Vue), Python
 Flaskフレームワークを使用して作成しました。
 サーバーはVercelを利用したいと思います。</p>
 <p><a href="https://kerf-generator-v2.vercel.app/">こちら</a>のリンクからKerf Checkerに遷移できます。</p>
 <div class="codehilite"><pre><span></span><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
-<span class="p">&lt;</span><span class="nt">html</span> <span class="na">lang</span><span class="o">=</span><span class="s">&quot;en&quot;</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">html</span> <span class="na">lang</span><span class="o">=</span><span class="s">&quot;ja&quot;</span><span class="p">&gt;</span>
 
 <span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">&quot;UTF-8&quot;</span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">http-equiv</span><span class="o">=</span><span class="s">&quot;X-UA-Compatible&quot;</span> <span class="na">content</span><span class="o">=</span><span class="s">&quot;IE=edge&quot;</span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;viewport&quot;</span> <span class="na">content</span><span class="o">=</span><span class="s">&quot;width=device-width, initial-scale=1.0&quot;</span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Document<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Kerf Check<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">&quot;utf-8&quot;</span> <span class="p">/&gt;</span>
+  <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;viewport&quot;</span> <span class="na">content</span><span class="o">=</span><span class="s">&quot;width=device-width, initial-scale=1.0&quot;</span> <span class="p">/&gt;</span>
+  <span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;../static/css/style.css&quot;</span><span class="p">&gt;</span>
+  <span class="cm">&lt;!-- &lt;script src=&quot;static/js/call_svc.js&quot;&gt;&lt;/script&gt; --&gt;</span>
+  <span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;static/js/vue.js&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;static/js/app.js&quot;</span> <span class="na">defer</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+
 <span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
 
 <span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;container&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;mb-5&quot;</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">h2</span><span class="p">&gt;</span>Kerf Check Parts Generator<span class="p">&lt;/</span><span class="nt">h2</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;app-1&quot;</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;h&quot;</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;js&quot;</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">form</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;par_form&quot;</span><span class="p">&gt;</span>
+          <span class="p">&lt;</span><span class="nt">br</span><span class="p">&gt;</span>
+          <span class="p">&lt;</span><span class="nt">table</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">tr</span><span class="p">&gt;</span>
+              <span class="p">&lt;</span><span class="nt">th</span><span class="p">&gt;</span>基準幅(start-width):<span class="p">&lt;/</span><span class="nt">th</span><span class="p">&gt;</span>
+              <span class="p">&lt;</span><span class="nt">th</span><span class="p">&gt;&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;text&quot;</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;form_st&quot;</span> <span class="na">size</span><span class="o">=</span><span class="s">&quot;4&quot;</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;14&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">th</span><span class="p">&gt;</span>
+              <span class="p">&lt;</span><span class="nt">th</span><span class="p">&gt;</span>mm<span class="p">&lt;/</span><span class="nt">th</span><span class="p">&gt;</span>
+              <span class="p">&lt;</span><span class="nt">th</span><span class="p">&gt;&lt;/</span><span class="nt">th</span><span class="p">&gt;</span>
+            <span class="p">&lt;/</span><span class="nt">tr</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">tr</span><span class="p">&gt;</span>
+              <span class="p">&lt;</span><span class="nt">th</span><span class="p">&gt;</span>刻み幅(pitch):<span class="p">&lt;/</span><span class="nt">th</span><span class="p">&gt;</span>
+              <span class="p">&lt;</span><span class="nt">th</span><span class="p">&gt;&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;text&quot;</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;form_inc&quot;</span> <span class="na">size</span><span class="o">=</span><span class="s">&quot;4&quot;</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;0.05&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">th</span><span class="p">&gt;</span>
+              <span class="p">&lt;</span><span class="nt">th</span><span class="p">&gt;</span>mm<span class="p">&lt;/</span><span class="nt">th</span><span class="p">&gt;</span>
+            <span class="p">&lt;/</span><span class="nt">tr</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">tr</span><span class="p">&gt;</span>
+              <span class="p">&lt;</span><span class="nt">th</span><span class="p">&gt;</span>隙間(gap):<span class="p">&lt;/</span><span class="nt">th</span><span class="p">&gt;</span>
+              <span class="p">&lt;</span><span class="nt">th</span><span class="p">&gt;&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;text&quot;</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;form_gap&quot;</span> <span class="na">size</span><span class="o">=</span><span class="s">&quot;4&quot;</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;20&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">th</span><span class="p">&gt;</span>
+              <span class="p">&lt;</span><span class="nt">th</span><span class="p">&gt;</span>mm<span class="p">&lt;/</span><span class="nt">th</span><span class="p">&gt;</span>
+            <span class="p">&lt;/</span><span class="nt">tr</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">tr</span><span class="p">&gt;</span>
+              <span class="p">&lt;</span><span class="nt">th</span><span class="p">&gt;&lt;/</span><span class="nt">th</span><span class="p">&gt;</span>
+            <span class="p">&lt;/</span><span class="nt">tr</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">tr</span><span class="p">&gt;</span>
+              <span class="p">&lt;</span><span class="nt">th</span><span class="p">&gt;</span>個数(number-of-kerfs):<span class="p">&lt;/</span><span class="nt">th</span><span class="p">&gt;</span>
+              <span class="p">&lt;</span><span class="nt">th</span><span class="p">&gt;&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;text&quot;</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;form_lp&quot;</span> <span class="na">size</span><span class="o">=</span><span class="s">&quot;4&quot;</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;4&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">th</span><span class="p">&gt;</span>
+              <span class="p">&lt;</span><span class="nt">th</span><span class="p">&gt;</span>個<span class="p">&lt;/</span><span class="nt">th</span><span class="p">&gt;</span>
+              <span class="p">&lt;</span><span class="nt">th</span><span class="p">&gt;&lt;/</span><span class="nt">th</span><span class="p">&gt;</span>
+            <span class="p">&lt;/</span><span class="nt">tr</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">tr</span><span class="p">&gt;</span>
+              <span class="p">&lt;</span><span class="nt">th</span><span class="p">&gt;</span>刃径 (blade-diameter)<span class="p">&lt;/</span><span class="nt">th</span><span class="p">&gt;</span>
+              <span class="p">&lt;</span><span class="nt">th</span><span class="p">&gt;&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;text&quot;</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;form_tbone&quot;</span> <span class="na">size</span><span class="o">=</span><span class="s">&quot;4&quot;</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;12.7&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">th</span><span class="p">&gt;</span>
+              <span class="p">&lt;</span><span class="nt">th</span><span class="p">&gt;</span>mm<span class="p">&lt;/</span><span class="nt">th</span><span class="p">&gt;</span>
+              <span class="p">&lt;</span><span class="nt">th</span><span class="p">&gt;&lt;/</span><span class="nt">th</span><span class="p">&gt;</span>
+            <span class="p">&lt;/</span><span class="nt">tr</span><span class="p">&gt;</span>
+          <span class="p">&lt;/</span><span class="nt">table</span><span class="p">&gt;</span>
+          <span class="p">&lt;</span><span class="nt">br</span><span class="p">&gt;</span>
+          <span class="p">&lt;</span><span class="nt">br</span><span class="p">&gt;</span>
+          <span class="p">&lt;</span><span class="nt">button</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;button&quot;</span> <span class="na">v-on:click</span><span class="o">=</span><span class="s">&quot;createSVG&quot;</span><span class="p">&gt;</span>
+            Create SVG
+          <span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+        <span class="p">&lt;/</span><span class="nt">form</span><span class="p">&gt;</span>
+      <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 
+      <span class="p">&lt;</span><span class="nt">div</span> <span class="na">v-if</span><span class="o">=</span><span class="s">&quot;clicked &amp;&amp; success&quot;</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">h4</span><span class="p">&gt;</span>Click the image to download<span class="p">&lt;/</span><span class="nt">h4</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">a</span> <span class="na">v-bind:href</span><span class="o">=</span><span class="s">&quot;downloadURL&quot;</span> <span class="na">download</span><span class="o">=</span><span class="s">&quot;kerf_check.svg&quot;</span><span class="p">&gt;&lt;</span><span class="nt">img</span> <span class="na">v-bind:src</span><span class="o">=</span><span class="s">&quot;downloadURL&quot;</span> <span class="p">/&gt;&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+      <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">div</span> <span class="na">v-else-if</span><span class="o">=</span><span class="s">&quot;clicked&quot;</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">hr</span> <span class="p">/&gt;</span>
+        [[ errorMessage ]]
+      <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 <span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
 
 <span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
 </code></pre></div>
 
-<div class="codehilite"><pre><span></span><code><span class="c1">// scss</span>
+<div class="codehilite"><pre><span></span><code><span class="c1">// Vue.js の mustache 記法 {{ }} を [[ ]] に変更する。これは Flask と併用する場合は必須。</span><span class="w"></span>
+<span class="nx">Vue</span><span class="p">.</span><span class="nx">options</span><span class="p">.</span><span class="nx">delimiters</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;[[&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;]]&quot;</span><span class="p">];</span><span class="w"></span>
+
+<span class="kd">var</span><span class="w"> </span><span class="nx">app1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Vue</span><span class="p">({</span><span class="w"></span>
+<span class="w">  </span><span class="nx">el</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;#app-1&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nx">data</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nx">clicked</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nx">success</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nx">downloadURL</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;#&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nx">errorMessage</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="p">},</span><span class="w"></span>
+<span class="w">  </span><span class="nx">methods</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nx">createSVG</span><span class="o">:</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="kd">var</span><span class="w"> </span><span class="nx">self</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="p">;</span><span class="w"></span>
+<span class="w">      </span><span class="nx">self</span><span class="p">.</span><span class="nx">clicked</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">      </span><span class="kd">var</span><span class="w"> </span><span class="nx">json</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s1">&#39;stw&#39;</span><span class="o">:</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;inc&#39;</span><span class="o">:</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;gap&#39;</span><span class="o">:</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;lp&#39;</span><span class="o">:</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;tbone&#39;</span><span class="o">:</span><span class="w"> </span><span class="mf">0</span><span class="w"> </span><span class="p">};</span><span class="w"></span>
+<span class="w">      </span><span class="nx">json</span><span class="p">.</span><span class="nx">stw</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">Number</span><span class="p">(</span><span class="nx">par_form</span><span class="p">.</span><span class="nx">form_st</span><span class="p">.</span><span class="nx">value</span><span class="p">);</span><span class="w"></span>
+<span class="w">      </span><span class="nx">json</span><span class="p">.</span><span class="nx">inc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">Number</span><span class="p">(</span><span class="nx">par_form</span><span class="p">.</span><span class="nx">form_inc</span><span class="p">.</span><span class="nx">value</span><span class="p">);</span><span class="w"></span>
+<span class="w">      </span><span class="nx">json</span><span class="p">.</span><span class="nx">gap</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">Number</span><span class="p">(</span><span class="nx">par_form</span><span class="p">.</span><span class="nx">form_gap</span><span class="p">.</span><span class="nx">value</span><span class="p">);</span><span class="w"></span>
+<span class="w">      </span><span class="nx">json</span><span class="p">.</span><span class="nx">lp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">Number</span><span class="p">(</span><span class="nx">par_form</span><span class="p">.</span><span class="nx">form_lp</span><span class="p">.</span><span class="nx">value</span><span class="p">);</span><span class="w"></span>
+<span class="w">      </span><span class="nx">json</span><span class="p">.</span><span class="nx">tbone</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">Number</span><span class="p">(</span><span class="nx">par_form</span><span class="p">.</span><span class="nx">form_tbone</span><span class="p">.</span><span class="nx">value</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">      </span><span class="p">(</span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="k">try</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">          </span><span class="kd">const</span><span class="w"> </span><span class="nx">response</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">fetch</span><span class="p">(</span><span class="s2">&quot;/kerf_check&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="nx">method</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;POST&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nx">headers</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">              </span><span class="s2">&quot;Content-Type&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;application/json; charset=utf-8&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="p">},</span><span class="w"></span>
+<span class="w">            </span><span class="nx">body</span><span class="o">:</span><span class="w"> </span><span class="nb">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">json</span><span class="p">),</span><span class="w"></span>
+<span class="w">          </span><span class="p">});</span><span class="w"></span>
+
+<span class="w">          </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">ok</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="kd">const</span><span class="w"> </span><span class="nx">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">response</span><span class="p">.</span><span class="nx">text</span><span class="p">();</span><span class="w"></span>
+<span class="w">            </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span><span class="w"></span>
+<span class="w">            </span><span class="kd">const</span><span class="w"> </span><span class="nx">blob</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Blob</span><span class="p">([</span><span class="nx">data</span><span class="p">],</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;image/svg+xml&quot;</span><span class="w"> </span><span class="p">});</span><span class="w"></span>
+<span class="w">            </span><span class="nx">self</span><span class="p">.</span><span class="nx">downloadURL</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">window</span><span class="p">.</span><span class="nx">URL</span><span class="p">.</span><span class="nx">createObjectURL</span><span class="p">(</span><span class="nx">blob</span><span class="p">);</span><span class="w"></span>
+<span class="w">            </span><span class="nx">self</span><span class="p">.</span><span class="nx">success</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span><span class="w"></span>
+<span class="w">          </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="kd">const</span><span class="w"> </span><span class="nx">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">response</span><span class="p">.</span><span class="nx">text</span><span class="p">();</span><span class="w"></span>
+<span class="w">            </span><span class="k">throw</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="ne">Error</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span><span class="w"></span>
+<span class="w">          </span><span class="p">}</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="nx">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">          </span><span class="nx">self</span><span class="p">.</span><span class="nx">errorMessage</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">error</span><span class="p">.</span><span class="nx">message</span><span class="p">;</span><span class="w"></span>
+<span class="w">          </span><span class="nx">self</span><span class="p">.</span><span class="nx">success</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">      </span><span class="p">})();</span><span class="w"></span>
+<span class="w">    </span><span class="p">},</span><span class="w"></span>
+<span class="w">  </span><span class="p">},</span><span class="w"></span>
+<span class="p">});</span><span class="w"></span>
 </code></pre></div>
 
-<div class="codehilite"><pre><span></span><code><span class="c1">// JavaScript</span><span class="w"></span>
+<div class="codehilite"><pre><span></span><code><span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Flask</span>
+<span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">render_template</span>
+<span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">request</span>
+
+<span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+
+
+<span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">hello</span><span class="p">():</span>
+    <span class="k">return</span> <span class="n">render_template</span><span class="p">(</span><span class="s2">&quot;app.html&quot;</span><span class="p">)</span>
+
+
+<span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s2">&quot;/kerf_check&quot;</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;POST&quot;</span><span class="p">])</span>
+<span class="k">def</span> <span class="nf">kerf_check</span><span class="p">():</span>
+    <span class="n">json</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">json</span>
+    <span class="n">stw</span> <span class="o">=</span> <span class="n">json</span><span class="p">[</span><span class="s2">&quot;stw&quot;</span><span class="p">]</span>
+    <span class="n">inc</span> <span class="o">=</span> <span class="n">json</span><span class="p">[</span><span class="s2">&quot;inc&quot;</span><span class="p">]</span>
+    <span class="n">gap</span> <span class="o">=</span> <span class="n">json</span><span class="p">[</span><span class="s2">&quot;gap&quot;</span><span class="p">]</span>
+    <span class="n">lp</span> <span class="o">=</span> <span class="n">json</span><span class="p">[</span><span class="s2">&quot;lp&quot;</span><span class="p">]</span>
+    <span class="n">tbone</span> <span class="o">=</span> <span class="n">json</span><span class="p">[</span><span class="s2">&quot;tbone&quot;</span><span class="p">]</span>
+
+    <span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="n">inc</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mf">0.01</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s2">&quot;(pitch) is too small. (pitch) can only be set to 1/100 mm increments. (刻み幅)は1/100mm単位までしか設定できません。&quot;</span><span class="p">,</span> <span class="mi">500</span>
+
+    <span class="n">txt</span> <span class="o">=</span> <span class="n">generate_svg</span><span class="p">(</span><span class="n">stw</span><span class="p">,</span> <span class="n">inc</span><span class="p">,</span> <span class="n">gap</span><span class="p">,</span> <span class="n">lp</span><span class="p">,</span> <span class="n">tbone</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">txt</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;Content-Type&quot;</span><span class="p">:</span> <span class="s2">&quot;image/svg+xml&quot;</span><span class="p">}</span>
+
+
+<span class="k">def</span> <span class="nf">generate_svg</span><span class="p">(</span><span class="n">stw</span><span class="p">,</span> <span class="n">inc</span><span class="p">,</span> <span class="n">gap</span><span class="p">,</span> <span class="n">lp</span><span class="p">,</span> <span class="n">tbone</span><span class="p">):</span>
+    <span class="c1"># GAP = 16</span>
+    <span class="n">MARGIN</span> <span class="o">=</span> <span class="mi">10</span>
+    <span class="n">PARTS_HEIGHT</span> <span class="o">=</span> <span class="mi">50</span>
+    <span class="n">KERF_HEIGHT</span> <span class="o">=</span> <span class="mi">20</span>
+
+    <span class="k">if</span> <span class="n">inc</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="c1"># inc = inc * (-1)</span>
+        <span class="n">inc</span> <span class="o">=</span> <span class="o">-</span><span class="n">inc</span>
+        <span class="n">stw</span> <span class="o">=</span> <span class="n">stw</span> <span class="o">-</span> <span class="n">inc</span> <span class="o">*</span> <span class="p">(</span><span class="n">lp</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+
+    <span class="n">cw</span> <span class="o">=</span> <span class="p">(</span><span class="n">stw</span> <span class="o">+</span> <span class="n">inc</span> <span class="o">*</span> <span class="n">lp</span> <span class="o">+</span> <span class="n">gap</span><span class="p">)</span> <span class="o">*</span> <span class="n">lp</span> <span class="o">+</span> <span class="n">gap</span> <span class="o">+</span> <span class="n">MARGIN</span> <span class="o">*</span> <span class="mi">2</span>
+    <span class="n">ch</span> <span class="o">=</span> <span class="n">PARTS_HEIGHT</span> <span class="o">+</span> <span class="n">MARGIN</span> <span class="o">*</span> <span class="mi">2</span>
+    <span class="n">orign_x</span> <span class="o">=</span> <span class="n">MARGIN</span>
+    <span class="n">orign_y</span> <span class="o">=</span> <span class="n">MARGIN</span>
+
+    <span class="n">st1</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;&lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; version=&quot;1.1&quot; width=&quot;</span><span class="si">{</span><span class="n">cw</span><span class="si">}</span><span class="s1">mm&quot; height=&quot;</span><span class="si">{</span><span class="n">ch</span><span class="si">}</span><span class="s1">mm&quot; viewBox=&quot;0 0 </span><span class="si">{</span><span class="n">cw</span><span class="si">}</span><span class="s1"> </span><span class="si">{</span><span class="n">ch</span><span class="si">}</span><span class="s1">&quot;&gt;&#39;</span>
+    <span class="n">ed1</span> <span class="o">=</span> <span class="s2">&quot;&lt;/svg&gt;&quot;</span>
+
+    <span class="n">temp</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;&lt;path stroke=&quot;red&quot; stroke-width=&quot;0.1&quot; fill=&quot;none&quot; d=&quot;M</span><span class="si">{</span><span class="n">orign_x</span><span class="si">}</span><span class="s1">,</span><span class="si">{</span><span class="n">orign_y</span><span class="si">}</span><span class="s1">&#39;</span>
+    <span class="n">txt</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+
+    <span class="n">x</span> <span class="o">=</span> <span class="n">orign_x</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">orign_y</span>
+    <span class="n">kerf_width</span> <span class="o">=</span> <span class="n">stw</span>
+
+    <span class="n">y</span> <span class="o">+=</span> <span class="n">PARTS_HEIGHT</span>
+    <span class="n">temp</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot; V</span><span class="si">{</span><span class="n">y</span><span class="si">}</span><span class="s2">&quot;</span>
+    <span class="n">x</span> <span class="o">+=</span> <span class="n">gap</span>
+    <span class="n">temp</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot; H</span><span class="si">{</span><span class="n">x</span><span class="si">}</span><span class="s2">&quot;</span>
+
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">lp</span><span class="p">):</span>
+        <span class="n">kerf_width</span> <span class="o">=</span> <span class="n">stw</span> <span class="o">+</span> <span class="n">inc</span> <span class="o">*</span> <span class="n">i</span>
+        <span class="c1"># kerf_width=Math.round(kerf_width*100)/100</span>
+        <span class="n">kerf_width</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">kerf_width</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">kerf_width</span><span class="p">))</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">adjst</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">kerf_width</span><span class="p">))</span> <span class="o">-</span> <span class="mi">1</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">adjst</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">kerf_width</span><span class="p">))</span> <span class="o">-</span> <span class="mi">2</span>
+
+        <span class="n">txt</span> <span class="o">+=</span> <span class="sa">f</span><span class="s1">&#39;&lt;text x=&quot;</span><span class="si">{</span><span class="n">x</span> <span class="o">-</span> <span class="n">adjst</span><span class="si">}</span><span class="s1">&quot; y=&quot;25&quot; font-size=&quot;3&quot; fill=&quot;black&quot;&gt;</span><span class="si">{</span><span class="n">kerf_width</span><span class="si">}</span><span class="s1">&lt;/text&gt;&#39;</span>
+
+        <span class="n">y</span> <span class="o">-=</span> <span class="n">KERF_HEIGHT</span>
+        <span class="n">temp</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot; V</span><span class="si">{</span><span class="n">y</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="c1"># Tボーンフィレット左側生成</span>
+        <span class="c1"># t_bone = f&quot; A 1 1 0 0 1 {x} {y-2} &quot;</span>
+        <span class="n">t_bone</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot; A </span><span class="si">{</span><span class="n">tbone</span> <span class="o">/</span> <span class="mi">2</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">tbone</span> <span class="o">/</span> <span class="mi">2</span><span class="si">}</span><span class="s2"> 0 0 1 </span><span class="si">{</span><span class="n">x</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">y</span> <span class="o">-</span> <span class="n">tbone</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="n">temp</span> <span class="o">+=</span> <span class="n">t_bone</span>
+        <span class="n">x</span> <span class="o">+=</span> <span class="n">kerf_width</span>
+        <span class="n">temp</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot; H</span><span class="si">{</span><span class="n">x</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="c1"># t_bone = f&quot; A 1 1 0 0 1 {x} {y} &quot;</span>
+        <span class="n">t_bone</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot; A </span><span class="si">{</span><span class="n">tbone</span> <span class="o">/</span> <span class="mi">2</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">tbone</span> <span class="o">/</span> <span class="mi">2</span><span class="si">}</span><span class="s2"> 0 0 1 </span><span class="si">{</span><span class="n">x</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">y</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="n">temp</span> <span class="o">+=</span> <span class="n">t_bone</span>
+        <span class="n">y</span> <span class="o">+=</span> <span class="n">KERF_HEIGHT</span>
+        <span class="n">temp</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot; V</span><span class="si">{</span><span class="n">y</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="n">x</span> <span class="o">+=</span> <span class="n">gap</span>
+        <span class="n">temp</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot; H</span><span class="si">{</span><span class="n">x</span><span class="si">}</span><span class="s2">&quot;</span>
+
+    <span class="n">y</span> <span class="o">=</span> <span class="n">y</span> <span class="o">-</span> <span class="n">PARTS_HEIGHT</span>
+    <span class="n">temp</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot; V</span><span class="si">{</span><span class="n">y</span><span class="si">}</span><span class="s2">&quot;</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">orign_x</span>
+    <span class="n">temp</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot; H</span><span class="si">{</span><span class="n">x</span><span class="si">}</span><span class="s2">&quot;</span>
+    <span class="n">temp</span> <span class="o">+=</span> <span class="s1">&#39;&quot;/&gt;&#39;</span>
+
+    <span class="n">result</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">st1</span><span class="si">}</span><span class="se">\n</span><span class="si">{</span><span class="n">temp</span><span class="si">}</span><span class="se">\n</span><span class="si">{</span><span class="n">txt</span><span class="si">}</span><span class="se">\n</span><span class="si">{</span><span class="n">ed1</span><span class="si">}</span><span class="s2">&quot;</span>
+
+    <span class="k">return</span> <span class="n">result</span>
 </code></pre></div>
 
-<div class="codehilite"><pre><span></span><code>
-</code></pre></div>
-
-<h2 id="_4">参考資料<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<h2 id="_3">参考資料<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
 <ul>
 <li><a href="https://developer.mozilla.org/ja/docs/Web/SVG/Tutorial/Paths">mozilla svg path</a></li>
 <li><a href="http://defghi1977.html.xdomain.jp/tech/svgMemo/svgMemo_03.htm">svg要素の基本的な使い方まとめ</a></li>
