@@ -487,6 +487,14 @@ Dominoを起動させると以下のようが画面が表示されます。
 
 ## パッケージング
 
+マイコンボード、配線などを収納するため、箱の大きさを拡大し収納できるようにしました。
+
+![](../images/prototype/prototype2/package/package_1.jpg#center)
+
+![](../images/prototype/prototype2/package/package_2.jpg#center)
+
+
+
 
 ### 評価
 
@@ -503,6 +511,8 @@ Dominoを起動させると以下のようが画面が表示されます。
 - [fusion360 speacker prototype data](../files/prototype2/speacker-prototype1.f3d)
 
 - [speacker prototype lasercut data](../files/prototype2/speacker.pdf)
+
+- [speacker prototype lasercut data fixed case](../files/prototype2/fusion360_speacker_prototype_data_add_case.pdf)
 
 ## 部品
 |    部品    | 販売先 |  金額 | 必要個数 |   合計金額   | リンク |
