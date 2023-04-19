@@ -472,9 +472,12 @@ Dominoを起動させると以下のようが画面が表示されます。
 
 ![](../images/prototype/prototype2/laser/laser_2.jpg#center)
 
-<!-- この構造ではステッピングモーターの板を薄くすることでより振動をより伝えることができると考えましたが、大きな効果はありませんでした。 -->
+以下のようにキーボードとステッピングモーターを接続します。
 
-以下のようにキーボードでステッピングモータを演奏することができます。
+![](../images/prototype/prototype2/device/device_2.jpg#center)
+
+
+以下のようにキーボードと楽器をPCに接続して、キーボード(インプット)で弾いた音をデバイス(アウトプット)で演奏することができます。
 
 <!-- ![](../images/prototype/prototype2/device/device_1.jpg#center) -->
 
