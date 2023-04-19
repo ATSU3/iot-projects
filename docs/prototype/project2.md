@@ -420,6 +420,110 @@ void singleStep(byte motorNum, byte stepPin)
 }
 ```
 
+------------ UPDATE ----------------
+
+MIDIノートイベントに基づいてステッピングモータを制御し、各モータが最大3つのノートを同時に扱えるようにアップデートしました。
+
+モーター1が動いている間に別の鍵盤を押すとモーター2が動き、モーター2が動いている間に別の鍵盤を押すとモーター3が動き、モーター3が動いている間に別の鍵盤を押すと再びモーター1が動くようになります。
+
+```c++
+#include <MIDI.h>
+#include "pitches.h"
+
+#define stepPin_M1 2
+#define stepPin_M2 3
+#define stepPin_M3 4
+
+#define dirPin_M1 5 
+#define dirPin_M2 6
+#define dirPin_M3 7
+
+#define enPin 8 
+
+#define TIMEOUT 10000 
+const int MAX_NOTES = 3;
+unsigned long motorSpeeds[][MAX_NOTES] = {{0, 0, 0}, {0, 0, 0}, {0, 0, 0}};
+unsigned long prevStepMicros[][MAX_NOTES] = {{0, 0, 0}, {0, 0, 0}, {0, 0, 0}};
+const bool motorDirection = LOW; 
+bool disableSteppers = HIGH; 
+unsigned long WDT; 
+byte currentMotor = 0;
+MIDI_CREATE_DEFAULT_INSTANCE(); 
+
+void setup() 
+{
+  pinMode(stepPin_M1, OUTPUT);
+  pinMode(stepPin_M2, OUTPUT);
+  pinMode(stepPin_M3, OUTPUT);
+
+  pinMode(dirPin_M1, OUTPUT);
+  pinMode(dirPin_M2, OUTPUT);
+  pinMode(dirPin_M3, OUTPUT);
+
+  digitalWrite(dirPin_M1, motorDirection);
+  digitalWrite(dirPin_M2, motorDirection);
+  digitalWrite(dirPin_M3, motorDirection);
+
+  pinMode(enPin, OUTPUT);
+
+  MIDI.begin(MIDI_CHANNEL_OMNI); 
+  MIDI.setHandleNoteOn(handleNoteOn); 
+  MIDI.setHandleNoteOff(handleNoteOff); 
+}
+
+void loop() 
+{
+  MIDI.read(); 
+  digitalWrite(enPin, disableSteppers); 
+  singleStep(0, stepPin_M1); 
+  singleStep(1, stepPin_M2);
+  singleStep(2, stepPin_M3);
+
+  if (millis() - WDT >= TIMEOUT)
+  {
+    disableSteppers = HIGH; 
+  }
+}
+
+void handleNoteOn(byte channel, byte pitch, byte velocity) 
+{
+  disableSteppers = LOW; 
+  for (int i = 0; i < MAX_NOTES; i++) {
+    if (motorSpeeds[currentMotor][i] == 0) {
+      motorSpeeds[currentMotor][i] = pitchVals[pitch];
+      break;
+    }
+  }
+  currentMotor = (currentMotor + 1) % 3;
+}
+
+void handleNoteOff(byte channel, byte pitch, byte velocity) 
+{
+  for (int motorIndex = 0; motorIndex < 3; motorIndex++) {
+    for (int i = 0; i < MAX_NOTES; i++) {
+      if (motorSpeeds[motorIndex][i] == pitchVals[pitch]) {
+        motorSpeeds[motorIndex][i] = 0;
+        break;
+      }
+    }
+  }
+}
+
+void singleStep(int motorIndex, byte stepPin)
+{
+  for (int i = 0; i < MAX_NOTES; i++) {
+    if ((micros() - prevStepMicros[motorIndex][i] >= motorSpeeds[motorIndex][i]) && (motorSpeeds[motorIndex][i] != 0)) 
+    { 
+      prevStepMicros[motorIndex][i] += motorSpeeds[motorIndex][i];
+      WDT = millis(); 
+      digitalWrite(stepPin, HIGH);
+      digitalWrite(stepPin, LOW);
+    }
+  }
+}
+
+```
+
 
 ## Domino(MIDI音楽ソフト)と連動させる
 
@@ -495,7 +599,6 @@ Dominoを起動させると以下のようが画面が表示されます。
 ![](../images/prototype/prototype2/package/package_1.jpg#center)
 
 ![](../images/prototype/prototype2/package/package_2.jpg#center)
-
 
 
 
