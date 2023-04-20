@@ -525,6 +525,79 @@ void singleStep(int motorIndex, byte stepPin)
 ```
 
 
+
+```c++
+unsigned long motorSpeeds[][MAX_NOTES] = {{0, 0, 0}, {0, 0, 0}, {0, 0, 0}};
+unsigned long prevStepMicros[][MAX_NOTES] = {{0, 0, 0}, {0, 0, 0}, {0, 0, 0}};
+```
+
+上記でそれぞれ3つのモーターに対応する2次元配列を定義しました。MAX_NOTESは3で定義しております。これらの配列は、モーターごとに最大3つのノートを同時に管理できるようアップデートしました。
+
+
+```c++
+void handleNoteOn(byte channel, byte pitch, byte velocity) 
+{
+  disableSteppers = LOW; 
+  for (int i = 0; i < MAX_NOTES; i++) {
+    if (motorSpeeds[currentMotor][i] == 0) {
+      motorSpeeds[currentMotor][i] = pitchVals[pitch];
+      break;
+    }
+  }
+  currentMotor = (currentMotor + 1) % 3;
+}
+```
+
+アップデート後は、for (int i = 0; i < MAX_NOTES; i++) のループを使って、現在のモーターの各ノートスロットをチェックし、if (motorSpeeds[currentMotor][i] == 0) で、空きノートスロット（0の値を持つスロット）を見つけると、そのスロットに新しいノートのピッチ値を格納するようにしました。
+新しいノートを格納した後、break; でループを終了します。これにより、最初に見つかった空きスロットにのみ新しいノートが格納されます。
+
+3つのモーター間で新しいノートを循環させるため、currentMotor = (currentMotor + 1) % 3; で、次のノートオンイベントに対して次のモーターを選択するようにしております。
+
+
+```c++
+void handleNoteOff(byte channel, byte pitch, byte velocity) 
+{
+  for (int motorIndex = 0; motorIndex < 3; motorIndex++) {
+    for (int i = 0; i < MAX_NOTES; i++) {
+      if (motorSpeeds[motorIndex][i] == pitchVals[pitch]) {
+        motorSpeeds[motorIndex][i] = 0;
+        break;
+      }
+    }
+  }
+}
+
+```
+
+アップデート後は、for (int motorIndex = 0; motorIndex < 3; motorIndex++) で、3つのモーターのそれぞれに対して処理を行っております。
+
+内側のループ for (int i = 0; i < MAX_NOTES; i++) で、各モーターのノートスロットをチェックしております。
+
+if (motorSpeeds[motorIndex][i] == pitchVals[pitch]) で、ノートオフイベントのピッチ値と一致するノートを見つけると、そのスロットの値を0にリセットします: motorSpeeds[motorIndex][i] = 0;。これにより、そのノートが終了したことが示されます。
+
+対応するノートを見つけてリセットした後、break; で内側のループを終了します。これにより、見つかった最初の一致するノートのみがリセットされます。
+
+
+```c++
+void singleStep(int motorIndex, byte stepPin)
+{
+  for (int i = 0; i < MAX_NOTES; i++) {
+    if ((micros() - prevStepMicros[motorIndex][i] >= motorSpeeds[motorIndex][i]) && (motorSpeeds[motorIndex][i] != 0)) 
+    { 
+      prevStepMicros[motorIndex][i] += motorSpeeds[motorIndex][i];
+      WDT = millis(); 
+      digitalWrite(stepPin, HIGH);
+      digitalWrite(stepPin, LOW);
+    }
+  }
+}
+```
+
+アップデート後は、for (int i = 0; i < MAX_NOTES; i++) で、各モーターのノートスロットをループ処理しております。
+if ((micros() - prevStepMicros[motorIndex][i] >= motorSpeeds[motorIndex][i]) && (motorSpeeds[motorIndex][i] != 0)) で、現在のノートスロットがアクティブである（motorSpeeds[motorIndex][i] != 0）、かつステップを実行するタイミングが来たことをチェックしております。（micros() - prevStepMicros[motorIndex][i] >= motorSpeeds[motorIndex][i]）。
+
+
+
 ## Domino(MIDI音楽ソフト)と連動させる
 
 Dominoを起動させると以下のようが画面が表示されます。
