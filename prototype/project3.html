@@ -883,13 +883,20 @@
       
         <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
-    部品
+    通信方式
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
+    部品
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
     参考資料
   </a>
   
@@ -938,13 +945,20 @@
       
         <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
-    部品
+    通信方式
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
+    部品
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
     参考資料
   </a>
   
@@ -972,7 +986,37 @@
 <p><img alt="" src="../images/prototype/prototype3/field/field_1.JPG#center" /></p>
 <p>本プロジェクトは栗山町で農業を営んでいる國本さんにご協力いただきプロジェクトを進めさせていただいております。農業は天候に大きく影響されるため、天候が許す限り効率的に作業を行わなければならないことがあります。これにより、農業従事者は天候に合わせて急遽作業計画を変更し、多くの時間を作業に費やすことがとても多いとおっしゃっておりました。</p>
 <p>本プロジェクトを通して最終的に栗山町の農家さんが自由に使うことができる時間を増やしていきたいと思います。</p>
-<h2 id="_2">部品<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<!-- このプロジェクトを進めていく上で3つのスパイラルに分けることができます。
+1stスパイラルでは、センサで温度などの環境の情報をログに残して、表で確認できるようにする。
+
+2ndスパイラルでは、遠隔地から無線通信でセンサで温度などの環境の情報できるようにする。
+
+3rdスパイラルでは、遠隔地からセンサをトリガーにして、アクチュエーターを動作できるようにする。(温度がある閾値を超えた際にビニールハウスの窓が開閉するようなシステムを作成する。) -->
+
+<h2 id="_2">通信方式<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p>IoTのプロダクトを開発する際は選択肢がたくさんあり、以下の表のように近距離か遠距離か、また、低速低消費か高速高消費か、用途によって適したものを使い分ける必要がある。</p>
+<p><a href="https://jp.rs-online.com/web/generalDisplay.html?id=ideas-and-advice/iot-internet-of-things">IoT ガイド IoT向け無線通信技術 LPWA 参照</a>
+<img alt="" src="../images/prototype/prototype3/%20communication/communication_1.jpg#center" /></p>
+<p>今回のIoT農業の場合、以下の理由からLPWAを用いてプロダクトを作成していきたいと思います。また、LoRaWAN、Sigfoxを用いていく予定です。</p>
+<ul>
+<li>
+<p>広範囲のカバレッジ
+農業IoTは、広大な畑やビニールハウスでのセンサーデータ収集が求められるため、長距離通信が可能なLPWA技術が適しているため。</p>
+</li>
+<li>
+<p>低消費電力
+農業IoTデバイスは、電源供給が限られる場所で運用されることが多く、省電力な通信技術が必要であるが、LPWAは低消費電力で動作するため、バッテリ寿命の長いIoTデバイスに適しているため。</p>
+</li>
+<li>
+<p>低コスト
+農業IoTでは、多数のセンサーやデバイスが必要になることがありますが。LPWA技術は、低コストでデバイスやネットワークの導入・運用が可能であるため、コストを抑えることができるため。</p>
+</li>
+<li>
+<p>信頼性と拡張性
+LPWA技術は、干渉や遮蔽に対して強く、信頼性の高い通信が可能であり、また、IoTデバイスの数が増えても、ネットワークを拡張しやすい特徴があるため。</p>
+</li>
+</ul>
+<h2 id="_3">部品<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
 <tr>
@@ -995,14 +1039,15 @@
 </tr>
 </tbody>
 </table>
-<h2 id="_3">参考資料<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<h2 id="_4">参考資料<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
 <ul>
 <li>
 <p><a href="https://pr.nepon.co.jp/lp/a02">スマート農業/IoT導入 農業ICTクラウドサービス アグリネットアドバンス</a></p>
 </li>
 <li>
-<p><a href="https://www.kccs.co.jp/sigfox/service/">sigfoxとは</a></p>
+<p><a href="https://jp.rs-online.com/web/generalDisplay.html?id=ideas-and-advice/iot-internet-of-things">IoT ガイド IoT向け無線通信技術 LPWA</a></p>
 </li>
+<li><a href="https://www.kccs.co.jp/sigfox/service/">sigfoxとは</a></li>
 </ul>
 
 
