@@ -38,6 +38,16 @@ IoTのプロダクトを開発する際は選択肢がたくさんあり、以�
 LPWA技術は、干渉や遮蔽に対して強く、信頼性の高い通信が可能であり、また、IoTデバイスの数が増えても、ネットワークを拡張しやすい特徴があるため。
 
 
+## アイディアスケッチ
+
+![](../images/prototype/prototype3/idea_sketch/idea_sketch_1.jpg#center)
+
+![](../images/prototype/prototype3/idea_sketch/idea_sketch_2.jpg#center)
+
+![](../images/prototype/prototype3/idea_sketch/idea_sketch_3.jpg#center)
+
+![](../images/prototype/prototype3/idea_sketch/idea_sketch_4.jpg#center)
+
 ## 部品
 |    部品    | 販売先 |  金額 | 必要個数 |   合計金額   | リンク |
 | --------- | ----- | ---- | ------- | ----------- | ----- |
