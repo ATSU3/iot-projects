@@ -70,7 +70,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#_1" class="md-skip">
+        <a href="#iot" class="md-skip">
           Skip to content
         </a>
       
@@ -882,6 +882,13 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    アイディアスケッチ
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
     通信方式
   </a>
@@ -890,20 +897,13 @@
       
         <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
-    アイディアスケッチ
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
     部品
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
+  <a href="#_4" class="md-nav__link">
     参考資料
   </a>
   
@@ -951,6 +951,13 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    アイディアスケッチ
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
     通信方式
   </a>
@@ -959,20 +966,13 @@
       
         <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
-    アイディアスケッチ
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
     部品
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
+  <a href="#_4" class="md-nav__link">
     参考資料
   </a>
   
@@ -996,17 +996,20 @@
 <p><head>
   <link href="../css/extra.css" rel="stylesheet"></link>
 </head></p>
-<h1 id="_1">農業関連<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<h1 id="iot">IoT農業(春~秋)<a class="headerlink" href="#iot" title="Permanent link">&para;</a></h1>
 <p><img alt="" src="../images/prototype/prototype3/field/field_1.JPG#center" /></p>
-<p>本プロジェクトは栗山町で農業を営んでいる國本さんにご協力いただきプロジェクトを進めさせていただいております。農業は天候に大きく影響されるため、天候が許す限り効率的に作業を行わなければならないことがあります。これにより、農業従事者は天候に合わせて急遽作業計画を変更し、多くの時間を作業に費やすことがとても多いとおっしゃっておりました。</p>
+<p>本プロジェクトは栗山町で農業を営んでいる國本さんにご協力いただきプロジェクトを進めさせていただいております。農業は天候に大きく影響されるため、天候が許す限り効率的に作業を行わなければならないことがあります。これにより、農業従事者は天候に合わせて急遽作業計画を変更し、多くの時間を作業に費やすことがとても多いことを問題視しております。</p>
 <p>本プロジェクトを通して最終的に栗山町の農家さんが自由に使うことができる時間を増やしていきたいと思います。</p>
-<!-- このプロジェクトを進めていく上で3つのスパイラルに分けることができます。
-1stスパイラルでは、センサで温度などの環境の情報をログに残して、表で確認できるようにする。
-
-2ndスパイラルでは、遠隔地から無線通信でセンサで温度などの環境の情報できるようにする。
-
-3rdスパイラルでは、遠隔地からセンサをトリガーにして、アクチュエーターを動作できるようにする。(温度がある閾値を超えた際にビニールハウスの窓が開閉するようなシステムを作成する。) -->
-
+<h2 id="_1">アイディアスケッチ<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p>このプロジェクトは4つのスパイラルに分けることができます。</p>
+<p>1stスパイラルでは、農業をする上での環境データの時間ごとの可視化ができるようにしたいと思います。
+<img alt="" src="../images/prototype/prototype3/idea_sketch/idea_sketch_1.jpg#center" /></p>
+<p>2ndスパイラルでは、遠隔地から農場の環境データをリアルタイムで取得できるようにしたいと思います。
+<img alt="" src="../images/prototype/prototype3/idea_sketch/idea_sketch_2.jpg#center" /></p>
+<p>3rdスパイラルでは環境センサをトリガーとして、ビニールハウスの自動巻き取りなどアクチュエーターを動作させたいと思います。</p>
+<p><img alt="" src="../images/prototype/prototype3/idea_sketch/idea_sketch_3.jpg#center" /></p>
+<p>4thスパイラルではデジタルツインの実現をしていきたいと思います。</p>
+<p><img alt="" src="../images/prototype/prototype3/idea_sketch/idea_sketch_4.jpg#center" /></p>
 <h2 id="_2">通信方式<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
 <p>IoTのプロダクトを開発する際は選択肢がたくさんあり、以下の表のように近距離か遠距離か、また、低速低消費か高速高消費か、用途によって適したものを使い分ける必要がある。</p>
 <p><a href="https://jp.rs-online.com/web/generalDisplay.html?id=ideas-and-advice/iot-internet-of-things">IoT ガイド IoT向け無線通信技術 LPWA 参照</a>
@@ -1030,12 +1033,7 @@
 LPWA技術は、干渉や遮蔽に対して強く、信頼性の高い通信が可能であり、また、IoTデバイスの数が増えても、ネットワークを拡張しやすい特徴があるため。</p>
 </li>
 </ul>
-<h2 id="_3">アイディアスケッチ<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
-<p><img alt="" src="../images/prototype/prototype3/idea_sketch/idea_sketch_1.jpg#center" /></p>
-<p><img alt="" src="../images/prototype/prototype3/idea_sketch/idea_sketch_2.jpg#center" /></p>
-<p><img alt="" src="../images/prototype/prototype3/idea_sketch/idea_sketch_3.jpg#center" /></p>
-<p><img alt="" src="../images/prototype/prototype3/idea_sketch/idea_sketch_4.jpg#center" /></p>
-<h2 id="_4">部品<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<h2 id="_3">部品<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
 <tr>
@@ -1058,7 +1056,7 @@ LPWA技術は、干渉や遮蔽に対して強く、信頼性の高い通信が�
 </tr>
 </tbody>
 </table>
-<h2 id="_5">参考資料<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<h2 id="_4">参考資料<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
 <ul>
 <li>
 <p><a href="https://pr.nepon.co.jp/lp/a02">スマート農業/IoT導入 農業ICTクラウドサービス アグリネットアドバンス</a></p>
