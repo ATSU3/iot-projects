@@ -24,7 +24,7 @@
 
 ![](../images/prototype/prototype3/idea_sketch/idea_sketch_3.jpg#center)
 
-4thスパイラルではデジタルツインの実現をしていきたいと思います。
+4thスパイラルでは[デジタルツイン](https://www.ntt.com/bizon/glossary/j-t/digital-twin.html#:~:text=%E3%83%87%E3%82%B8%E3%82%BF%E3%83%AB%E3%83%84%E3%82%A4%E3%83%B3%EF%BC%88DigitalTwin%EF%BC%89%E3%81%A8%E3%81%AF,%E3%81%99%E3%82%8B%E6%8A%80%E8%A1%93%E3%81%AE%E3%81%93%E3%81%A8%E3%81%A7%E3%81%99%E3%80%82)の実現をしていきたいと思います。
 
 ![](../images/prototype/prototype3/idea_sketch/idea_sketch_4.jpg#center)
 
@@ -61,3 +61,5 @@ LPWA技術は、干渉や遮蔽に対して強く、信頼性の高い通信が�
 
 - [IoT ガイド IoT向け無線通信技術 LPWA](https://jp.rs-online.com/web/generalDisplay.html?id=ideas-and-advice/iot-internet-of-things)
 - [sigfoxとは](https://www.kccs.co.jp/sigfox/service/)
+- [ESP32でのアナログ入力とSDカード装置](http://marchan.e5.valueserver.jp/cabin/comp/jbox/arc202/doc21104.html)
+- [ESP32でmicroSDカードを読み書き](https://kanpapa.com/today/2023/01/esp32-otafab-study-microsd.html)
