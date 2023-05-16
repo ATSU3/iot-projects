@@ -886,24 +886,44 @@
     アイディアスケッチ
   </a>
   
+    <nav class="md-nav" aria-label="アイディアスケッチ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    必要なパーツ
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    必要なパーツ
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
+  <a href="#_4" class="md-nav__link">
     通信方式
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+  <a href="#_5" class="md-nav__link">
     部品
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
+  <a href="#_6" class="md-nav__link">
     参考資料
   </a>
   
@@ -955,24 +975,44 @@
     アイディアスケッチ
   </a>
   
+    <nav class="md-nav" aria-label="アイディアスケッチ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    必要なパーツ
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    必要なパーツ
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
+  <a href="#_4" class="md-nav__link">
     通信方式
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+  <a href="#_5" class="md-nav__link">
     部品
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
+  <a href="#_6" class="md-nav__link">
     参考資料
   </a>
   
@@ -1036,6 +1076,43 @@
 </li>
 </ul>
 <p><img alt="" src="../images/prototype/prototype3/idea_sketch/idea_sketch_1.jpg#center" /></p>
+<h4 id="_2">必要なパーツ<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th>部品</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>マイクロＳＤカードスロットＤＩＰ化キット</td>
+</tr>
+<tr>
+<td>マイクロＳＤカード</td>
+</tr>
+<tr>
+<td>乾電池</td>
+</tr>
+<tr>
+<td>単3×4電池ボックス</td>
+</tr>
+<tr>
+<td>LCD ディスプレイモジュール</td>
+</tr>
+<tr>
+<td>単3×4電池ボックス</td>
+</tr>
+<tr>
+<td>土壌湿度計 湿度検出モジュール</td>
+</tr>
+<tr>
+<td>DHT22 温度 湿度 センサー モジュール</td>
+</tr>
+<tr>
+<td>ESP-WROOM-32E</td>
+</tr>
+</tbody>
+</table>
 <p>2ndスパイラルでは、確認のために現場に直接行く頻度を削減するため、遠隔地から農場の環境データをリアルタイムで取得できるようにしたいと思います。</p>
 <p>これにより、1stスパイラルのメリットに加え、以下のことができるようになります。</p>
 <ul>
@@ -1053,6 +1130,22 @@
 <p>また、ビニールハウス内では、さまざまな種類の野菜を育てているため、区画ごとに異なる温湿度を設定されているため、区画ごとにセンサーを配置して温度を取得することが理想的です。応用例として、ESP-NOW通信を用いてスレーブ側で設定したマイコンで取得したセンサデータをマスター側のマイコンに送信し、一括でデータを保存しLPWAの通信によりデータを送ることを考えております。</p>
 <p><img alt="" src="../images/prototype/prototype3/idea_sketch/idea_sketch_5.jpg#center" /></p>
 <p>ESP-NOW通信を用いることで、Wi-Fiルーターなどを経由せずマイコン同士で通信を行うことができ、MACアドレスを指定しての1対1の通信やブロードキャストでの1対多の一斉送信も行うことができるためこの状況下で効率よく通信ができます。</p>
+<h4 id="_3">必要なパーツ<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th>部品</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>M5Stack Basic V2.6</td>
+</tr>
+<tr>
+<td>M5Stack用Sigfoxモジュール</td>
+</tr>
+</tbody>
+</table>
 <p>3rdスパイラルではさらに発展させ、現場に直接行かなくて良いように、環境センサをトリガーとして、ビニールハウスの自動巻き取りなどアクチュエーターを動作させたいと思います。</p>
 <p>これにより、1st、2ndスパイラルのメリットに加え、以下のことができるようになります。
 - 自動化による労力削減
@@ -1088,7 +1181,7 @@
 </li>
 </ul>
 <p><img alt="" src="../images/prototype/prototype3/idea_sketch/idea_sketch_4.jpg#center" /></p>
-<h2 id="_2">通信方式<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<h2 id="_4">通信方式<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
 <p>IoTのプロダクトを開発する際は選択肢がたくさんあり、以下の表のように近距離か遠距離か、また、低速低消費か高速高消費か、用途によって適したものを使い分ける必要がある。</p>
 <p><a href="https://jp.rs-online.com/web/generalDisplay.html?id=ideas-and-advice/iot-internet-of-things">IoT ガイド IoT向け無線通信技術 LPWA 参照</a>
 <img alt="" src="../images/prototype/prototype3/%20communication/communication_1.jpg#center" /></p>
@@ -1111,7 +1204,7 @@
 LPWA技術は、干渉や遮蔽に対して強く、信頼性の高い通信が可能であり、また、IoTデバイスの数が増えても、ネットワークを拡張しやすい特徴があるため。</p>
 </li>
 </ul>
-<h2 id="_3">部品<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<h2 id="_5">部品<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
 <tr>
@@ -1134,7 +1227,7 @@ LPWA技術は、干渉や遮蔽に対して強く、信頼性の高い通信が�
 </tr>
 </tbody>
 </table>
-<h2 id="_4">参考資料<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<h2 id="_6">参考資料<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
 <ul>
 <li>
 <p><a href="https://pr.nepon.co.jp/lp/a02">スマート農業/IoT導入 農業ICTクラウドサービス アグリネットアドバンス</a></p>
