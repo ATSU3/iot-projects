@@ -654,9 +654,11 @@ Dominoを起動させると以下のようが画面が表示されます。
 
 <!-- ![](../images/prototype/prototype2/device/device_1.jpg#center) -->
 
-<video width="100%" height="400px" id="center" controls>
+<!-- <video width="100%" height="400px" id="center" controls>
   <source src="../videos/prototype_2/prototype_2.mp4" type="video/mp4">
-</video>
+</video> -->
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/96mXPhNz_VU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 - プロトタイプ2
   - 
