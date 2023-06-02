@@ -59,6 +59,194 @@
 | DHT22 温度 湿度 センサー モジュール | 
 | ESP-WROOM-32E | 
 
+#### プログラム
+```c++
+#include "FS.h"
+#include "SD.h"
+#include "SPI.h"
+#include <Wire.h>
+#include <LiquidCrystal_I2C.h>
+#include <DHT.h>
+
+#define DHTPIN 2
+#define DHTTYPE DHT22
+#define SCK 18  //SDカードのCLKピン
+#define MISO 19 //SDカードのDAT0ピン
+#define MOSI 23 //SDカードのCMDピン
+#define SS 4    //SDカードのCD/DAT3ピン
+
+DHT dht(DHTPIN, DHTTYPE);
+LiquidCrystal_I2C lcd(0x27, 16, 2);
+
+void setup() {
+  lcd.init();
+  lcd.backlight();
+  dht.begin();
+  
+  SPI.begin(SCK, MISO, MOSI, SS);
+  if(!SD.begin(SS)){
+    lcd.print("Card Mount Failed");
+    return;
+  }
+  uint8_t cardType = SD.cardType();
+  if(cardType == CARD_NONE){
+    lcd.print("No SD card attached");
+    return;
+  }
+}
+
+void loop() {
+  float h = dht.readHumidity();
+  float t = dht.readTemperature();
+
+  lcd.setCursor(0, 0);
+  lcd.print("Temp: ");
+  lcd.print(t);
+  lcd.print("C");
+  
+  lcd.setCursor(0, 1);
+  lcd.print("Hum: ");
+  lcd.print(h);
+  lcd.print("%");
+
+  File dataFile = SD.open("/data.txt", FILE_APPEND);
+  if(dataFile){
+    dataFile.print("Temp: ");
+    dataFile.print(t);
+    dataFile.print("C ");
+    dataFile.print("Hum: ");
+    dataFile.print(h);
+    dataFile.println("%");
+    dataFile.close();
+  }
+
+  delay(2000);
+}
+
+```
+
+```c++
+#include "FS.h"
+#include "SD.h"
+#include "SPI.h"
+#include <Wire.h>
+#include <LiquidCrystal_I2C.h>
+#include <DHT.h>
+
+#define DHTPIN 2
+#define DHTTYPE DHT22
+#define SCK 18  //SDカードのCLKピン
+#define MISO 19 //SDカードのDAT0ピン
+#define MOSI 23 //SDカードのCMDピン
+#define SS 4    //SDカードのCD/DAT3ピン
+#define BUTTON_PIN 15  //ボタンが接続されているピン
+#define BUTTON2_PIN 16 //新たなボタンが接続されているピン
+
+DHT dht(DHTPIN, DHTTYPE);
+LiquidCrystal_I2C lcd(0x27, 16, 2);
+volatile bool sdCardStatus = false;
+bool lcdStatus = true; // LCDの電源状態
+
+unsigned long lastRecordTime = 0;  
+unsigned long lastDisplayUpdateTime = 0;  
+
+void setup() {
+  lcd.init();
+  lcd.backlight();
+  dht.begin();
+
+  pinMode(BUTTON_PIN, INPUT_PULLUP);
+  pinMode(BUTTON2_PIN, INPUT_PULLUP);
+  attachInterrupt(digitalPinToInterrupt(BUTTON_PIN), tryMountSDCard, FALLING);
+
+  tryMountSDCard();
+}
+
+void tryMountSDCard() {
+  lcd.clear();
+  if(!SD.begin()){
+    lcd.print("Card Mount Failed");
+    sdCardStatus = false;
+    return;
+  }
+  uint8_t cardType = SD.cardType();
+  if(cardType == CARD_NONE){
+    lcd.print("No SD card attached");
+    sdCardStatus = false;
+  }
+  else {
+    sdCardStatus = true;
+  }
+}
+
+void displayData() {
+  float h = dht.readHumidity();
+  float t = dht.readTemperature();
+
+  lcd.setCursor(0, 0);
+  lcd.print("Temp: ");
+  lcd.print(t);
+  lcd.print("C");
+  
+  lcd.setCursor(0, 1);
+  lcd.print("Hum: ");
+  lcd.print(h);
+  lcd.print("%");
+}
+
+void recordData() {
+  float h = dht.readHumidity();
+  float t = dht.readTemperature();
+
+  File dataFile = SD.open("/data.csv", FILE_APPEND);
+  if(dataFile){
+    dataFile.print(t);
+    dataFile.print(",");
+    dataFile.println(h);
+    dataFile.close();
+  }
+}
+
+void loop() {
+  unsigned long currentMillis = millis();
+  
+  if (digitalRead(BUTTON_PIN) == LOW) {
+    tryMountSDCard();
+    delay(1000);  
+  }
+  
+  if (digitalRead(BUTTON2_PIN) == LOW) {
+    lcdStatus = !lcdStatus; 
+    delay(1000);  
+    if(lcdStatus) {
+      lcd.backlight();
+    } else {
+      lcd.noBacklight();
+    }
+  }
+
+  if (sdCardStatus && lcdStatus && currentMillis - lastRecordTime >= 3600000) {
+    recordData();
+    lastRecordTime = currentMillis;  
+  }
+
+  if (sdCardStatus && lcdStatus && currentMillis - lastDisplayUpdateTime >= 4000) {
+    displayData();
+    lastDisplayUpdateTime = currentMillis; 
+  }
+
+  if (!lcdStatus) {
+    
+  } else if(!sdCardStatus) {
+    lcd.setCursor(0, 0);
+    lcd.print("Check SD Card...  ");
+    lcd.setCursor(0, 1);
+    lcd.print("Press button to retry");
+  }
+}
+
+```
+
 ### 2ndスパイラル(7月1日 ~ 7月31日)
 2ndスパイラルでは、確認のために現場に直接行く頻度を削減するため、遠隔地から農場の環境データをリアルタイムで取得できるようにしたいと思います。また、國本さんの自宅から農場までは10km以上の距離があるため、農場の環境データをリアルタイムで取得することができれば、温度が問題ない場合、ビニールハウスの状態を確認するためだけに現場に向かう必要がなくなり、効率化を図ることができます。
 
@@ -158,3 +346,6 @@ LPWA技術は、干渉や遮蔽に対して強く、信頼性の高い通信が�
 - [ESP32でのアナログ入力とSDカード装置](http://marchan.e5.valueserver.jp/cabin/comp/jbox/arc202/doc21104.html)
 - [ESP32でmicroSDカードを読み書き](https://kanpapa.com/today/2023/01/esp32-otafab-study-microsd.html)
 - [ESP-NOW](https://docs.espressif.com/projects/esp-idf/en/latest/esp32/api-reference/network/esp_now.html)
+
+## 使用データ
+- [3D Data](https://grabcad.com/library/1602-lcd-display-1)
