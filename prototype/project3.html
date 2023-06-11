@@ -904,6 +904,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    プログラム
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -918,7 +925,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+  <a href="#_4" class="md-nav__link">
     必要なパーツ
   </a>
   
@@ -949,15 +956,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
+  <a href="#_5" class="md-nav__link">
     通信方式
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
+  <a href="#_6" class="md-nav__link">
     参考資料
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    使用データ
   </a>
   
 </li>
@@ -1026,6 +1040,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    プログラム
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1040,7 +1061,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+  <a href="#_4" class="md-nav__link">
     必要なパーツ
   </a>
   
@@ -1071,15 +1092,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
+  <a href="#_5" class="md-nav__link">
     通信方式
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
+  <a href="#_6" class="md-nav__link">
     参考資料
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    使用データ
   </a>
   
 </li>
@@ -1181,6 +1209,127 @@
 </tr>
 </tbody>
 </table>
+<h4 id="_3">プログラム<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
+<div class="codehilite"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;FS.h&quot;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;SD.h&quot;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;SPI.h&quot;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;Wire.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;LiquidCrystal_I2C.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;DHT.h&gt;</span><span class="cp"></span>
+
+<span class="cp">#define DHTPIN 2</span>
+<span class="cp">#define DHTTYPE DHT22</span>
+<span class="cp">#define SCK 18  </span><span class="c1">//SDカードのCLKピン</span>
+<span class="cp">#define MISO 19 </span><span class="c1">//SDカードのDAT0ピン</span>
+<span class="cp">#define MOSI 23 </span><span class="c1">//SDカードのCMDピン</span>
+<span class="cp">#define SS 4    </span><span class="c1">//SDカードのCD/DAT3ピン</span>
+<span class="cp">#define BUTTON_PIN 15  </span><span class="c1">//ボタンが接続されているピン</span>
+<span class="cp">#define BUTTON2_PIN 16 </span><span class="c1">//新たなボタンが接続されているピン</span>
+
+<span class="n">DHT</span><span class="w"> </span><span class="nf">dht</span><span class="p">(</span><span class="n">DHTPIN</span><span class="p">,</span><span class="w"> </span><span class="n">DHTTYPE</span><span class="p">);</span><span class="w"></span>
+<span class="n">LiquidCrystal_I2C</span><span class="w"> </span><span class="nf">lcd</span><span class="p">(</span><span class="mh">0x27</span><span class="p">,</span><span class="w"> </span><span class="mi">16</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">);</span><span class="w"></span>
+<span class="k">volatile</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">sdCardStatus</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span><span class="w"></span>
+<span class="kt">bool</span><span class="w"> </span><span class="n">lcdStatus</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span><span class="w"> </span><span class="c1">// LCDの電源状態</span>
+
+<span class="kt">unsigned</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">lastRecordTime</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w">  </span>
+<span class="kt">unsigned</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">lastDisplayUpdateTime</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w">  </span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">setup</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">lcd</span><span class="p">.</span><span class="n">init</span><span class="p">();</span><span class="w"></span>
+<span class="w">  </span><span class="n">lcd</span><span class="p">.</span><span class="n">backlight</span><span class="p">();</span><span class="w"></span>
+<span class="w">  </span><span class="n">dht</span><span class="p">.</span><span class="n">begin</span><span class="p">();</span><span class="w"></span>
+
+<span class="w">  </span><span class="n">pinMode</span><span class="p">(</span><span class="n">BUTTON_PIN</span><span class="p">,</span><span class="w"> </span><span class="n">INPUT_PULLUP</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">pinMode</span><span class="p">(</span><span class="n">BUTTON2_PIN</span><span class="p">,</span><span class="w"> </span><span class="n">INPUT_PULLUP</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">attachInterrupt</span><span class="p">(</span><span class="n">digitalPinToInterrupt</span><span class="p">(</span><span class="n">BUTTON_PIN</span><span class="p">),</span><span class="w"> </span><span class="n">tryMountSDCard</span><span class="p">,</span><span class="w"> </span><span class="n">FALLING</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">  </span><span class="n">tryMountSDCard</span><span class="p">();</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">tryMountSDCard</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">lcd</span><span class="p">.</span><span class="n">clear</span><span class="p">();</span><span class="w"></span>
+<span class="w">  </span><span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="n">SD</span><span class="p">.</span><span class="n">begin</span><span class="p">()){</span><span class="w"></span>
+<span class="w">    </span><span class="n">lcd</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">&quot;Card Mount Failed&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">sdCardStatus</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="k">return</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">cardType</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">SD</span><span class="p">.</span><span class="n">cardType</span><span class="p">();</span><span class="w"></span>
+<span class="w">  </span><span class="k">if</span><span class="p">(</span><span class="n">cardType</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">CARD_NONE</span><span class="p">){</span><span class="w"></span>
+<span class="w">    </span><span class="n">lcd</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">&quot;No SD card attached&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">sdCardStatus</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">sdCardStatus</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">displayData</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kt">float</span><span class="w"> </span><span class="n">h</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dht</span><span class="p">.</span><span class="n">readHumidity</span><span class="p">();</span><span class="w"></span>
+<span class="w">  </span><span class="kt">float</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dht</span><span class="p">.</span><span class="n">readTemperature</span><span class="p">();</span><span class="w"></span>
+
+<span class="w">  </span><span class="n">lcd</span><span class="p">.</span><span class="n">setCursor</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">lcd</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">&quot;Temp: &quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">lcd</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">t</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">lcd</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">&quot;C&quot;</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">  </span><span class="n">lcd</span><span class="p">.</span><span class="n">setCursor</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">lcd</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">&quot;Hum: &quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">lcd</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">h</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">lcd</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">&quot;%&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">recordData</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kt">float</span><span class="w"> </span><span class="n">h</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dht</span><span class="p">.</span><span class="n">readHumidity</span><span class="p">();</span><span class="w"></span>
+<span class="w">  </span><span class="kt">float</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dht</span><span class="p">.</span><span class="n">readTemperature</span><span class="p">();</span><span class="w"></span>
+
+<span class="w">  </span><span class="n">File</span><span class="w"> </span><span class="n">dataFile</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">SD</span><span class="p">.</span><span class="n">open</span><span class="p">(</span><span class="s">&quot;/data.csv&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">FILE_APPEND</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="k">if</span><span class="p">(</span><span class="n">dataFile</span><span class="p">){</span><span class="w"></span>
+<span class="w">    </span><span class="n">dataFile</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">t</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">dataFile</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">&quot;,&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">dataFile</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="n">h</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">dataFile</span><span class="p">.</span><span class="n">close</span><span class="p">();</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">loop</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">currentMillis</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">millis</span><span class="p">();</span><span class="w"></span>
+
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">digitalRead</span><span class="p">(</span><span class="n">BUTTON_PIN</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">LOW</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">tryMountSDCard</span><span class="p">();</span><span class="w"></span>
+<span class="w">    </span><span class="n">delay</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span><span class="w">  </span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">digitalRead</span><span class="p">(</span><span class="n">BUTTON2_PIN</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">LOW</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">lcdStatus</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">!</span><span class="n">lcdStatus</span><span class="p">;</span><span class="w"> </span>
+<span class="w">    </span><span class="n">delay</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span><span class="w">  </span>
+<span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="n">lcdStatus</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="n">lcd</span><span class="p">.</span><span class="n">backlight</span><span class="p">();</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="n">lcd</span><span class="p">.</span><span class="n">noBacklight</span><span class="p">();</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">sdCardStatus</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">lcdStatus</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">currentMillis</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">lastRecordTime</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">3600000</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">recordData</span><span class="p">();</span><span class="w"></span>
+<span class="w">    </span><span class="n">lastRecordTime</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">currentMillis</span><span class="p">;</span><span class="w">  </span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">sdCardStatus</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">lcdStatus</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">currentMillis</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">lastDisplayUpdateTime</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">4000</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">displayData</span><span class="p">();</span><span class="w"></span>
+<span class="w">    </span><span class="n">lastDisplayUpdateTime</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">currentMillis</span><span class="p">;</span><span class="w"> </span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">lcdStatus</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="n">sdCardStatus</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">lcd</span><span class="p">.</span><span class="n">setCursor</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">lcd</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">&quot;Check SD Card...  &quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">lcd</span><span class="p">.</span><span class="n">setCursor</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">lcd</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">&quot;Press button to retry&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
+
 <h3 id="2nd71-731">2ndスパイラル(7月1日 ~ 7月31日)<a class="headerlink" href="#2nd71-731" title="Permanent link">&para;</a></h3>
 <p>2ndスパイラルでは、確認のために現場に直接行く頻度を削減するため、遠隔地から農場の環境データをリアルタイムで取得できるようにしたいと思います。また、國本さんの自宅から農場までは10km以上の距離があるため、農場の環境データをリアルタイムで取得することができれば、温度が問題ない場合、ビニールハウスの状態を確認するためだけに現場に向かう必要がなくなり、効率化を図ることができます。</p>
 <p>よって、1stスパイラルのメリットに加え、以下のことができるようになります。</p>
@@ -1199,7 +1348,7 @@
 <p>また、ビニールハウス内では、さまざまな種類の野菜を育てているため、区画ごとに異なる温湿度を設定されているため、区画ごとにセンサーを配置して温度を取得することが理想的です。応用例として、ESP-NOW通信を用いてスレーブ側で設定したマイコンで取得したセンサデータをマスター側のマイコンに送信し、一括でデータを保存しLPWAの通信によりデータを送ることを考えております。</p>
 <p><img alt="" src="../images/prototype/prototype3/idea_sketch/idea_sketch_5.jpg#center" /></p>
 <p>ESP-NOW通信を用いることで、Wi-Fiルーターなどを経由せずマイコン同士で通信を行うことができ、MACアドレスを指定しての1対1の通信やブロードキャストでの1対多の一斉送信も行うことができるためこの状況下で効率よく通信ができます。</p>
-<h4 id="_3">必要なパーツ<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
+<h4 id="_4">必要なパーツ<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
 <table>
 <thead>
 <tr>
@@ -1252,7 +1401,7 @@
 </li>
 </ul>
 <p><img alt="" src="../images/prototype/prototype3/idea_sketch/idea_sketch_4.jpg#center" /></p>
-<h2 id="_4">通信方式<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<h2 id="_5">通信方式<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
 <p>IoTのプロダクトを開発する際は選択肢がたくさんあり、以下の表のように近距離か遠距離か、また、低速低消費か高速高消費か、用途によって適したものを使い分ける必要がある。</p>
 <p><a href="https://jp.rs-online.com/web/generalDisplay.html?id=ideas-and-advice/iot-internet-of-things">IoT ガイド IoT向け無線通信技術 LPWA 参照</a>
 <img alt="" src="../images/prototype/prototype3/%20communication/communication_1.jpg#center" /></p>
@@ -1280,7 +1429,7 @@ LPWA技術は、干渉や遮蔽に対して強く、信頼性の高い通信が�
 | --------- | ----- | ---- | ------- | ----------- | ----- |
 |   Sample  | Sample | 1000円 |   1  |     1000円   | ----- | -->
 
-<h2 id="_5">参考資料<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<h2 id="_6">参考資料<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
 <ul>
 <li>
 <p><a href="https://pr.nepon.co.jp/lp/a02">スマート農業/IoT導入 農業ICTクラウドサービス アグリネットアドバンス</a></p>
@@ -1292,6 +1441,10 @@ LPWA技術は、干渉や遮蔽に対して強く、信頼性の高い通信が�
 <li><a href="http://marchan.e5.valueserver.jp/cabin/comp/jbox/arc202/doc21104.html">ESP32でのアナログ入力とSDカード装置</a></li>
 <li><a href="https://kanpapa.com/today/2023/01/esp32-otafab-study-microsd.html">ESP32でmicroSDカードを読み書き</a></li>
 <li><a href="https://docs.espressif.com/projects/esp-idf/en/latest/esp32/api-reference/network/esp_now.html">ESP-NOW</a></li>
+</ul>
+<h2 id="_7">使用データ<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="https://grabcad.com/library/1602-lcd-display-1">3D Data</a></li>
 </ul>
 
 
