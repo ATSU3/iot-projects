@@ -60,70 +60,6 @@
 | ESP-WROOM-32E | 
 
 #### プログラム
-```c++
-#include "FS.h"
-#include "SD.h"
-#include "SPI.h"
-#include <Wire.h>
-#include <LiquidCrystal_I2C.h>
-#include <DHT.h>
-
-#define DHTPIN 2
-#define DHTTYPE DHT22
-#define SCK 18  //SDカードのCLKピン
-#define MISO 19 //SDカードのDAT0ピン
-#define MOSI 23 //SDカードのCMDピン
-#define SS 4    //SDカードのCD/DAT3ピン
-
-DHT dht(DHTPIN, DHTTYPE);
-LiquidCrystal_I2C lcd(0x27, 16, 2);
-
-void setup() {
-  lcd.init();
-  lcd.backlight();
-  dht.begin();
-  
-  SPI.begin(SCK, MISO, MOSI, SS);
-  if(!SD.begin(SS)){
-    lcd.print("Card Mount Failed");
-    return;
-  }
-  uint8_t cardType = SD.cardType();
-  if(cardType == CARD_NONE){
-    lcd.print("No SD card attached");
-    return;
-  }
-}
-
-void loop() {
-  float h = dht.readHumidity();
-  float t = dht.readTemperature();
-
-  lcd.setCursor(0, 0);
-  lcd.print("Temp: ");
-  lcd.print(t);
-  lcd.print("C");
-  
-  lcd.setCursor(0, 1);
-  lcd.print("Hum: ");
-  lcd.print(h);
-  lcd.print("%");
-
-  File dataFile = SD.open("/data.txt", FILE_APPEND);
-  if(dataFile){
-    dataFile.print("Temp: ");
-    dataFile.print(t);
-    dataFile.print("C ");
-    dataFile.print("Hum: ");
-    dataFile.print(h);
-    dataFile.println("%");
-    dataFile.close();
-  }
-
-  delay(2000);
-}
-
-```
 
 ```c++
 #include "FS.h"
@@ -246,6 +182,8 @@ void loop() {
 }
 
 ```
+
+
 
 ### 2ndスパイラル(7月1日 ~ 7月31日)
 2ndスパイラルでは、確認のために現場に直接行く頻度を削減するため、遠隔地から農場の環境データをリアルタイムで取得できるようにしたいと思います。また、國本さんの自宅から農場までは10km以上の距離があるため、農場の環境データをリアルタイムで取得することができれば、温度が問題ない場合、ビニールハウスの状態を確認するためだけに現場に向かう必要がなくなり、効率化を図ることができます。
