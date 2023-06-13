@@ -52,9 +52,7 @@
 | マイクロＳＤカードスロットＤＩＰ化キット  | 
 | マイクロＳＤカード | 
 | 乾電池 | 
-| 単3×4電池ボックス | 
 | LCD ディスプレイモジュール | 
-| 単3×4電池ボックス | 
 | 土壌湿度計 湿度検出モジュール | 
 | DHT22 温度 湿度 センサー モジュール | 
 | ESP-WROOM-32E | 
@@ -62,6 +60,9 @@
 #### プログラム
 
 ```c++
+
+// 温湿度管理
+
 #include "FS.h"
 #include "SD.h"
 #include "SPI.h"
@@ -183,7 +184,238 @@ void loop() {
 
 ```
 
+```c++
 
+// 土壌管理
+
+#include "FS.h"
+#include "SD.h"
+#include "SPI.h"
+#include <Wire.h>
+#include <LiquidCrystal_I2C.h>
+
+#define SOIL_MOISTURE_SENSOR_PIN 34  // The pin where the soil moisture sensor is connected
+#define SCK 18  //SDカードのCLKピン
+#define MISO 19 //SDカードのDAT0ピン
+#define MOSI 23 //SDカードのCMDピン
+#define SS 5    //SDカードのCD/DAT3ピン
+#define BUTTON_PIN 15  //ボタンが接続されているピン
+#define BUTTON2_PIN 16 //新たなボタンが接続されているピン
+
+LiquidCrystal_I2C lcd(0x27, 16, 2);
+volatile bool sdCardStatus = false;
+volatile bool mountSDCard = false;  
+bool lcdStatus = true; // LCDの電源状態
+
+unsigned long lastRecordTime = 0;  // The time when data was last recorded
+unsigned long lastDisplayUpdateTime = 0;  // The time when the LCD was last updated
+
+void setup() {
+  lcd.init();
+  lcd.backlight();
+
+  pinMode(BUTTON_PIN, INPUT_PULLUP);
+  pinMode(BUTTON2_PIN, INPUT_PULLUP);
+  attachInterrupt(digitalPinToInterrupt(BUTTON_PIN), flagMountSDCard, FALLING);
+
+  SPI.begin(SCK, MISO, MOSI, SS);  // Add this
+  tryMountSDCard();
+}
+
+void flagMountSDCard() {
+  mountSDCard = true;
+}
+
+void tryMountSDCard() {
+  lcd.clear();
+  if(!SD.begin(SS, SPI)){  // Modify this
+    lcd.print("Card Mount Failed");
+    sdCardStatus = false;
+    return;
+  }
+  uint8_t cardType = SD.cardType();
+  if(cardType == CARD_NONE){
+    lcd.print("No SD card attached");
+    sdCardStatus = false;
+  }
+  else {
+    sdCardStatus = true;
+  }
+  mountSDCard = false;
+}
+
+void displayData() {
+  int moisture = analogRead(SOIL_MOISTURE_SENSOR_PIN);
+
+  lcd.setCursor(0, 0);
+  lcd.print("Soil M: ");
+  lcd.print(moisture);
+}
+
+void recordData() {
+  int moisture = analogRead(SOIL_MOISTURE_SENSOR_PIN);
+
+  File dataFile = SD.open("/data.csv", FILE_APPEND);
+  if(dataFile){
+    dataFile.println(moisture);
+    dataFile.close();
+  }
+}
+
+void loop() {
+  unsigned long currentMillis = millis();
+  
+  if (mountSDCard) {
+    tryMountSDCard();
+    delay(1000);  // Debounce
+  }
+  
+  if (digitalRead(BUTTON2_PIN) == LOW) {
+    lcdStatus = !lcdStatus; // Toggle LCD power status
+    delay(1000);  // Debounce
+    if(lcdStatus) {
+      lcd.backlight();
+    } else {
+      lcd.noBacklight();
+    }
+  }
+
+  if (sdCardStatus && lcdStatus && currentMillis - lastRecordTime >= 5000) {
+    recordData();
+    lastRecordTime = currentMillis;  // Update the last record time
+  }
+
+  if (sdCardStatus && lcdStatus && currentMillis - lastDisplayUpdateTime >= 4000) {
+    displayData();
+    lastDisplayUpdateTime = currentMillis;  // Update the last display update time
+  }
+
+  if (!lcdStatus) {
+    // LCD is off, do nothing
+  } else if(!sdCardStatus) {
+    lcd.setCursor(0, 0);
+    lcd.print("Check SD Card...  ");
+    lcd.setCursor(0, 1);
+    lcd.print("Press button to retry");
+  }
+}
+
+```
+
+```c++
+
+// DS18B20デジタル温度センサー
+
+#include "FS.h"
+#include "SD.h"
+#include "SPI.h"
+#include <Wire.h>
+#include <LiquidCrystal_I2C.h>
+#include <OneWire.h>
+#include <DallasTemperature.h>
+
+#define ONE_WIRE_BUS 2 // DS18B20のデータ線が接続されているピン
+#define BUTTON_PIN 15  // ボタンが接続されているピン
+#define BUTTON2_PIN 16 // 新たなボタンが接続されているピン
+
+OneWire oneWire(ONE_WIRE_BUS);
+DallasTemperature sensors(&oneWire);
+LiquidCrystal_I2C lcd(0x27, 16, 2);
+volatile bool sdCardStatus = false;
+bool lcdStatus = true; // LCDの電源状態
+
+unsigned long lastRecordTime = 0;  
+unsigned long lastDisplayUpdateTime = 0;  
+
+void setup() {
+  lcd.init();
+  lcd.backlight();
+  sensors.begin();
+
+  pinMode(BUTTON_PIN, INPUT_PULLUP);
+  pinMode(BUTTON2_PIN, INPUT_PULLUP);
+  attachInterrupt(digitalPinToInterrupt(BUTTON_PIN), tryMountSDCard, FALLING);
+
+  tryMountSDCard();
+}
+
+void tryMountSDCard() {
+  lcd.clear();
+  if(!SD.begin()){
+    lcd.print("Card Mount Failed");
+    sdCardStatus = false;
+    return;
+  }
+  uint8_t cardType = SD.cardType();
+  if(cardType == CARD_NONE){
+    lcd.print("No SD card attached");
+    sdCardStatus = false;
+  }
+  else {
+    sdCardStatus = true;
+  }
+}
+
+void displayData() {
+  sensors.requestTemperatures(); 
+  float t = sensors.getTempCByIndex(0);
+
+  lcd.setCursor(0, 0);
+  lcd.print("Temp: ");
+  lcd.print(t);
+  lcd.print("C");
+}
+
+void recordData() {
+  sensors.requestTemperatures();
+  float t = sensors.getTempCByIndex(0);
+
+  File dataFile = SD.open("/data.csv", FILE_APPEND);
+  if(dataFile){
+    dataFile.println(t);
+    dataFile.close();
+  }
+}
+
+void loop() {
+  unsigned long currentMillis = millis();
+  
+  if (digitalRead(BUTTON_PIN) == LOW) {
+    tryMountSDCard();
+    delay(1000);  
+  }
+  
+  if (digitalRead(BUTTON2_PIN) == LOW) {
+    lcdStatus = !lcdStatus; 
+    delay(1000);  
+    if(lcdStatus) {
+      lcd.backlight();
+    } else {
+      lcd.noBacklight();
+    }
+  }
+
+  if (sdCardStatus && lcdStatus && currentMillis - lastRecordTime >= 10000) {
+    recordData();
+    lastRecordTime = currentMillis;  
+  }
+
+  if (sdCardStatus && lcdStatus && currentMillis - lastDisplayUpdateTime >= 4000) {
+    displayData();
+    lastDisplayUpdateTime = currentMillis;  
+  }
+
+  if (!lcdStatus) {
+    
+  } else if(!sdCardStatus) {
+    lcd.setCursor(0, 0);
+    lcd.print("Check SD Card...  ");
+    lcd.setCursor(0, 1);
+    lcd.print("Press button to retry");
+  }
+}
+
+```
 
 ### 2ndスパイラル(7月1日 ~ 7月31日)
 2ndスパイラルでは、確認のために現場に直接行く頻度を削減するため、遠隔地から農場の環境データをリアルタイムで取得できるようにしたいと思います。また、國本さんの自宅から農場までは10km以上の距離があるため、農場の環境データをリアルタイムで取得することができれば、温度が問題ない場合、ビニールハウスの状態を確認するためだけに現場に向かう必要がなくなり、効率化を図ることができます。
