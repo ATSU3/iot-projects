@@ -51,13 +51,16 @@
 | --------- | 
 | マイクロＳＤカードスロットＤＩＰ化キット  | 
 | マイクロＳＤカード | 
-| 乾電池 | 
 | LCD ディスプレイモジュール | 
 | 土壌湿度計 湿度検出モジュール | 
 | DHT22 温度 湿度 センサー モジュール | 
 | ESP-WROOM-32E | 
 
 #### プログラム
+
+以下のリンクを参考にしました。
+[ESP32でmicroSDカードを読み書きしてみました（おおたfab 電子工作初心者勉強会）](https://kanpapa.com/today/2023/01/esp32-otafab-study-microsd.html)
+
 
 ```c++
 
@@ -76,8 +79,8 @@
 #define MISO 19 //SDカードのDAT0ピン
 #define MOSI 23 //SDカードのCMDピン
 #define SS 4    //SDカードのCD/DAT3ピン
-#define BUTTON_PIN 15  //ボタンが接続されているピン
-#define BUTTON2_PIN 16 //新たなボタンが接続されているピン
+#define BUTTON_PIN 15  
+#define BUTTON2_PIN 16 
 
 DHT dht(DHTPIN, DHTTYPE);
 LiquidCrystal_I2C lcd(0x27, 16, 2);
@@ -184,6 +187,38 @@ void loop() {
 
 ```
 
+##### プログラム解説
+
+以下のライブラリを読み込みます。
+```c++
+#include "FS.h"
+#include "SD.h"
+#include "SPI.h"
+#include <Wire.h>
+#include <LiquidCrystal_I2C.h>
+#include <DHT.h>
+```
+SDカードにデータを書き込むために、"FS.h"、"SD.h"、"SPI.h"を読み込み
+LCDに情報を表示するため、<Wire.h>、<LiquidCrystal_I2C.h>を読み込み、
+DHT22から温湿度を取得するため、<DHT.h>
+を読み込んでおります。
+
+
+```c++
+#define DHTPIN 2
+#define DHTTYPE DHT22
+#define SCK 18  //SDカードのCLKピン
+#define MISO 19 //SDカードのDAT0ピン
+#define MOSI 23 //SDカードのCMDピン
+#define SS 4    //SDカードのCD/DAT3ピン
+#define BUTTON_PIN 15  
+#define BUTTON2_PIN 16 
+```
+
+
+
+
+
 ```c++
 
 // 土壌管理
@@ -194,7 +229,7 @@ void loop() {
 #include <Wire.h>
 #include <LiquidCrystal_I2C.h>
 
-#define SOIL_MOISTURE_SENSOR_PIN 34  // The pin where the soil moisture sensor is connected
+#define SOIL_MOISTURE_SENSOR_PIN 34  
 #define SCK 18  //SDカードのCLKピン
 #define MISO 19 //SDカードのDAT0ピン
 #define MOSI 23 //SDカードのCMDピン
@@ -207,8 +242,8 @@ volatile bool sdCardStatus = false;
 volatile bool mountSDCard = false;  
 bool lcdStatus = true; // LCDの電源状態
 
-unsigned long lastRecordTime = 0;  // The time when data was last recorded
-unsigned long lastDisplayUpdateTime = 0;  // The time when the LCD was last updated
+unsigned long lastRecordTime = 0;  
+unsigned long lastDisplayUpdateTime = 0;  
 
 void setup() {
   lcd.init();
@@ -228,7 +263,7 @@ void flagMountSDCard() {
 
 void tryMountSDCard() {
   lcd.clear();
-  if(!SD.begin(SS, SPI)){  // Modify this
+  if(!SD.begin(SS, SPI)){  
     lcd.print("Card Mount Failed");
     sdCardStatus = false;
     return;
@@ -271,8 +306,8 @@ void loop() {
   }
   
   if (digitalRead(BUTTON2_PIN) == LOW) {
-    lcdStatus = !lcdStatus; // Toggle LCD power status
-    delay(1000);  // Debounce
+    lcdStatus = !lcdStatus; 
+    delay(1000);  
     if(lcdStatus) {
       lcd.backlight();
     } else {
@@ -282,16 +317,16 @@ void loop() {
 
   if (sdCardStatus && lcdStatus && currentMillis - lastRecordTime >= 5000) {
     recordData();
-    lastRecordTime = currentMillis;  // Update the last record time
+    lastRecordTime = currentMillis;  
   }
 
   if (sdCardStatus && lcdStatus && currentMillis - lastDisplayUpdateTime >= 4000) {
     displayData();
-    lastDisplayUpdateTime = currentMillis;  // Update the last display update time
+    lastDisplayUpdateTime = currentMillis;  
   }
 
   if (!lcdStatus) {
-    // LCD is off, do nothing
+    
   } else if(!sdCardStatus) {
     lcd.setCursor(0, 0);
     lcd.print("Check SD Card...  ");
