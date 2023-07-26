@@ -21,6 +21,7 @@
 
 
 ## 電子回路
+
 ### 必要なパーツ
 |    部品    |　個数　| URL |
 | --------- | ----- | --- |
@@ -31,3 +32,6 @@
 | ESP-WROOM-32E | 1 |[Link](https://akizukidenshi.com/catalog/g/gM-15673/) |
 | タクトスイッチ | 2 | [Link](https://www.switch-science.com/products/38)|
 | RTCモジュール| 1　|[Link](https://www.amazon.co.jp/WINGONEER-%E5%B0%8F%E5%9E%8BDS3231-AT24C32-I2C%E3%83%A2%E3%82%B8%E3%83%A5%E3%83%BC%E3%83%ABArduino%E7%94%A8%E3%81%AE%E9%AB%98%E7%B2%BE%E5%BA%A6%E3%83%AA%E3%82%A2%E3%83%AB%E3%82%BF%E3%82%A4%E3%83%A0%E3%82%AF%E3%83%AD%E3%83%83%E3%82%AF%E3%83%A2%E3%82%B8%E3%83%A5%E3%83%BC%E3%83%AB/dp/B01H5NAFUY/ref=zg_bs_3332452051_sccl_1/357-7482134-7464160?psc=1) |
+
+### 回路図
+![](../images/prototype/prototype3/circuit/circuit_1.jpg#center)
