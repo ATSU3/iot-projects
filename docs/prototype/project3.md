@@ -20,4 +20,14 @@
 - [温湿度のデータを現在時刻と紐づけてSDカードに記録するプログラム](https://github.com/ATSU3/iot-agri_arduino/blob/main/arduino/prototype_vi/prototype_v1.ino)
 
 
-## 配線
+## 電子回路
+### 必要なパーツ
+|    部品    |　個数　| URL |
+| --------- | ----- | --- |
+| マイクロＳＤカードスロットＤＩＰ化キット | 1 | [Link](https://akizukidenshi.com/catalog/g/gK-05488/)|
+| マイクロＳＤカード | 1 | [Link](https://akizukidenshi.com/catalog/g/gS-15844/)|
+| LCD ディスプレイモジュール | 1 | [Link](https://www.amazon.co.jp/WayinTop-%E3%83%87%E3%82%A3%E3%82%B9%E3%83%97%E3%83%AC%E3%82%A4%E3%83%A2%E3%82%B8%E3%83%A5%E3%83%BC%E3%83%AB-16%C3%972%E3%82%AD%E3%83%A3%E3%83%A9%E3%82%AF%E3%82%BF-%E3%83%90%E3%83%83%E3%82%AF%E3%83%A9%E3%82%A4%E3%83%88%E4%BB%98%E3%81%8D-%E3%82%B7%E3%83%AA%E3%82%A2%E3%83%AB%E3%82%A4%E3%83%B3%E3%82%BF%E3%83%BC%E3%83%95%E3%82%A7%E3%82%A4%E3%82%B9/dp/B07WTMXRTQ/ref=sr_1_25?__mk_ja_JP=%E3%82%AB%E3%82%BF%E3%82%AB%E3%83%8A&crid=23Z1OJ2Q8C0RA&keywords=%E3%83%9F%E3%83%8BLCD%E3%83%87%E3%82%A3%E3%82%B9%E3%83%97%E3%83%AC%E3%82%A4%2BArduino&qid=1683865746&sprefix=%E3%83%9F%E3%83%8Blcd%E3%83%87%E3%82%A3%E3%82%B9%E3%83%97%E3%83%AC%E3%82%A4%2Barduino%2Caps%2C182&sr=8-25&th=1) |
+| DHT22 温度 湿度 センサー モジュール | 1 |[Link](https://www.amazon.co.jp/OSOYOO-DHT22-%E3%83%87%E3%82%B8%E3%82%BF%E3%83%AB%E6%B8%A9%E6%B9%BF%E5%BA%A6%E6%B8%AC%E5%AE%9A-Arduino%E3%82%84Raspberry-3%E9%9B%BB%E5%AD%90%E5%B7%A5%E4%BD%9C%E7%94%A8/dp/B07CSNMYN7/ref=sr_1_4?__mk_ja_JP=%E3%82%AB%E3%82%BF%E3%82%AB%E3%83%8A&crid=2XXJYMKFQDG41&keywords=DHT22&qid=1684202130&s=industrial&sprefix=dht22%2Cindustrial%2C190&sr=1-4) |
+| ESP-WROOM-32E | 1 |[Link](https://akizukidenshi.com/catalog/g/gM-15673/) |
+| タクトスイッチ | 2 | [Link](https://www.switch-science.com/products/38)|
+| RTCモジュール| 1　|[Link](https://www.amazon.co.jp/WINGONEER-%E5%B0%8F%E5%9E%8BDS3231-AT24C32-I2C%E3%83%A2%E3%82%B8%E3%83%A5%E3%83%BC%E3%83%ABArduino%E7%94%A8%E3%81%AE%E9%AB%98%E7%B2%BE%E5%BA%A6%E3%83%AA%E3%82%A2%E3%83%AB%E3%82%BF%E3%82%A4%E3%83%A0%E3%82%AF%E3%83%AD%E3%83%83%E3%82%AF%E3%83%A2%E3%82%B8%E3%83%A5%E3%83%BC%E3%83%AB/dp/B01H5NAFUY/ref=zg_bs_3332452051_sccl_1/357-7482134-7464160?psc=1) |
