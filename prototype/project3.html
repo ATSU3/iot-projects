@@ -890,11 +890,11 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#1st202361-630" class="md-nav__link">
-    1stスパイラル(2023年6月1日 ~ 6月30日)
+  <a href="#1st" class="md-nav__link">
+    1stスパイラル
   </a>
   
-    <nav class="md-nav" aria-label="1stスパイラル(2023年6月1日 ~ 6月30日)">
+    <nav class="md-nav" aria-label="1stスパイラル">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -930,11 +930,11 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#2nd71-731" class="md-nav__link">
-    2ndスパイラル(7月1日 ~ 7月31日)
+  <a href="#2nd" class="md-nav__link">
+    2ndスパイラル
   </a>
   
-    <nav class="md-nav" aria-label="2ndスパイラル(7月1日 ~ 7月31日)">
+    <nav class="md-nav" aria-label="2ndスパイラル">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1053,11 +1053,11 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#1st202361-630" class="md-nav__link">
-    1stスパイラル(2023年6月1日 ~ 6月30日)
+  <a href="#1st" class="md-nav__link">
+    1stスパイラル
   </a>
   
-    <nav class="md-nav" aria-label="1stスパイラル(2023年6月1日 ~ 6月30日)">
+    <nav class="md-nav" aria-label="1stスパイラル">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1093,11 +1093,11 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#2nd71-731" class="md-nav__link">
-    2ndスパイラル(7月1日 ~ 7月31日)
+  <a href="#2nd" class="md-nav__link">
+    2ndスパイラル
   </a>
   
-    <nav class="md-nav" aria-label="2ndスパイラル(7月1日 ~ 7月31日)">
+    <nav class="md-nav" aria-label="2ndスパイラル">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1177,7 +1177,7 @@
 <p>そのため、本プロジェクトを通して最終的に栗山町の農家さんが自由に使うことができる時間を増やしていきたいと思います。</p>
 <h2 id="_1">アイディアスケッチ<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <p>このプロジェクトは大きく分けて4つのスパイラルに分けております。</p>
-<h3 id="1st202361-630">1stスパイラル(2023年6月1日 ~ 6月30日)<a class="headerlink" href="#1st202361-630" title="Permanent link">&para;</a></h3>
+<h3 id="1st">1stスパイラル<a class="headerlink" href="#1st" title="Permanent link">&para;</a></h3>
 <p>1stスパイラルでは、まず國本さんが最も必要としている環境データの可視化で、ビニールハウス内で最も高い温度、低い温度を知ること、また時間ごとに温度変化のログをとり、温度の移り変わりを可視化することを行なっていこうと思います。</p>
 <p>ビニールハウス内での最高・最低温度の把握、時間ごとの温度変化のログ、及びその可視化は、農業の管理と最適化に多くのメリットがあると考えられます。</p>
 <ul>
@@ -1376,8 +1376,8 @@
 </code></pre></div>
 
 <p>SDカードにデータを書き込むために、&rdquo;FS.h&rdquo;、&rdquo;SD.h&rdquo;、&rdquo;SPI.h&rdquo;を読み込み
-LCDに情報を表示するため、<Wire.h>、<LiquidCrystal_I2C.h>を読み込み、
-DHT22から温湿度を取得するため、<DHT.h>
+LCDに情報を表示するため、Wire.h、LiquidCrystal_I2C.hを読み込み、
+DHT22から温湿度を取得するため、DHT.h
 を読み込んでおります。</p>
 <div class="codehilite"><pre><span></span><code><span class="cp">#define DHTPIN 2</span>
 <span class="cp">#define DHTTYPE DHT22</span>
@@ -1616,7 +1616,7 @@ DHT22から温湿度を取得するため、<DHT.h>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div>
 
-<h3 id="2nd71-731">2ndスパイラル(7月1日 ~ 7月31日)<a class="headerlink" href="#2nd71-731" title="Permanent link">&para;</a></h3>
+<h3 id="2nd">2ndスパイラル<a class="headerlink" href="#2nd" title="Permanent link">&para;</a></h3>
 <p>2ndスパイラルでは、確認のために現場に直接行く頻度を削減するため、遠隔地から農場の環境データをリアルタイムで取得できるようにしたいと思います。また、國本さんの自宅から農場までは10km以上の距離があるため、農場の環境データをリアルタイムで取得することができれば、温度が問題ない場合、ビニールハウスの状態を確認するためだけに現場に向かう必要がなくなり、効率化を図ることができます。</p>
 <p>よって、1stスパイラルのメリットに加え、以下のことができるようになります。</p>
 <ul>
