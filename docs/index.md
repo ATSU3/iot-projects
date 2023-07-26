@@ -2,7 +2,7 @@
 <div class="cssgrid">
   <div><a href="prototype/project1.html">Prototype1<img src="images/prototype/prototype1/home/prototype1.jpg"></a></div>
   <div><a href="prototype/project2.html">Prototype2<img src="images/prototype/prototype2/prototype2.jpg"></a></div> 
-  <div><a href="prototype/project3.html">Prototype3<img src="images/test/no_image.jpg"></a></div>
+  <div><a href="prototype/project3.html">Prototype3<img src="images/prototype/prototype3/prototype3.jpg"></a></div>
   <div><a href="prototype/project4.html">Prototype4<img src="images/test/no_image.jpg"></a></div>
   <div><a href="projects/project1.html">Prototype5<img src="images/test/no_image.jpg"></a></div> 
   <div><a href="projects/project1.html">Prototype6<img src="images/test/no_image.jpg"></a></div>
