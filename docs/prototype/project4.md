@@ -4,11 +4,14 @@
 
 # 温湿度計を作ってみる(IoT農業)
 
-本プロジェクトでは以下のプロダクトを作成しました。
+本プロジェクトではproject3で作成した温湿度を測定するデバイスをインターネット環境下して使用できるようにアップデートしたものになります。
 こちらは完成形になります。
 
-![](../images/prototype/prototype3/prototype3.jpg#center)
+![](../images/prototype/prototype4/prototype4.jpg#center)
 
 ## デバイスについて
 
-### 基本機能
+### 追加機能
+- データベースの保存
+- データの可視化
+- csv形式データのダウンロード
