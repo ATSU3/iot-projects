@@ -245,22 +245,6 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../../projects/project1.html" class="md-tabs__link">
-        Projects
-      </a>
-    </li>
-  
-
-      
-        
-  
-  
-
-
-  
-  
-  
-    <li class="md-tabs__item">
       <a href="../../../prototype/project1.html" class="md-tabs__link">
         Prototype
       </a>
@@ -599,7 +583,21 @@
       
         <li class="md-nav__item">
   <a href="#supabase_1" class="md-nav__link">
-    Supabase
+    Supabaseとは
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    初期設定
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    テーブル作成
   </a>
   
 </li>
@@ -744,60 +742,12 @@
       
       
         <label class="md-nav__link" for="__nav_5">
-          Projects
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <nav class="md-nav" aria-label="Projects" data-md-level="1">
-        <label class="md-nav__title" for="__nav_5">
-          <span class="md-nav__icon md-icon"></span>
-          Projects
-        </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../projects/project1.html" class="md-nav__link">
-        Project1
-      </a>
-    </li>
-  
-
-            
-          
-        </ul>
-      </nav>
-    </li>
-  
-
-    
-      
-      
-      
-
-  
-  
-  
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
-      
-      
-      
-      
-        <label class="md-nav__link" for="__nav_6">
           Prototype
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <nav class="md-nav" aria-label="Prototype" data-md-level="1">
-        <label class="md-nav__title" for="__nav_6">
+        <label class="md-nav__title" for="__nav_5">
           <span class="md-nav__icon md-icon"></span>
           Prototype
         </label>
@@ -893,7 +843,21 @@
       
         <li class="md-nav__item">
   <a href="#supabase_1" class="md-nav__link">
-    Supabase
+    Supabaseとは
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    初期設定
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    テーブル作成
   </a>
   
 </li>
@@ -916,11 +880,12 @@
 <p><head>
   <link href="../css/extra.css" rel="stylesheet"></link>
 </head></p>
-<h1 id="supabase">Supabaseの設定<a class="headerlink" href="#supabase" title="Permanent link">&para;</a></h1>
-<h2 id="supabase_1">Supabase<a class="headerlink" href="#supabase_1" title="Permanent link">&para;</a></h2>
+<h1 id="supabase">Supabase<a class="headerlink" href="#supabase" title="Permanent link">&para;</a></h1>
+<h2 id="supabase_1">Supabaseとは<a class="headerlink" href="#supabase_1" title="Permanent link">&para;</a></h2>
 <p>Supabaseとは、オープンソースのPostgreSQLのBaaS(Backend as a Service)です。
 バックエンド機能をアプリケーションサーバー側が行ってくれるとても便利なサービスです。</p>
 <p><a href="https://supabase.com/">SupabaseのURL</a></p>
+<h2 id="_1">初期設定<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <p>まず、「Start Your project」ボタンを押して、アカウントを登録しましょう。</p>
 <p><img alt="" src="../../../images/basic/Database/supabase/supabase_1.jpg#center" /></p>
 <p>「Sign Up Now」をクリックして、Emailとpasswordを入力して、アカウントを作成します。GitHubアカウントを持っている場合、GitHubアカウントと紐付けてログインできます。</p>
@@ -935,6 +900,21 @@
 <p><img alt="" src="../../../images/basic/Database/supabase/supabase_6.jpg#center" /></p>
 <p>セットアップが完了すると、以下の画面が表示されます。これで、初期設定は完了です。</p>
 <p><img alt="" src="../../../images/basic/Database/supabase/supabase_7.jpg#center" /></p>
+<h2 id="_2">テーブル作成<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p>画面左側の上から2番目の「Table Editor」アイコンをクリックします。</p>
+<p><img alt="" src="../../../images/basic/Database/supabase/supabase_8.jpg#center" /></p>
+<p>「Create a new table」ボタンをクリックして、テーブルを作成しましょう。</p>
+<p><img alt="" src="../../../images/basic/Database/supabase/supabase_9.jpg#center" /></p>
+<p>以下の画面が表示されるため、「Name」テーブル名を入力します。
+Enable Row Level Security (RLS)でセキュリティの設定ができます。</p>
+<p><img alt="" src="../../../images/basic/Database/supabase/supabase_10.jpg#center" /></p>
+<p>「Columns」の項目を入力します。
+デフォルトで「id」「created_at」は設定されております。「Add column」ボタンでカラムを追加することができます。テーブルが作成できたら、「Save」ボタンをクリックして、保存します。
+<img alt="" src="../../../images/basic/Database/supabase/supabase_11.jpg#center" /></p>
+<p>少し待つと、以下のようにテーブルが完成します。GUIでテーブルを簡単に作成できるため、とても便利です。</p>
+<p><img alt="" src="../../../images/basic/Database/supabase/supabase_12.jpg#center" /></p>
+<p>また、「insert」ボタンでデータや別のカラムを追加することができます。</p>
+<p><img alt="" src="../../../images/basic/Database/supabase/supabase_13.jpg#center" /></p>
 
 
 
