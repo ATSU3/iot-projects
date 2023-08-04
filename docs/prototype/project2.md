@@ -662,9 +662,6 @@ Dominoを起動させると以下のようが画面が表示されます。
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/96mXPhNz_VU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
-- プロトタイプ2
-  - 
-
 ## パッケージング
 
 マイコンボード、配線などを収納するため、箱の大きさを拡大し収納できるようにしました。
@@ -677,9 +674,7 @@ Dominoを起動させると以下のようが画面が表示されます。
 
 ### 評価
 
-- 
-
-### チェックリスト
+#### チェックリスト
 
 - 本プロトタイプはモータの振動による音を利用した楽器を作成できている
 - 対象者が容易に楽器を使用することができる

@@ -27,3 +27,8 @@
 
 #### Webアプリケーション
 - [温湿度のデータをリアルタイムで取得してデータベースに保存し、アプリ上で表とグラフで可視化するプログラム](https://github.com/ATSU3/supabase_DHT22)
+
+#### Supabase (データベース)
+こちらにSupabaseの設定をまとめております。
+
+- [Supabaseの設定](../basic/programming/Database/supabase.md)
