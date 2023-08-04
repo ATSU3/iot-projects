@@ -2,14 +2,15 @@
   <link href="../css/extra.css" rel="stylesheet"></link>
 </head>
 
-# Supabaseの設定
+# Supabase
 
-## Supabase
+## Supabaseとは
 Supabaseとは、オープンソースのPostgreSQLのBaaS(Backend as a Service)です。
 バックエンド機能をアプリケーションサーバー側が行ってくれるとても便利なサービスです。
 
 [SupabaseのURL](https://supabase.com/)
 
+## 初期設定
 まず、「Start Your project」ボタンを押して、アカウントを登録しましょう。
 
 ![](../../../images/basic/Database/supabase/supabase_1.jpg#center)
@@ -38,4 +39,30 @@ Supabaseとは、オープンソースのPostgreSQLのBaaS(Backend as a Service)
 
 ![](../../../images/basic/Database/supabase/supabase_7.jpg#center)
 
+## テーブル作成
+
+画面左側の上から2番目の「Table Editor」アイコンをクリックします。
+
+![](../../../images/basic/Database/supabase/supabase_8.jpg#center)
+
+「Create a new table」ボタンをクリックして、テーブルを作成しましょう。
+
+![](../../../images/basic/Database/supabase/supabase_9.jpg#center)
+
+以下の画面が表示されるため、「Name」テーブル名を入力します。
+Enable Row Level Security (RLS)でセキュリティの設定ができます。
+
+![](../../../images/basic/Database/supabase/supabase_10.jpg#center)
+
+「Columns」の項目を入力します。
+デフォルトで「id」「created_at」は設定されております。「Add column」ボタンでカラムを追加することができます。テーブルが作成できたら、「Save」ボタンをクリックして、保存します。
+![](../../../images/basic/Database/supabase/supabase_11.jpg#center)
+
+少し待つと、以下のようにテーブルが完成します。GUIでテーブルを簡単に作成できるため、とても便利です。
+
+![](../../../images/basic/Database/supabase/supabase_12.jpg#center)
+
+また、「insert」ボタンでデータや別のカラムを追加することができます。
+
+![](../../../images/basic/Database/supabase/supabase_13.jpg#center)
 
