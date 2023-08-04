@@ -66,3 +66,8 @@ Enable Row Level Security (RLS)でセキュリティの設定ができます。
 
 ![](../../../images/basic/Database/supabase/supabase_13.jpg#center)
 
+## Project APIの取得
+
+左側のホームアイコンをクリックして、ページをスクロールすると、「Project URL」「API Key」を取得できます。
+
+![](../../../images/basic/Database/supabase/supabase_14.jpg#center)
