@@ -20,7 +20,9 @@
 
 ## ボディ
 - [ボディ_1(.stl)](../files/prototype3/ボディ_1.stl)
+
 - [ボディ_2(.stl)](../files/prototype3/ボディ_2.stl)
+
 ![](../images/prototype/prototype3/body/body_1.jpg#center)
 
 ## プログラム
@@ -49,10 +51,15 @@
 
 ### デバイス設置
 
-ビニールハウスでトマトを育てている農家さんにご協力いただき、デバイスを設置させていただきました。ビニールハウス内の30分おきの温度湿度のデータを取得することができるか確認します。
+ビニールハウスでトマトを育てている農家さんにご協力いただき、デバイスを設置させていただきました。ビニールハウス内の30分おきの温度湿度のデータを取得することができるか確認しました。
 
 ![](../images/prototype/prototype3/photo/photo_1.jpg#center)
 
 ![](../images/prototype/prototype3/photo/photo_2.jpg#center)
+
+データは8/5 14:56から8/9 13:26までのデータを取得させていただきました。
+
+- [data(.csv)](../files/prototype3/data.csv)
+
 
 
