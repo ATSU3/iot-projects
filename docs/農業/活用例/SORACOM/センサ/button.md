@@ -1,6 +1,6 @@
 # ボタン
 
-![](../../images/test/no_image.jpg#center)
+![](../../../../images/test/no_image.jpg#center)
 
 ## 一定の間隔でクリックされた回数をSORACOM Harvestに送信する
 

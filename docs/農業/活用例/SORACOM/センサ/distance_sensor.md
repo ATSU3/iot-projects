@@ -1,6 +1,6 @@
 # 距離センサ
 
-![](../../images/test/no_image.jpg#center)
+![](../../../../images/test/no_image.jpg#center)
 
 ## 距離測定による水位監視
 

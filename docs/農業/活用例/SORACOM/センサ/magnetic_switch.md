@@ -1,6 +1,6 @@
 # 磁気スイッチ
 
-![](../../images/test/no_image.jpg#center)
+![](../../../../images/test/no_image.jpg#center)
 
 ## セキュリティシステム
 

@@ -1,6 +1,6 @@
 # 3軸デジタル加速度センサ
 
-![](../../images/test/no_image.jpg#center)
+![](../../../../images/test/no_image.jpg#center)
 
 [3軸デジタル加速度センサ](https://github.com/ATSU3/Wio_LTE_Sample/blob/main/measure_3-axis_sensor/measure_3-axis_sensor.ino)
 
