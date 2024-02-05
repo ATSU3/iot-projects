@@ -802,10 +802,68 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Line Notifyへのアラート
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="send_line_notify.html" class="md-nav__link md-nav__link--active">
         Line Notifyへのアラート
       </a>
       
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#line-notify_1" class="md-nav__link">
+    一定の閾値を超えた場合のLine Notifyへのアラート
+  </a>
+  
+    <nav class="md-nav" aria-label="一定の閾値を超えた場合のLine Notifyへのアラート">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#line-notify_2" class="md-nav__link">
+    Line Notifyの設定
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="set_alart.html" class="md-nav__link">
+        アラートの設定
+      </a>
     </li>
   
 
@@ -961,6 +1019,34 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#line-notify_1" class="md-nav__link">
+    一定の閾値を超えた場合のLine Notifyへのアラート
+  </a>
+  
+    <nav class="md-nav" aria-label="一定の閾値を超えた場合のLine Notifyへのアラート">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#line-notify_2" class="md-nav__link">
+    Line Notifyの設定
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -975,7 +1061,23 @@
 
 
 <h1 id="line-notify">Line Notifyへのアラート<a class="headerlink" href="#line-notify" title="Permanent link">&para;</a></h1>
-<p><img alt="" src="../../../../images/test/no_image.jpg#center" /></p>
+<h2 id="line-notify_1">一定の閾値を超えた場合のLine Notifyへのアラート<a class="headerlink" href="#line-notify_1" title="Permanent link">&para;</a></h2>
+<h3 id="line-notify_2">Line Notifyの設定<a class="headerlink" href="#line-notify_2" title="Permanent link">&para;</a></h3>
+<p>LINEが提供する公式アカウント&rdquo;<a href="https://notify-bot.line.me/ja/">LINE Notify</a>&ldquo;を使用することで、SORACOM Lagoonのアラート設定と紐づけることができます。</p>
+<p>LINE notifyのWebページを開き、「ログイン」ボタンをクリックします。</p>
+<p><img alt="" src="../../../../images/agri/example/soracom/alart/line/line_notify_1.jpg#center" /></p>
+<p>「ログイン」ボタンを押すと以下のページに遷移するため、Emailとパスワードを入力する、または、LineのスマートフォンアプリからQRコードでログインします。</p>
+<p><img alt="" src="../../../../images/agri/example/soracom/alart/line/line_notify_2.jpg#center" /></p>
+<p>ログインが成功すると、LINEに登録した名前が表示されるため、名前をクリックして「My page」を選択します。</p>
+<p><img alt="" src="../../../../images/agri/example/soracom/alart/line/line_notify_3.jpg#center" /></p>
+<p>「My page」に遷移すると「Generate access token (For developers)」の項目で、「Generate token」ボタンをクリックします。</p>
+<p><img alt="" src="../../../../images/agri/example/soracom/alart/line/line_notify_4.jpg#center" /></p>
+<p>「Generate token」のメニューが表示されるため、20文字までの「token name」を入力して、通知を受けるグループを選択して、「Generate token」ボタンを押すとトークンを生成できます。</p>
+<p><img alt="" src="../../../../images/agri/example/soracom/alart/line/line_notify_5.jpg#center" /></p>
+<p>「Copy」ボタンを押して、コピーした後、「Close」ボタンを押して、閉じます。この表示は一度閉じると再表示することができないため、ご注意ください。</p>
+<p><img alt="" src="../../../../images/agri/example/soracom/alart/line/line_notify_6.jpg#center" /></p>
+<p>「My page」の「Connected services」の項目で接続確認ができます。</p>
+<p><img alt="" src="../../../../images/agri/example/soracom/alart/line/line_notify_7.jpg#center" /></p>
 
 
 
@@ -1012,13 +1114,13 @@
       
       
         
-        <a href="../%E3%82%BB%E3%83%B3%E3%82%B5/3-axis_sensor.html" class="md-footer__link md-footer__link--next" aria-label="Next: 3軸デジタル加速度センサ" rel="next">
+        <a href="set_alart.html" class="md-footer__link md-footer__link--next" aria-label="Next: アラートの設定" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              3軸デジタル加速度センサ
+              アラートの設定
             </div>
           </div>
           <div class="md-footer__button md-icon">
