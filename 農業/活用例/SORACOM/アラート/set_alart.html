@@ -842,6 +842,40 @@
       
         <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
+    データの変換
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reduce" class="md-nav__link">
+    Reduceを選んだ際の設定項目
+  </a>
+  
+    <nav class="md-nav" aria-label="Reduceを選んだ際の設定項目">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#function" class="md-nav__link">
+    Function
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mode" class="md-nav__link">
+    Mode
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
     参考資料
   </a>
   
@@ -1014,6 +1048,40 @@
       
         <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
+    データの変換
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reduce" class="md-nav__link">
+    Reduceを選んだ際の設定項目
+  </a>
+  
+    <nav class="md-nav" aria-label="Reduceを選んだ際の設定項目">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#function" class="md-nav__link">
+    Function
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mode" class="md-nav__link">
+    Mode
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
     参考資料
   </a>
   
@@ -1048,12 +1116,95 @@
 <li><strong>Groups</strong>：アラートをカテゴリー別にグループ化して管理</li>
 </ul>
 <p><img alt="" src="../../../../images/agri/example/soracom/alart/alert_setting/alert_2.jpg#center" /></p>
-<h3 id="_2">参考資料<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<h4 id="_2">データの変換<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h4>
 <ul>
+<li><strong>Math</strong></li>
+<li><strong>Reduce</strong></li>
+<li><strong>Resample</strong></li>
+<li><strong>Classic condition</strong></li>
 <li>
-<p><a href="https://users.soracom.io/ja-jp/docs/lagoon-v3/alert-overview/">Soracom Alert ドキュメンテーション</a></p>
+<p><strong>Threshold</strong></p>
 </li>
-<li></li>
+<li>
+<p><strong>Math</strong>
+データセットに対して数学的な操作を適用します。例えば、データポイントの値に対して加算、減算、乗算、除算などの演算を行い、結果を変換します。</p>
+</li>
+<li>
+<p><strong>Reduce</strong>
+一連のデータポイントを集約して単一の値に減らします。これには、平均（Mean）、最小値（Min）、最大値（Max）などの集約関数を使用して、データセット全体を代表する単一の値を求めることができます。</p>
+</li>
+<li>
+<p><strong>Resample</strong>
+データセットのサンプリングレートを変更します。特定の時間間隔でデータを再サンプリングして、データの密度を調整したり、異なる時間間隔でのデータ比較を可能にします。</p>
+</li>
+<li>
+<p><strong>Classic condition</strong>
+古典的な条件式を使用してデータセットを評価し、特定の条件を満たすかどうかを判断します。これは、特定の閾値を基にしたシンプルなif-thenルールによるアラート条件の設定に利用されます。</p>
+</li>
+<li>
+<p><strong>Threshold</strong>
+データポイントが特定の閾値を超えた場合にアラートをトリガーする条件を設定します。閾値は静的に設定することも、時間や他の条件に応じて動的に変更することも可能です。</p>
+</li>
+</ul>
+<h3 id="reduce">Reduceを選んだ際の設定項目<a class="headerlink" href="#reduce" title="Permanent link">&para;</a></h3>
+<h5 id="function">Function<a class="headerlink" href="#function" title="Permanent link">&para;</a></h5>
+<ul>
+<li><strong>Min</strong></li>
+<li><strong>Max</strong></li>
+<li><strong>Mean</strong></li>
+<li><strong>Sum</strong></li>
+<li><strong>Count</strong></li>
+<li>
+<p><strong>Last</strong></p>
+</li>
+<li>
+<p><strong>Min</strong>
+データセット内の最小値を求めます。これは、観測期間内での最小のデータポイントを特定するのに使用されます。</p>
+</li>
+<li>
+<p><strong>Max</strong>
+データセット内の最大値を求めます。最大値を把握することで、特定期間内のピーク値を識別できます。</p>
+</li>
+<li>
+<p><strong>Mean</strong>
+データセットの平均値を計算します。データの一般的な傾向や中心を理解するのに役立ちます。</p>
+</li>
+<li>
+<p><strong>Sum</strong>
+データセット内の全データポイントの合計値を求めます。これは、特定期間内の総量や総活動量を測定するのに適しています。</p>
+</li>
+<li>
+<p><strong>Count</strong>
+データセット内のデータポイントの数をカウントします。これにより、観測期間内のサンプルの総数やイベントの発生回数を知ることができます。</p>
+</li>
+<li>
+<p><strong>Last</strong>
+データセット内の最後のデータポイントを取得します。最新の観測値や状態を確認するのに使用されます。</p>
+</li>
+</ul>
+<h5 id="mode">Mode<a class="headerlink" href="#mode" title="Permanent link">&para;</a></h5>
+<ul>
+<li><strong>Strict</strong></li>
+<li><strong>Drop Non-numeric Values</strong> </li>
+<li>
+<p><strong>Replace Non-numeric Values</strong></p>
+</li>
+<li>
+<p><strong>Strict</strong>
+すべてのクエリ結果が数値であることを要求します。非数値が含まれる場合、アラート条件の評価はエラーとなります。このモードは、データの整合性を厳密に保ちたい場合に適しています。</p>
+</li>
+<li>
+<p><strong>Drop Non-numeric Values</strong> 
+数値でない結果を無視（ドロップ）し、数値のみを条件評価に使用します。このオプションは、非数値のデータポイントが時々現れるが、アラートの評価には数値データのみが重要な場合に便利です。</p>
+</li>
+<li>
+<p><strong>Replace Non-numeric Values</strong>
+非数値のデータポイントを特定の数値（通常は0）で置き換えてから条件評価を行います。これは、非数値データをある程度のデフォルト値で扱いたい場合や、全てのデータポイントを評価に含めたいが、一部が非数値である可能性がある場合に適しています。</p>
+</li>
+</ul>
+<h3 id="_3">参考資料<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<ul>
+<li><a href="https://users.soracom.io/ja-jp/docs/lagoon-v3/alert-overview/">Soracom Alert ドキュメンテーション</a></li>
 </ul>
 
 
