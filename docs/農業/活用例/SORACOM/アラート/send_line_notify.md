@@ -1,4 +1,4 @@
-# Line Notifyへのアラート
+# Line Notifyへのアラート事前設定
 
 ## 一定の閾値を超えた場合のLine Notifyへのアラート
 

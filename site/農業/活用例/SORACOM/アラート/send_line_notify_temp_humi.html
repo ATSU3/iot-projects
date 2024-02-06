@@ -15,7 +15,7 @@
     
     
       
-        <title>アラートの設定 - Fab Projects</title>
+        <title>温度が設定した閾値を超えた場合Lineへ通知する - Fab Projects</title>
       
     
     
@@ -70,7 +70,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#_1" class="md-skip">
+        <a href="#line" class="md-skip">
           Skip to content
         </a>
       
@@ -103,7 +103,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              アラートの設定
+              温度が設定した閾値を超えた場合Lineへ通知する
             
           </span>
         </div>
@@ -805,20 +805,6 @@
               
   
   
-  
-    <li class="md-nav__item">
-      <a href="send_line_notify_temp_humi.html" class="md-nav__link">
-        温度が設定した閾値を超えた場合Lineへ通知する
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
     
   
   
@@ -830,75 +816,24 @@
         
       
       
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          アラートの設定
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="set_alart.html" class="md-nav__link md-nav__link--active">
-        アラートの設定
+      <a href="send_line_notify_temp_humi.html" class="md-nav__link md-nav__link--active">
+        温度が設定した閾値を超えた場合Lineへ通知する
       </a>
       
-        
+    </li>
+  
 
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+            
+          
+            
+              
   
   
   
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    データの変換
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#reduce" class="md-nav__link">
-    Reduceを選んだ際の設定項目
-  </a>
-  
-    <nav class="md-nav" aria-label="Reduceを選んだ際の設定項目">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#function" class="md-nav__link">
-    Function
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#mode" class="md-nav__link">
-    Mode
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    参考資料
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
+    <li class="md-nav__item">
+      <a href="set_alart.html" class="md-nav__link">
+        アラートの設定
+      </a>
     </li>
   
 
@@ -1054,55 +989,6 @@
     
   
   
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    データの変換
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#reduce" class="md-nav__link">
-    Reduceを選んだ際の設定項目
-  </a>
-  
-    <nav class="md-nav" aria-label="Reduceを選んだ際の設定項目">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#function" class="md-nav__link">
-    Function
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#mode" class="md-nav__link">
-    Mode
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    参考資料
-  </a>
-  
-</li>
-      
-    </ul>
-  
 </nav>
                   </div>
                 </div>
@@ -1116,109 +1002,19 @@
                   
 
 
-<h1 id="_1">アラートの設定<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
-<p>SORACOM Lagoonでは、センサの値をトリガーにアラート設定をすることができます。</p>
-<p><img alt="" src="../../../../images/agri/example/soracom/alart/alert_setting/alert_1.jpg#center" /></p>
-<p><a href="https://users.soracom.io/ja-jp/docs/lagoon-v3/alert-overview/">参照画像：SORACOM ユーザードキュメント Alert の概要</a></p>
-<p>Alert設定に関する設定のために、以下の5つの項目が用意されております。
-また、「<strong>Alert rule</strong>」、「<strong>Contact point</strong>」、「<strong>Notification policy</strong>」の3つの設定をメインに利用して、Alert を設定していきます。</p>
+<h1 id="line">温度が設定した閾値を超えた場合Lineへ通知する<a class="headerlink" href="#line" title="Permanent link">&para;</a></h1>
+<p>以下に温度が25度を超えた場合Lineに通知するまでの流れを説明します。</p>
+<p>本アラート設定をする上で、以下のプログラムを使用します。</p>
+<p><a href="https://github.com/ATSU3/Wio_LTE_Sample/blob/main/measure_temp_humi/measure_temp_humi.ino">[1分間おきにSoracom Harvestに温湿度のデータを送信する]</a></p>
+<p>また、事前の設定はこちらをご確認ください
+<br></p>
 <ul>
-<li><strong>Alert rules</strong>：特定条件下でアラートを発生させるルールを定義</li>
-<li><strong>Contact points</strong>：アラート通知を受け取る連絡先を設定</li>
-<li><strong>Notification policies</strong>：アラート通知の送信ルールとタイミングをカスタマイズ</li>
-<li><strong>Silences</strong>：一時的に特定アラートの通知を停止する設定</li>
-<li><strong>Groups</strong>：アラートをカテゴリー別にグループ化して管理</li>
-</ul>
-<p><img alt="" src="../../../../images/agri/example/soracom/alart/alert_setting/alert_2.jpg#center" /></p>
-<h4 id="_2">データの変換<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h4>
-<ul>
-<li><strong>Math</strong></li>
-<li><strong>Reduce</strong></li>
-<li><strong>Resample</strong></li>
-<li><strong>Classic condition</strong></li>
 <li>
-<p><strong>Threshold</strong></p>
+<p><a href="../%E3%82%BB%E3%83%B3%E3%82%B5/temp_humi_sensor.html">[温湿度センサ：一定の間隔で温湿度をSORACOM Harvestに送信する]</a></p>
 </li>
 <li>
-<p><strong>Math</strong>
-データセットに対して数学的な操作を適用します。例えば、データポイントの値に対して加算、減算、乗算、除算などの演算を行い、結果を変換します。</p>
+<p><a href="send_line_notify.html">[Line Notifyへのアラート事前設定]</a></p>
 </li>
-<li>
-<p><strong>Reduce</strong>
-一連のデータポイントを集約して単一の値に減らします。これには、平均（Mean）、最小値（Min）、最大値（Max）などの集約関数を使用して、データセット全体を代表する単一の値を求めることができます。</p>
-</li>
-<li>
-<p><strong>Resample</strong>
-データセットのサンプリングレートを変更します。特定の時間間隔でデータを再サンプリングして、データの密度を調整したり、異なる時間間隔でのデータ比較を可能にします。</p>
-</li>
-<li>
-<p><strong>Classic condition</strong>
-古典的な条件式を使用してデータセットを評価し、特定の条件を満たすかどうかを判断します。これは、特定の閾値を基にしたシンプルなif-thenルールによるアラート条件の設定に利用されます。</p>
-</li>
-<li>
-<p><strong>Threshold</strong>
-データポイントが特定の閾値を超えた場合にアラートをトリガーする条件を設定します。閾値は静的に設定することも、時間や他の条件に応じて動的に変更することも可能です。</p>
-</li>
-</ul>
-<h3 id="reduce">Reduceを選んだ際の設定項目<a class="headerlink" href="#reduce" title="Permanent link">&para;</a></h3>
-<h5 id="function">Function<a class="headerlink" href="#function" title="Permanent link">&para;</a></h5>
-<ul>
-<li><strong>Min</strong></li>
-<li><strong>Max</strong></li>
-<li><strong>Mean</strong></li>
-<li><strong>Sum</strong></li>
-<li><strong>Count</strong></li>
-<li>
-<p><strong>Last</strong></p>
-</li>
-<li>
-<p><strong>Min</strong>
-データセット内の最小値を求めます。これは、観測期間内での最小のデータポイントを特定するのに使用されます。</p>
-</li>
-<li>
-<p><strong>Max</strong>
-データセット内の最大値を求めます。最大値を把握することで、特定期間内のピーク値を識別できます。</p>
-</li>
-<li>
-<p><strong>Mean</strong>
-データセットの平均値を計算します。データの一般的な傾向や中心を理解するのに役立ちます。</p>
-</li>
-<li>
-<p><strong>Sum</strong>
-データセット内の全データポイントの合計値を求めます。これは、特定期間内の総量や総活動量を測定するのに適しています。</p>
-</li>
-<li>
-<p><strong>Count</strong>
-データセット内のデータポイントの数をカウントします。これにより、観測期間内のサンプルの総数やイベントの発生回数を知ることができます。</p>
-</li>
-<li>
-<p><strong>Last</strong>
-データセット内の最後のデータポイントを取得します。最新の観測値や状態を確認するのに使用されます。</p>
-</li>
-</ul>
-<h5 id="mode">Mode<a class="headerlink" href="#mode" title="Permanent link">&para;</a></h5>
-<ul>
-<li><strong>Strict</strong></li>
-<li><strong>Drop Non-numeric Values</strong> </li>
-<li>
-<p><strong>Replace Non-numeric Values</strong></p>
-</li>
-<li>
-<p><strong>Strict</strong>
-すべてのクエリ結果が数値であることを要求します。非数値が含まれる場合、アラート条件の評価はエラーとなります。このモードは、データの整合性を厳密に保ちたい場合に適しています。</p>
-</li>
-<li>
-<p><strong>Drop Non-numeric Values</strong> 
-数値でない結果を無視（ドロップ）し、数値のみを条件評価に使用します。このオプションは、非数値のデータポイントが時々現れるが、アラートの評価には数値データのみが重要な場合に便利です。</p>
-</li>
-<li>
-<p><strong>Replace Non-numeric Values</strong>
-非数値のデータポイントを特定の数値（通常は0）で置き換えてから条件評価を行います。これは、非数値データをある程度のデフォルト値で扱いたい場合や、全てのデータポイントを評価に含めたいが、一部が非数値である可能性がある場合に適しています。</p>
-</li>
-</ul>
-<h3 id="_3">参考資料<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
-<ul>
-<li><a href="https://users.soracom.io/ja-jp/docs/lagoon-v3/alert-overview/">Soracom Alert ドキュメンテーション</a></li>
 </ul>
 
 
@@ -1240,7 +1036,7 @@
     <nav class="md-footer__inner md-grid" aria-label="Footer" >
       
         
-        <a href="send_line_notify_temp_humi.html" class="md-footer__link md-footer__link--prev" aria-label="Previous: 温度が設定した閾値を超えた場合Lineへ通知する" rel="prev">
+        <a href="send_line_notify.html" class="md-footer__link md-footer__link--prev" aria-label="Previous: Line Notifyへのアラート事前設定" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
           </div>
@@ -1249,20 +1045,20 @@
               <span class="md-footer__direction">
                 Previous
               </span>
-              温度が設定した閾値を超えた場合Lineへ通知する
+              Line Notifyへのアラート事前設定
             </div>
           </div>
         </a>
       
       
         
-        <a href="../%E3%82%BB%E3%83%B3%E3%82%B5/3-axis_sensor.html" class="md-footer__link md-footer__link--next" aria-label="Next: 3軸デジタル加速度センサ" rel="next">
+        <a href="set_alart.html" class="md-footer__link md-footer__link--next" aria-label="Next: アラートの設定" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              3軸デジタル加速度センサ
+              アラートの設定
             </div>
           </div>
           <div class="md-footer__button md-icon">
