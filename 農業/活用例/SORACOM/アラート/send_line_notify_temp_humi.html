@@ -1016,26 +1016,181 @@
 <p><a href="send_line_notify.html">[Line Notifyへのアラート事前設定]</a></p>
 </li>
 </ul>
+<p>まずは、どのデバイスのどのセンサの値を取得し、閾値とどのように比較しアラートするのか、などの設定をしていきます。
+そのため、「Alerting」=&gt; 「Alert rules」で「Alert rules」の設定ページを開きます。</p>
 <p><img alt="" src="../../../../images/agri/example/soracom/alart/alert_rules/alert_rules_1.jpg#center" /></p>
+<p>その後「New alert rule」ボタンをクリックします。</p>
 <p><img alt="" src="../../../../images/agri/example/soracom/alart/alert_rules/alert_rules_2.jpg#center" /></p>
+<p>以下のページが新規で開かれるため、各項目を設定していきましょう</p>
 <p><img alt="" src="../../../../images/agri/example/soracom/alart/alert_rules/alert_rules_3.jpg#center" /></p>
+<p>初期の状態では、デフォルトで「A」「B」「C」のように名前がつけられております。</p>
 <p><img alt="" src="../../../../images/agri/example/soracom/alart/alert_rules/alert_rules_4.jpg#center" /></p>
+<p>まずは、「A」の設定を以下のように変更しましょう。</p>
 <p><img alt="" src="../../../../images/agri/example/soracom/alart/alert_rules/alert_rules_5.jpg#center" /></p>
+<table>
+<thead>
+<tr>
+<th>項目<br>変更前</th>
+<th>項目<br>変更後</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A</td>
+<td>temp</td>
+<td>温湿度センサの温度の値を取得するための命名</td>
+</tr>
+<tr>
+<td>Choose(未選択)</td>
+<td>Air</td>
+<td>SORACOM Airで登録しているSIMカードの名前が表示されるため、対象の名前を選択します。</td>
+</tr>
+<tr>
+<td>Choose(未選択)</td>
+<td>Standard</td>
+<td>「Time series」などのグラフの表示がされます。</td>
+</tr>
+<tr>
+<td>Choose(未選択)</td>
+<td>temp</td>
+<td>今回は温度のセンサデータを取得するため対象の変数（temp）を選択しております。</td>
+</tr>
+</tbody>
+</table>
+<p>次に、「B」の設定を以下のように変更しましょう。こちらは、上記で設定した値に対して、どのような計算方法を適用させるかを決定します。</p>
 <p><img alt="" src="../../../../images/agri/example/soracom/alart/alert_rules/alert_rules_6.jpg#center" /></p>
+<table>
+<thead>
+<tr>
+<th>項目<br>変更前</th>
+<th>項目<br>変更後</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>B</td>
+<td>temp reduce</td>
+<td>温湿度センサの温度の値を取得するための命名</td>
+</tr>
+<tr>
+<td>Reduce(デフォルト)</td>
+<td>Reduce</td>
+<td>集約計算を行うことができます。</td>
+</tr>
+<tr>
+<td>Function(未選択)</td>
+<td>Mean</td>
+<td>「平均(Mean)を計算することができます。今回の設定では、特定の時間範囲における平均温度を計算します。</td>
+</tr>
+<tr>
+<td>Input(未選択)</td>
+<td>temp</td>
+<td>「A」の項目で設定した名前を選択します。</td>
+</tr>
+<tr>
+<td>Mode(未選択)</td>
+<td>Strict</td>
+<td>数値でない場合は NaN として扱う設定ができます。</td>
+</tr>
+</tbody>
+</table>
+<p>次に、「C」の設定を以下のように変更しましょう。</p>
 <p><img alt="" src="../../../../images/agri/example/soracom/alart/alert_rules/alert_rules_7.jpg#center" /></p>
+<table>
+<thead>
+<tr>
+<th>項目<br>変更前</th>
+<th>項目<br>変更後</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>C</td>
+<td>Condition</td>
+<td>閾値などの比較する対象の状態を設定するためConditionという名前に設定しております。</td>
+</tr>
+<tr>
+<td>Input(未選択)</td>
+<td>temp reduce</td>
+<td>「B」で設定した名前を選択します。</td>
+</tr>
+<tr>
+<td>&mdash;</td>
+<td>「IS BELOW」「24」</td>
+<td>温度が24度以下の時にアラート通知をしたいため、このように設定します。</td>
+</tr>
+</tbody>
+</table>
+<p>「Preview」ボタンをクリックすることで、今回の設定では24度以下の場合アラートを出すような設定をしたいため、赤い色で「Firing」と表示されます。（「Status」が「Normal」から「Firing」になる。）</p>
 <p><img alt="" src="../../../../images/agri/example/soracom/alart/alert_rules/alert_rules_8.jpg#center" /></p>
+<p>次に「Alert evaluation behavior」の設定をしていきます。</p>
 <p><img alt="" src="../../../../images/agri/example/soracom/alart/alert_rules/alert_rules_9.jpg#center" /></p>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>[Evaluate every]</td>
+<td>5m: 5分を表し、こちらが評価間隔になります。</td>
+</tr>
+<tr>
+<td>[for]</td>
+<td>0： Alert が作成されるまでの待機時間です。「0」を入力すると、Alert rule を満たすとすぐに (0 秒で) Alert が作成されます。</td>
+</tr>
+</tbody>
+</table>
+<p>次に、「Add details for your alert」の設定をしていきます。</p>
 <p><img alt="" src="../../../../images/agri/example/soracom/alart/alert_rules/alert_rules_10.jpg#center" /></p>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>[Rule name]</td>
+<td>Alert rule の名前です。</td>
+</tr>
+<tr>
+<td>[Folder]</td>
+<td>Alert rule を保存する Folderの名前です。</td>
+</tr>
+<tr>
+<td>[Group]</td>
+<td>Alert rule の Group の名前です。</td>
+</tr>
+</tbody>
+</table>
+<p>設定が完了したら、「Save」ボタンをクリックして保存します。ここまでで「Alert rules」の設定は一旦完了になります。</p>
 <p><img alt="" src="../../../../images/agri/example/soracom/alart/alert_rules/alert_rules_11.jpg#center" /></p>
+<p>次に「Contact points」の設定をしていきます。「New contact point」ボタンをクリックして、新規で送信先を決定していきましょう。</p>
 <p><img alt="" src="../../../../images/agri/example/soracom/alart/alert_rules/alert_rules_12.jpg#center" /></p>
+<p>今回は「LINE Notify」を使用しますので、「Contact point type」の項目を「LINE」に設定します。
+「Token」に<a href="send_line_notify.html">[Line Notifyへのアラート事前設定]</a>で設定した「Token」文字列を入力します。2ヶ所の入力後に「Test」ボタンをクリックして、テスト通知を行います。</p>
 <p><img alt="" src="../../../../images/agri/example/soracom/alart/alert_rules/alert_rules_13.jpg#center" /></p>
+<p>「Send test notification」ボタンをクリックすると、LINE Notifyに通知を送ることができます。</p>
 <p><img alt="" src="../../../../images/agri/example/soracom/alart/alert_rules/alert_rules_14.jpg#center" /></p>
+<p>以下のように、手動テストによって通知が送られていることが確認できます。</p>
 <p><img alt="" src="../../../../images/agri/example/soracom/alart/alert_rules/alert_rules_15.jpg#center" /></p>
+<p>次に、「Notification policies」の設定を行います。「Notification policies」の項目を選択して、「New policy」ボタンをクリックします。</p>
 <p><img alt="" src="../../../../images/agri/example/soracom/alart/alert_rules/alert_rules_16.jpg#center" /></p>
+<p>デフォルトの状態では、Root policyで設定する設定が適用されます。
+<img alt="" src="../../../../images/agri/example/soracom/alart/alert_rules/alert_rules_19.jpg#center" /></p>
+<p>今回は「Add matcher」をクリックして特定のフォルダに属している場合にのみ、アラートルールが適用設定していきます。</p>
 <p><img alt="" src="../../../../images/agri/example/soracom/alart/alert_rules/alert_rules_17.jpg#center" /></p>
+<p>以下の設定では、「grafana_folder = testFolder」という条件を設定しておりますが、SORACOM Lagoonで管理されているダッシュボードが「testFolder」というフォルダに属している場合にのみ、アラートルールが適用されることを意味しています。（SORACOM Lagoonはgrafanaをベースにしているため）つまり、このルールにマッチしたアラートが発生したとき、設定された連絡先（この場合はLINE Notify）に通知が送られます。また、「Override grouping」がオンになっている場合は、このアラートポリシーで設定された「Group by」の条件が優先され、親ポリシーのグループ化設定は無視されます。</p>
 <p><img alt="" src="../../../../images/agri/example/soracom/alart/alert_rules/alert_rules_18.jpg#center" /></p>
-<p><img alt="" src="../../../../images/agri/example/soracom/alart/alert_rules/alert_rules_19.jpg#center" /></p>
-<p><img alt="" src="../../../../images/agri/example/soracom/alart/alert_rules/alert_rules_20.jpg#center" /></p>
+<p>「Save policy」ボタンをクリックして、完了です。
+ここまでで、大まかなアラート設定は完了できました。</p>
 <p>以下のSORACOMのドキュメンテーションが大変参考になります。</p>
 <p><a href="https://users.soracom.io/ja-jp/docs/lagoon-v3/setup-simple-alert/">SORACOM Alert ドキュメンテーション 詳細</a></p>
 
