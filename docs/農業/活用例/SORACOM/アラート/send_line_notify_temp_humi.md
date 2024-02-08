@@ -13,4 +13,10 @@
 
 - [[Line Notifyへのアラート事前設定]](../アラート/send_line_notify.md)
 
+![](../../../../images/agri/example/soracom/alart/alert_rules/alert_rules_1.jpg#center)
 
+![](../../../../images/agri/example/soracom/alart/alert_rules/alert_rules_2.jpg#center)
+
+![](../../../../images/agri/example/soracom/alart/alert_rules/alert_rules_3.jpg#center)
+
+![](../../../../images/agri/example/soracom/alart/alert_rules/alert_rules_4.jpg#center)
