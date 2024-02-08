@@ -13,6 +13,8 @@
 
 - [[Line Notifyへのアラート事前設定]](../アラート/send_line_notify.md)
 
+
+
 ![](../../../../images/agri/example/soracom/alart/alert_rules/alert_rules_1.jpg#center)
 
 ![](../../../../images/agri/example/soracom/alart/alert_rules/alert_rules_2.jpg#center)
@@ -20,3 +22,40 @@
 ![](../../../../images/agri/example/soracom/alart/alert_rules/alert_rules_3.jpg#center)
 
 ![](../../../../images/agri/example/soracom/alart/alert_rules/alert_rules_4.jpg#center)
+
+![](../../../../images/agri/example/soracom/alart/alert_rules/alert_rules_5.jpg#center)
+
+![](../../../../images/agri/example/soracom/alart/alert_rules/alert_rules_6.jpg#center)
+
+![](../../../../images/agri/example/soracom/alart/alert_rules/alert_rules_7.jpg#center)
+
+![](../../../../images/agri/example/soracom/alart/alert_rules/alert_rules_8.jpg#center)
+
+![](../../../../images/agri/example/soracom/alart/alert_rules/alert_rules_9.jpg#center)
+
+![](../../../../images/agri/example/soracom/alart/alert_rules/alert_rules_10.jpg#center)
+
+![](../../../../images/agri/example/soracom/alart/alert_rules/alert_rules_11.jpg#center)
+
+![](../../../../images/agri/example/soracom/alart/alert_rules/alert_rules_12.jpg#center)
+
+![](../../../../images/agri/example/soracom/alart/alert_rules/alert_rules_13.jpg#center)
+
+![](../../../../images/agri/example/soracom/alart/alert_rules/alert_rules_14.jpg#center)
+
+![](../../../../images/agri/example/soracom/alart/alert_rules/alert_rules_15.jpg#center)
+
+![](../../../../images/agri/example/soracom/alart/alert_rules/alert_rules_16.jpg#center)
+
+![](../../../../images/agri/example/soracom/alart/alert_rules/alert_rules_17.jpg#center)
+
+![](../../../../images/agri/example/soracom/alart/alert_rules/alert_rules_18.jpg#center)
+
+![](../../../../images/agri/example/soracom/alart/alert_rules/alert_rules_19.jpg#center)
+
+![](../../../../images/agri/example/soracom/alart/alert_rules/alert_rules_20.jpg#center)
+
+
+以下のSORACOMのドキュメンテーションが大変参考になります。
+
+[SORACOM Alert ドキュメンテーション 詳細](https://users.soracom.io/ja-jp/docs/lagoon-v3/setup-simple-alert/)
