@@ -1,6 +1,4 @@
-# 温湿度センサ
-
-## 一定の間隔で温湿度をSORACOM Harvestに送信する
+# 一定の間隔で温湿度をSORACOM Harvestに送信する
 
 ![](../../../../images/test/no_image.jpg#center)
 
