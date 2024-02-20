@@ -15,7 +15,7 @@
     
     
       
-        <title>距離センサ - Fab Projects</title>
+        <title>対象物からの距離測定 - Fab Projects</title>
       
     
     
@@ -103,7 +103,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              距離センサ
+              対象物からの距離測定
             
           </span>
         </div>
@@ -909,7 +909,7 @@
   
     <li class="md-nav__item">
       <a href="../3%E8%BB%B8%E3%83%87%E3%82%B8%E3%82%BF%E3%83%AB%E5%8A%A0%E9%80%9F%E5%BA%A6%E3%82%BB%E3%83%B3%E3%82%B5/3-axis_sensor.html" class="md-nav__link">
-        3軸デジタル加速度センサ
+        機械の誤動作検知
       </a>
     </li>
   
@@ -956,7 +956,7 @@
   
     <li class="md-nav__item">
       <a href="../%E3%83%9C%E3%82%BF%E3%83%B3/button.html" class="md-nav__link">
-        ボタン
+        一定の間隔でクリックされた回数をSORACOM Harvestに送信する
       </a>
     </li>
   
@@ -1003,7 +1003,7 @@
   
     <li class="md-nav__item">
       <a href="../%E6%B8%A9%E6%B9%BF%E5%BA%A6%E3%82%BB%E3%83%B3%E3%82%B5/temp_humi_sensor.html" class="md-nav__link">
-        温湿度センサ
+        一定の間隔で温湿度をSORACOM Harvestに送信する
       </a>
     </li>
   
@@ -1050,7 +1050,7 @@
   
     <li class="md-nav__item">
       <a href="../%E7%A3%81%E6%B0%97%E3%82%B9%E3%82%A4%E3%83%83%E3%83%81/magnetic_switch.html" class="md-nav__link">
-        磁気スイッチ
+        セキュリティシステム
       </a>
     </li>
   
@@ -1107,40 +1107,9 @@
         
       
       
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          距離センサ
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
       <a href="distance_sensor.html" class="md-nav__link md-nav__link--active">
-        距離センサ
+        対象物からの距離測定
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    距離測定による水位監視
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
       
     </li>
   
@@ -1201,21 +1170,6 @@
     
   
   
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    距離測定による水位監視
-  </a>
-  
-</li>
-      
-    </ul>
-  
 </nav>
                   </div>
                 </div>
@@ -1229,11 +1183,9 @@
                   
 
 
-<h1 id="_1">距離センサ<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
-<p><img alt="" src="../../../../images/test/no_image.jpg#center" /></p>
-<h2 id="_2">距離測定による水位監視<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<h1 id="_1">対象物からの距離測定<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
 <p>このプログラムは、定期的に超音波距離センサから距離データを読み取り、そのデータをSoracom Harvest（データベース）に送信するプログラムのサンプル例です。</p>
-<p><a href="https://github.com/ATSU3/Wio_LTE_Sample/blob/main/measure_water_level/measure_water_level.ino">対象物からの距離を測定してプログラム</a></p>
+<p><a href="https://github.com/ATSU3/Wio_LTE_Sample/blob/main/measure_distance/measure_distance.ino">対象物からの距離を測定するプログラム</a></p>
 
 
 
@@ -1254,7 +1206,7 @@
     <nav class="md-footer__inner md-grid" aria-label="Footer" >
       
         
-        <a href="../%E7%A3%81%E6%B0%97%E3%82%B9%E3%82%A4%E3%83%83%E3%83%81/magnetic_switch.html" class="md-footer__link md-footer__link--prev" aria-label="Previous: 磁気スイッチ" rel="prev">
+        <a href="../%E7%A3%81%E6%B0%97%E3%82%B9%E3%82%A4%E3%83%83%E3%83%81/magnetic_switch.html" class="md-footer__link md-footer__link--prev" aria-label="Previous: セキュリティシステム" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
           </div>
@@ -1263,7 +1215,7 @@
               <span class="md-footer__direction">
                 Previous
               </span>
-              磁気スイッチ
+              セキュリティシステム
             </div>
           </div>
         </a>
