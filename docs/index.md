@@ -4,7 +4,7 @@
   <div><a href="prototype/project2.html">Prototype2<img src="images/prototype/prototype2/prototype2.jpg"></a></div> 
   <div><a href="prototype/project3.html">Prototype3<img src="images/prototype/prototype3/prototype3.jpg"></a></div>
   <div><a href="prototype/project4.html">Prototype4<img src="images/prototype/prototype4/prototype4.jpg"></a></div>
-  <div><a href="projects/project1.html">Prototype5<img src="images/test/no_image.jpg"></a></div> 
+  <div><a href="prototype/project5.html">Prototype5<img src="images/prototype/prototype5/prototype5.jpg"></a></div> 
   <div><a href="projects/project1.html">Prototype6<img src="images/test/no_image.jpg"></a></div>
   <div><a href="projects/project1.html">Prototype7<img src="images/test/no_image.jpg"></a></div>
   <div><a href="projects/project1.html">Prototype8<img src="images/test/no_image.jpg"></a></div> 
