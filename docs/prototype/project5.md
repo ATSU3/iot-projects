@@ -11,3 +11,8 @@
 
 ## コード
 - [育苗期間中の3ヶ所の温度監視プログラム](https://github.com/ATSU3/green-house-project)
+
+## ボディパーツ
+- [ボディパーツまとめzipファイル[.stl]](../files/prototype5/device-body-parts.zip)
+
+
