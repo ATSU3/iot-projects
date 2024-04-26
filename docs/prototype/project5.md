@@ -27,15 +27,15 @@
 
 重ねて積み上げていくことができます。
 
-![](../images/prototype/prototype5/device/device_3.jpg#center)
+![](../images/prototype/prototype5/device/device_3.JPG#center)
 
 センサは以下のように取り付けて、上部のパーツと固定してねじることで、接続できるような構造にしました。
 
-![](../images/prototype/prototype5/device/device_4.jpg#center)
+![](../images/prototype/prototype5/device/device_4.JPG#center)
 
 合わせるとこのような形になります。
 
-![](../images/prototype/prototype5/device/device_5.jpg#center)
+![](../images/prototype/prototype5/device/device_5.JPG#center)
 
 ## コード
 - [育苗期間中の3ヶ所の温度監視プログラム](https://github.com/ATSU3/green-house-project)
