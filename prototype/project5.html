@@ -1274,6 +1274,110 @@
 <ul>
 <li><a href="https://github.com/ATSU3/green-house-project">育苗期間中の3ヶ所の温度監視プログラム</a></li>
 </ul>
+<div class="codehilite"><pre><span></span><code>#define TINY_GSM_MODEM_BG96 // BG96 GSMモデルを使用するための定義
+#include &lt;TinyGsmClient.h&gt; // TinyGSMライブラリの読み込み
+#include &lt;SoftwareSerial.h&gt; // ソフトウェアシリアルライブラリの読み込み
+#include &lt;DHT.h&gt; // DHTセンサーライブラリの読み込み
+#include &lt;OneWire.h&gt; // OneWire通信ライブラリの読み込み
+#include &lt;DallasTemperature.h&gt; // Dallas温度センサーライブラリの読み込み
+
+#include &lt;LowPower.h&gt; // 電力消費を抑えるためのLowPowerライブラリの読み込み
+
+#define CONSOLE Serial // SerialをCONSOLEとして定義
+#define INTERVAL_MS 300000 // インターバルタイマーの設定（ミリ秒）
+#define SERVER &quot;harvest.soracom.io&quot; // サーバーのアドレス
+#define PORT 8514 // サーバーのポート番号
+
+#define RX 10 // RXピン番号の定義
+#define TX 11 // TXピン番号の定義
+#define BAUDRATE 9600 // ボーレートの設定
+#define BG96_RESET 15 // BG96のリセットピン番号
+
+SoftwareSerial LTE_M_shieldUART(RX, TX); // ソフトウェアシリアルの設定
+TinyGsm modem(LTE_M_shieldUART); // TinyGSMオブジェクトの初期化
+TinyGsmClient client(modem); // TinyGsmClientオブジェクトの初期化
+
+#define DHTPIN 4 // DHTセンサーのピン番号
+#define DHTTYPE DHT22 // DHTセンサーのタイプ
+DHT dht(DHTPIN, DHTTYPE); // DHTオブジェクトの初期化
+
+#define TRAY_ONE_WIRE_BUS 2 // トレイ用ワンワイヤーバスのピン番号
+#define TUNNEL_ONE_WIRE_BUS 3 // トンネル用ワンワイヤーバスのピン番号
+OneWire oneWireTray(TRAY_ONE_WIRE_BUS); // トレイ用OneWireオブジェクト
+OneWire oneWireTunnel(TUNNEL_ONE_WIRE_BUS); // トンネル用OneWireオブジェクト
+DallasTemperature traySensor(&amp;oneWireTray); // ビニールハウスのトンネル（2層目）のトレイ下の温度センサーオブジェクト
+DallasTemperature tunnelSensor(&amp;oneWireTunnel); // トンネル用温度センサーオブジェクト
+
+void setup() {
+  CONSOLE.begin(115200); // コンソール通信の開始
+  LTE_M_shieldUART.begin(BAUDRATE); // シリアル通信の開始
+
+  CONSOLE.println(F(&quot;Starting...&quot;)); // 開始のメッセージを出力
+
+  pinMode(BG96_RESET, OUTPUT); // リセットピンを出力として設定
+  digitalWrite(BG96_RESET, HIGH); // リセットピンをHIGHに設定
+  delay(300); // 300ms待機
+  digitalWrite(BG96_RESET, LOW); // リセットピンをLOWに設定
+  delay(10000); // 10秒待機
+
+  if (!modem.restart()) { // モデムのリスタートを試みる
+    CONSOLE.println(F(&quot;Failed to restart modem&quot;)); // リスタート失敗時のメッセージ
+    return; // 失敗時はsetup関数を終了
+  }
+
+  String modemInfo = modem.getModemInfo(); // モデム情報の取得
+  CONSOLE.print(F(&quot;Modem: &quot;)); // モデム情報の出力
+  CONSOLE.println(modemInfo);
+
+  if (!modem.gprsConnect(&quot;soracom.io&quot;, &quot;sora&quot;, &quot;sora&quot;)) { // GPRS接続の試み
+    CONSOLE.println(F(&quot;Failed to connect&quot;)); // 接続失敗時のメッセージ
+    return; // 失敗時はsetup関数を終了
+  }
+
+  CONSOLE.println(F(&quot;GPRS connected&quot;)); // GPRS接続成功時のメッセージ
+
+  dht.begin(); // DHTセンサーの初期化
+  traySensor.begin(); // ビニールハウスのトンネル（2層目）のトレイ下の温度センサーの初期化
+  tunnelSensor.begin(); // ビニールハウスのトンネル（2層目）のトンネル用温度センサーの初期化
+}
+
+void loop() {
+  if (!client.connect(SERVER, PORT)) { // サーバーへの接続試み
+    CONSOLE.println(F(&quot;Connection to server failed&quot;)); // 接続失敗時のメッセージ
+    delay(10000); // 10秒待機
+    return; // 失敗時はloop関数の最初に戻る
+  }
+
+  CONSOLE.println(F(&quot;Connected to server&quot;)); // サーバー接続成功時のメッセージ
+
+  traySensor.requestTemperatures(); // ビニールハウスのトンネル（2層目）のトレイ用センサーから温度を要求
+  float trayTemp = traySensor.getTempCByIndex(0); // ビニールハウスのトンネル（2層目）のトレイの温度取得
+  tunnelSensor.requestTemperatures(); // トンネル用センサーから温度を要求
+  float tunnelTemp = tunnelSensor.getTempCByIndex(0); // ビニールハウスのトンネル（2層目）の温度取得
+  float ambientTemp = dht.readTemperature(); // ビニールハウス一層目の温度の取得
+  float humidity = dht.readHumidity(); // ビニールハウス1層目の湿度の取得
+
+// JSON形式でデータを構築
+
+  String payload = &quot;{\&quot;tray_temperature\&quot;:&quot; + (isnan(trayTemp) ? &quot;null&quot; : String(trayTemp, 2)) +
+                   &quot;,\&quot;tunnel_temperature\&quot;:&quot; + (isnan(tunnelTemp) ? &quot;null&quot; : String(tunnelTemp, 2)) +
+                   &quot;,\&quot;ambient_temperature\&quot;:&quot; + (isnan(ambientTemp) ? &quot;null&quot; : String(ambientTemp, 2)) +
+                   &quot;,\&quot;humidity\&quot;:&quot; + (isnan(humidity) ? &quot;null&quot; : String(humidity, 2)) + &quot;}&quot;; 
+
+
+  client.print(payload); // データのサーバーへの送信
+  CONSOLE.println(F(&quot;Data sent: &quot;)); // データ送信メッセージ
+  CONSOLE.println(payload); // 送信データの出力
+
+  client.stop(); // サーバー接続の終了
+  CONSOLE.println(F(&quot;Connection closed&quot;)); // 接続終了メッセージ
+
+  for (int i = 0; i &lt; 38; i++) { // 低消費電力モードで8秒ずつスリープ
+    LowPower.powerDown(SLEEP_8S, ADC_OFF, BOD_OFF); // スリープモードに入る
+  }
+}
+</code></pre></div>
+
 <h2 id="_3">ボディパーツ<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
 <ul>
 <li><a href="../files/prototype5/device-body-parts.zip">ボディパーツまとめzipファイル[.stl]</a></li>
