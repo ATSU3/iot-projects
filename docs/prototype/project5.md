@@ -9,9 +9,10 @@
 
 ![](../images/prototype/prototype5/device/device_1.jpg#center)
 
-ダッシュボードは、SORACOM Lagoonを使用して、以下のように温度、湿度を表示しております。
+ダッシュボードは、SORACOM Lagoonを使用して、以下のように温度、湿度を表示しております。詳細は[こちら](../農業/活用例/SORACOM/技術構成/measure_temp_and_humi.md)に記載しております。
 
 ![](../images/prototype/prototype5/soracom/soracom_1.jpg#center)
+
 
 通風筒はAutodesk Fusionでモデリングしました。
 
