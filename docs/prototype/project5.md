@@ -13,6 +13,9 @@
 
 ![](../images/prototype/prototype5/soracom/soracom_1.jpg#center)
 
+測定は2ヶ所のビニールハウスの温湿度の情報を同時に確認できるようにダッシュボードで可視化しております。
+
+![](../images/prototype/prototype5/soracom/soracom_2.jpg#center)
 
 通風筒はAutodesk Fusionでモデリングしました。
 
