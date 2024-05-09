@@ -5,6 +5,16 @@
 育苗期間中には、ビニールハウス内にトンネル（育苗のための2層目のビニールを被せる）を使用するため、ビニールハウス内（一層目）の温湿度に加えて、トンネル内の空気中の温度とトレーの下の温度のことも考慮して監視する必要があります。
 
 
+温湿度センサで取得した値をSORACOM Harvest（データベース）に保存して、SORACOM Lagoon (ダッシュボード)で可視化しております。
+
+![](../../../../images/agri/example/soracom/tech_stack/tech_stack_1.jpg#center)
+
+DS18B20（温度センサ）はArduinoの2番ピンと3番ピンに接続しております。
+DHT22（温湿度センサ）はArduinoの4番ピンに接続しております。
+また、各センサは5V、GNDに接続しております。
+
+![](../../../../images/agri/example/soracom/tech_stack/tech_stack_2.jpg#center)
+
 
 ## 部品
 
