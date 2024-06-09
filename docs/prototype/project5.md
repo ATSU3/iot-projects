@@ -150,6 +150,12 @@ void loop() {
 
 ```
 
+## 注意
+
+農地にデバイスを長期で置いておくと土などで汚れたり、水分が付着して錆びてしまい、温湿度を正しく測定できない場合がありますので、定期的に取り外して、金属部分の汚れを落とす必要があります。
+
+![](../images/prototype/prototype5/device/device_6.jpg#center)
+
 ## ボディパーツ
 - [ボディパーツまとめzipファイル[.stl]](../files/prototype5/device-body-parts.zip)
 

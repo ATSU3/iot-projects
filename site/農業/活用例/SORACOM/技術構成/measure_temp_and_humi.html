@@ -1305,6 +1305,12 @@
 <h1 id="_1">技術構成<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
 <p>（WIP）</p>
 <p>育苗期間中には、ビニールハウス内にトンネル（育苗のための2層目のビニールを被せる）を使用するため、ビニールハウス内（一層目）の温湿度に加えて、トンネル内の空気中の温度とトレーの下の温度のことも考慮して監視する必要があります。</p>
+<p>温湿度センサで取得した値をSORACOM Harvest（データベース）に保存して、SORACOM Lagoon (ダッシュボード)で可視化しております。</p>
+<p><img alt="" src="../../../../images/agri/example/soracom/tech_stack/tech_stack_1.jpg#center" /></p>
+<p>DS18B20（温度センサ）はArduinoの2番ピンと3番ピンに接続しております。
+DHT22（温湿度センサ）はArduinoの4番ピンに接続しております。
+また、各センサは5V、GNDに接続しております。</p>
+<p><img alt="" src="../../../../images/agri/example/soracom/tech_stack/tech_stack_2.jpg#center" /></p>
 <h2 id="_2">部品<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
