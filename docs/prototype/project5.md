@@ -54,6 +54,9 @@ SORACOM IoT SIMを利用して、ビニールハウスの温湿度の遠隔監�
 ![](../images/prototype/prototype5/device/device_8.JPG#center)
 
 ## コード
+
+プログラムは以下のようになっております。
+
 - [育苗期間中の3ヶ所の温度監視プログラム](https://github.com/ATSU3/green-house-project)
 
 ```
@@ -161,6 +164,19 @@ void loop() {
 }
 
 ```
+
+
+## 電子回路
+
+### 必要なパーツ
+|    部品    |  個数  | URL |
+| --------- | ------ | --- |
+| Arduino Uno R3 | 1 | [Link](https://www.switch-science.com/products/789)|
+| LTE-M Shield for Arduino | 1 | [Link](https://soracom.jp/store/5303/)|
+| 特定地域向けIoT SIM（plan-D） | 1 | [Link](https://soracom.jp/store/13380/) |
+| DHT22 温度 湿度 センサー モジュール | 1 |[Link](https://www.amazon.co.jp/OSOYOO-DHT22-%E3%83%87%E3%82%B8%E3%82%BF%E3%83%AB%E6%B8%A9%E6%B9%BF%E5%BA%A6%E6%B8%AC%E5%AE%9A-Arduino%E3%82%84Raspberry-3%E9%9B%BB%E5%AD%90%E5%B7%A5%E4%BD%9C%E7%94%A8/dp/B07CSNMYN7/ref=sr_1_4?__mk_ja_JP=%E3%82%AB%E3%82%BF%E3%82%AB%E3%83%8A&crid=2XXJYMKFQDG41&keywords=DHT22&qid=1684202130&s=industrial&sprefix=dht22%2Cindustrial%2C190&sr=1-4) |
+| DS18B20 温度センサ | 2 |[Link](https://www.amazon.co.jp/DiyStudio-A30110793JP-3%E5%80%8B-%E3%82%BB%E3%83%83%E3%83%88-Arduino%E3%82%BB%E3%83%B3%E3%82%B5%E3%83%BCDS18B20%E3%81%AE%E3%81%9F%E3%82%81%E3%81%AE%E9%98%B2%E6%B0%B4%E3%83%87%E3%82%B8%E3%82%BF%E3%83%AB%E3%82%B5%E3%83%BC%E3%83%9E%E3%83%AB%E3%83%97%E3%83%AD%E3%83%BC%E3%83%96%E3%81%BE%E3%81%9F%E3%81%AF%E3%82%BB%E3%83%B3%E3%82%B5%E3%83%BC%E3%83%A9%E3%83%9C%E6%B8%A9%E5%BA%A6%E6%B8%AC%E5%AE%9A%E6%9D%90%E6%96%99/dp/B07M886SBK?th=1) |
+
 
 ## 農家さんに使用していただいて
 

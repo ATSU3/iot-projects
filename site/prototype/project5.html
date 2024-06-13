@@ -689,13 +689,20 @@
       
         <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
-    注意
+    農家さんに使用していただいて
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#_4" class="md-nav__link">
+    注意
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
     ボディパーツ
   </a>
   
@@ -1283,13 +1290,20 @@
       
         <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
-    注意
+    農家さんに使用していただいて
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#_4" class="md-nav__link">
+    注意
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
     ボディパーツ
   </a>
   
@@ -1314,9 +1328,11 @@
   <link href="../css/extra.css" rel="stylesheet"></link>
 </head></p>
 <h1 id="_1">育苗期間中の通い農家さんの課題を解決してみました<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
-<p>本プロジェクトでは自宅と農地が離れている通い農家さんの課題を解決すべく、SORACOM IoT SIMを利用して、ビニールハウスの温湿度の遠隔監視を実現しました。
+<p>SORACOM IoT SIMを利用して、ビニールハウスの温湿度の遠隔監視を実現しました。
 完成したデバイスは以下のものになります。</p>
 <p><img alt="" src="../images/prototype/prototype5/device/device_1.jpg#center" /></p>
+<p>農家さんの中には、自宅と農地が離れており、温度の確認のために移動を繰り返す手間があったり、一度現場に行った後には、ビニールハウスの温度が上がってしまい、苗を焼いてしまったりすることが気掛かりで現場を離れられないと行った声をいただいておりました。そこで、この課題を解決すべく、ビニールハウス内の温湿度の遠隔監視をできるデバイスの作成に取り掛かりました。</p>
+<p><img alt="" src="../images/prototype/prototype5/issue/issue_1.jpg#center" /></p>
 <p>ダッシュボードは、SORACOM Lagoonを使用して、以下のように温度、湿度を表示しております。詳細は<a href="../%E8%BE%B2%E6%A5%AD/%E6%B4%BB%E7%94%A8%E4%BE%8B/SORACOM/%E6%8A%80%E8%A1%93%E6%A7%8B%E6%88%90/measure_temp_and_humi.html">こちら</a>に記載しております。</p>
 <p><img alt="" src="../images/prototype/prototype5/soracom/soracom_1.jpg#center" /></p>
 <p>測定は2ヶ所のビニールハウスの温湿度の情報を同時に確認できるようにダッシュボードで可視化しております。</p>
@@ -1333,6 +1349,10 @@
 <p><img alt="" src="../images/prototype/prototype5/device/device_4.JPG#center" /></p>
 <p>合わせるとこのような形になります。</p>
 <p><img alt="" src="../images/prototype/prototype5/device/device_5.JPG#center" /></p>
+<p>マイコンや配線の収納するボディパーツも3Dプリンタで作成しました。</p>
+<p><img alt="" src="../images/prototype/prototype5/device/device_7.JPG#center" /></p>
+<p>温湿度センサの配線は以下のように取り出しております。</p>
+<p><img alt="" src="../images/prototype/prototype5/device/device_8.JPG#center" /></p>
 <h2 id="_2">コード<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
 <ul>
 <li><a href="https://github.com/ATSU3/green-house-project">育苗期間中の3ヶ所の温度監視プログラム</a></li>
@@ -1441,10 +1461,15 @@ void loop() {
 }
 </code></pre></div>
 
-<h2 id="_3">注意<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
-<p>農地にデバイスを長期で置いておくと土などで汚れたり、水分が付着して錆びてしまい、温湿度を正しく測定できない場合がありますので、定期的に取り外して、金属部分の汚れを落とす必要があります。</p>
+<h2 id="_3">農家さんに使用していただいて<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<p>「毎日スマホ/タブレットで常にダッシュボードを確認して活用してます！」
+「農業現場を離れていても、安心して別作業ができます！」
+「農業現場の状況がどこからでも確認できるので、特に通い農家さんにおすすめしたいです！」
+とありがたいお言葉をいただきました。</p>
+<h2 id="_4">注意<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<p>農地にデバイスを長期で置いておくと土などで汚れたり、水分が付着して錆びてしまい、温湿度を正しく測定できない場合がありますので、定期的に取り外して、金属部分の汚れを落とす必要がありました。</p>
 <p><img alt="" src="../images/prototype/prototype5/device/device_6.jpg#center" /></p>
-<h2 id="_4">ボディパーツ<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<h2 id="_5">ボディパーツ<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
 <ul>
 <li><a href="../files/prototype5/device-body-parts.zip">ボディパーツまとめzipファイル[.stl]</a></li>
 </ul>
