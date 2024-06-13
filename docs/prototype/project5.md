@@ -41,6 +41,14 @@
 
 ![](../images/prototype/prototype5/device/device_5.JPG#center)
 
+マイコンや配線の収納するボディパーツも3Dプリンタで作成しました。
+
+![](../images/prototype/prototype5/device/device_7.JPG#center)
+
+温湿度センサの配線は以下のように取り出しております。
+
+![](../images/prototype/prototype5/device/device_8.JPG#center)
+
 ## コード
 - [育苗期間中の3ヶ所の温度監視プログラム](https://github.com/ATSU3/green-house-project)
 
