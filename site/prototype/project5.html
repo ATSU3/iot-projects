@@ -1561,11 +1561,159 @@ void loop() {
 とありがたいお言葉をいただきました。</p>
 <h2 id="_6">注意<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
 <p>農地にデバイスを長期で置いておくと土などで汚れたり、水分が付着して錆びてしまい、温湿度を正しく測定できない場合がありますので、定期的に取り外して、金属部分の汚れを落とす必要がありました。</p>
-<p>育苗期間終了後もハウス内の温湿度を取得するために引き続きビニールハウスに配置させていただいております。</p>
 <p><img alt="" src="../images/prototype/prototype5/device/device_6.jpg#center" /></p>
 <h2 id="_7">ボディパーツ<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
 <ul>
 <li><a href="../files/prototype5/device-body-parts.zip">ボディパーツまとめzipファイル[.stl]</a></li>
+</ul>
+<p>育苗期間終了後は育苗ハウスから苗を移動させ、メインのビニールハウスで育てられているため、そのビニールハウスの空気中の温湿度を取得するために引き続きビニールハウスに配置させていただいております。</p>
+<h1 id="_8">育苗期間終了後の温湿度測定に関して<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h1>
+<p>育苗期間終了後も引き続き温湿度測定をさせていただいております。
+温度と湿度から導くことができる露点温度と飽差も同時に取得できるようにしております。</p>
+<p>「飽差」とは、空気が含むことができる水蒸気の最大量（飽和水蒸気量）と、実際の水蒸気量との差を指します。これは、1立方メートルの空気中に追加で含むことができる水蒸気の量を示し、温度が高いほど飽差は大きくなります。飽差が高い状態では空気は乾燥しており、植物は水分蒸散を防ぐため気孔を閉じ、成長が制限されます。逆に飽差が低い場合、空気がほぼ飽和状態にあり、気孔が開いていても蒸散が起こらず、栄養吸収が妨げられます。適切な飽差の管理により、植物は水分と養分を効率的に吸収し、健康的に成長します。特にビニールハウスでの栽培において、この指標を適切にコントロールすることが重要です。</p>
+<p><img alt="" src="../images/prototype/prototype5/soracom/soracom_3.jpg#center" /></p>
+<h2 id="_9">コード<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h2>
+<div class="codehilite"><pre><span></span><code>#define CONSOLE Serial
+#define INTERVAL_MS (300000) // 5分に一度
+#define ENDPOINT &quot;harvest.soracom.io&quot;
+#define PORT 8514
+#define SKETCH_NAME &quot;send_dht22_harvest_lagoon&quot;
+#define VERSION &quot;1.1&quot;
+
+/* for LTE-M Shield for Arduino */
+#define RX 10
+#define TX 11
+#define BAUDRATE 9600
+#define BG96_RESET 15
+
+#define TINY_GSM_MODEM_BG96
+#include &lt;TinyGsmClient.h&gt;
+
+#include &lt;SoftwareSerial.h&gt;
+SoftwareSerial LTE_M_shieldUART(RX, TX);
+TinyGsm modem(LTE_M_shieldUART);
+TinyGsmClient client(modem);
+
+#include &lt;DHT.h&gt;
+
+// #define USE_DHT11 // Use DHT11 (Blue)
+#define USE_DHT20 // Use DHT20 (Black)
+
+#define DHTPIN 4
+#define DHTTYPE DHT22
+DHT dht(DHTPIN, DHTTYPE);
+
+#define OLED_MAX_CHAR_LENGTH 16
+
+#define RESET_DURATION 86400000UL // 1 day
+void software_reset() {
+  asm volatile (&quot;  jmp 0&quot;);
+}
+
+void setup() {
+  CONSOLE.begin(115200);
+  LTE_M_shieldUART.begin(BAUDRATE);
+
+  CONSOLE.print(F(&quot;Welcome to &quot;)); CONSOLE.print(SKETCH_NAME); CONSOLE.print(F(&quot; &quot;)); CONSOLE.println(VERSION);
+  delay(3000);
+
+  CONSOLE.print(F(&quot;resetting module &quot;));
+  pinMode(BG96_RESET, OUTPUT);
+  digitalWrite(BG96_RESET, LOW);
+  delay(300);
+  digitalWrite(BG96_RESET, HIGH);
+  delay(300);
+  digitalWrite(BG96_RESET, LOW);
+  CONSOLE.println(F(&quot; done.&quot;));
+
+  modem.restart();
+  delay(500);
+
+  while (!modem.waitForNetwork());
+  delay(500);
+
+  modem.gprsConnect(&quot;soracom.io&quot;, &quot;sora&quot;, &quot;sora&quot;);
+  delay(500);
+
+  while (!modem.isNetworkConnected());
+
+  delay(500);
+
+  dht.begin();
+}
+
+float calculateDewPoint(float t, float h) {
+  float a = 17.27;
+  float b = 237.7;
+  float alpha = ((a * t) / (b + t)) + log(h / 100.0);
+  float dewPoint = (b * alpha) / (a - alpha);
+  return dewPoint;
+}
+
+const float M_water = 18.01528;
+const float R = 8.314;
+
+float calculateVPD_gm3(float t, float h) {
+  float SVP = 6.1078 * pow(10, (7.5 * t) / (237.3 + t)); // SVP(飽和水蒸気量) hPa
+  float T_kelvin = t + 273.15; // 温度をケルビンに変換
+  float SVD = 216.7 * (SVP / T_kelvin); // 飽和水蒸気量 g/m³
+  float VPD = SVD * (1 - (h / 100)); // 飽差 g/m³
+  return VPD;
+}
+
+void loop() {
+  float t = dht.readTemperature();
+  float h = dht.readHumidity();
+
+  float dewPoint = calculateDewPoint(t, h);
+  float vpd = calculateVPD_gm3(t, h);
+
+  char t_str[10], h_str[10], dewPoint_str[10], vpd_str[10];
+  dtostrf(t, 5, 1, t_str);
+  dtostrf(h, 5, 1, h_str);
+  dtostrf(dewPoint, 5, 1, dewPoint_str);
+  dtostrf(vpd, 5, 1, vpd_str);
+
+  char payload[120];
+  sprintf_P(payload, PSTR(&quot;{\&quot;temp_c\&quot;:%s,\&quot;humi\&quot;:%s, \&quot;dew_point\&quot;:%s, \&quot;vpd\&quot;:%s}&quot;), t_str, h_str, dewPoint_str, vpd_str);
+
+  CONSOLE.println(payload);
+
+  CONSOLE.print(F(&quot;Send...&quot;));
+
+  if (!client.connect(ENDPOINT, PORT)) {
+    CONSOLE.println(F(&quot;failed.&quot;));
+    delay(3000);
+    return;
+  }
+
+  client.print(payload); // データのサーバーへの送信
+
+  CONSOLE.println(F(&quot;Data sent: &quot;)); // データ送信メッセージ
+  CONSOLE.println(payload); // 送信データの出力
+  client.stop();
+  CONSOLE.println(F(&quot;done.&quot;));
+
+  delay(INTERVAL_MS);
+
+#ifdef RESET_DURATION
+  if(millis() &gt; RESET_DURATION )
+  {
+    CONSOLE.println(&quot;Execute software reset...&quot;);
+    delay(1000);
+    software_reset();
+  }
+#endif
+}
+</code></pre></div>
+
+<h2 id="url">参考URL<a class="headerlink" href="#url" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="https://www.calculatorultra.com/ja/tool/dew-point-calculator.html">露点計算機</a></li>
+<li><a href="https://www.zero-agri.jp/about-saturation-deficit">飽差について</a></li>
+<li><a href="https://www.agri-note.jp/2018/06/fb-archive24/">イトウさんのちょっとためになる農業情報</a></li>
+<li><a href="https://minorasu.basf.co.jp/80240">飽差とは? ハウス栽培に欠かせない指標を知り、収量アップを実現！</a></li>
+<li><a href="https://keisan.casio.jp/exec/user/1326944648">気温と相対湿度から露点温度を求める（計算サイト）</a></li>
 </ul>
 
 
