@@ -191,14 +191,165 @@ void loop() {
 
 農地にデバイスを長期で置いておくと土などで汚れたり、水分が付着して錆びてしまい、温湿度を正しく測定できない場合がありますので、定期的に取り外して、金属部分の汚れを落とす必要がありました。
 
-育苗期間終了後もハウス内の温湿度を取得するために引き続きビニールハウスに配置させていただいております。
-
-
-
 
 
 ![](../images/prototype/prototype5/device/device_6.jpg#center)
 
 ## ボディパーツ
 - [ボディパーツまとめzipファイル[.stl]](../files/prototype5/device-body-parts.zip)
+
+
+
+育苗期間終了後もハウス内の温湿度を取得するために引き続きビニールハウスに配置させていただいております。
+
+# 育苗期間終了後の温度測定
+
+## コード
+
+```
+#define CONSOLE Serial
+#define INTERVAL_MS (300000) // 5分に一度
+#define ENDPOINT "harvest.soracom.io"
+#define PORT 8514
+#define SKETCH_NAME "send_dht22_harvest_lagoon"
+#define VERSION "1.1"
+
+/* for LTE-M Shield for Arduino */
+#define RX 10
+#define TX 11
+#define BAUDRATE 9600
+#define BG96_RESET 15
+
+#define TINY_GSM_MODEM_BG96
+#include <TinyGsmClient.h>
+
+#include <SoftwareSerial.h>
+SoftwareSerial LTE_M_shieldUART(RX, TX);
+TinyGsm modem(LTE_M_shieldUART);
+TinyGsmClient client(modem);
+
+#include <DHT.h>
+
+// #define USE_DHT11 // Use DHT11 (Blue)
+#define USE_DHT20 // Use DHT20 (Black)
+
+#define DHTPIN 4
+#define DHTTYPE DHT22
+DHT dht(DHTPIN, DHTTYPE);
+
+#define OLED_MAX_CHAR_LENGTH 16
+
+#define RESET_DURATION 86400000UL // 1 day
+void software_reset() {
+  asm volatile ("  jmp 0");
+}
+
+void setup() {
+  CONSOLE.begin(115200);
+  LTE_M_shieldUART.begin(BAUDRATE);
+
+  CONSOLE.print(F("Welcome to ")); CONSOLE.print(SKETCH_NAME); CONSOLE.print(F(" ")); CONSOLE.println(VERSION);
+  delay(3000);
+
+  CONSOLE.print(F("resetting module "));
+  pinMode(BG96_RESET, OUTPUT);
+  digitalWrite(BG96_RESET, LOW);
+  delay(300);
+  digitalWrite(BG96_RESET, HIGH);
+  delay(300);
+  digitalWrite(BG96_RESET, LOW);
+  CONSOLE.println(F(" done."));
+
+  modem.restart();
+  delay(500);
+
+  while (!modem.waitForNetwork());
+  delay(500);
+
+  modem.gprsConnect("soracom.io", "sora", "sora");
+  delay(500);
+
+  while (!modem.isNetworkConnected());
+
+  delay(500);
+
+  dht.begin();
+}
+
+float calculateDewPoint(float t, float h) {
+  float a = 17.27;
+  float b = 237.7;
+  float alpha = ((a * t) / (b + t)) + log(h / 100.0);
+  float dewPoint = (b * alpha) / (a - alpha);
+  return dewPoint;
+}
+
+const float M_water = 18.01528;
+const float R = 8.314;
+
+float calculateVPD_gm3(float t, float h) {
+  float SVP = 6.1078 * pow(10, (7.5 * t) / (237.3 + t)); // SVP(飽和水蒸気量) hPa
+  float T_kelvin = t + 273.15; // 温度をケルビンに変換
+  float SVD = 216.7 * (SVP / T_kelvin); // 飽和水蒸気量 g/m³
+  float VPD = SVD * (1 - (h / 100)); // 飽差 g/m³
+  return VPD;
+}
+
+void loop() {
+  float t = dht.readTemperature();
+  float h = dht.readHumidity();
+
+  float dewPoint = calculateDewPoint(t, h);
+  float vpd = calculateVPD_gm3(t, h);
+
+  char t_str[10], h_str[10], dewPoint_str[10], vpd_str[10];
+  dtostrf(t, 5, 1, t_str);
+  dtostrf(h, 5, 1, h_str);
+  dtostrf(dewPoint, 5, 1, dewPoint_str);
+  dtostrf(vpd, 5, 1, vpd_str);
+
+  char payload[120];
+  sprintf_P(payload, PSTR("{\"temp_c\":%s,\"humi\":%s, \"dew_point\":%s, \"vpd\":%s}"), t_str, h_str, dewPoint_str, vpd_str);
+
+  CONSOLE.println(payload);
+
+  CONSOLE.print(F("Send..."));
+
+  if (!client.connect(ENDPOINT, PORT)) {
+    CONSOLE.println(F("failed."));
+    delay(3000);
+    return;
+  }
+
+  client.print(payload); // データのサーバーへの送信
+
+  CONSOLE.println(F("Data sent: ")); // データ送信メッセージ
+  CONSOLE.println(payload); // 送信データの出力
+  client.stop();
+  CONSOLE.println(F("done."));
+
+  delay(INTERVAL_MS);
+
+#ifdef RESET_DURATION
+  if(millis() > RESET_DURATION )
+  {
+    CONSOLE.println("Execute software reset...");
+    delay(1000);
+    software_reset();
+  }
+#endif
+}
+
+
+```
+
+
+## 参考URL
+- [露点計算機](https://www.calculatorultra.com/ja/tool/dew-point-calculator.html)
+- [飽差について](https://www.zero-agri.jp/about-saturation-deficit)
+- [イトウさんのちょっとためになる農業情報](https://www.agri-note.jp/2018/06/fb-archive24/)
+- [飽差とは? ハウス栽培に欠かせない指標を知り、収量アップを実現！](https://minorasu.basf.co.jp/80240)
+- [気温と相対湿度から露点温度を求める（計算サイト）](https://keisan.casio.jp/exec/user/1326944648)
+
+
 
