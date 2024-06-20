@@ -1566,8 +1566,12 @@ void loop() {
 <ul>
 <li><a href="../files/prototype5/device-body-parts.zip">ボディパーツまとめzipファイル[.stl]</a></li>
 </ul>
-<p>育苗期間終了後もハウス内の温湿度を取得するために引き続きビニールハウスに配置させていただいております。</p>
-<h1 id="_8">育苗期間終了後の温度測定<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h1>
+<p>育苗期間終了後は育苗ハウスから苗を移動させ、メインのビニールハウスで育てられているため、そのビニールハウスの空気中の温湿度を取得するために引き続きビニールハウスに配置させていただいております。</p>
+<h1 id="_8">育苗期間終了後の温湿度測定に関して<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h1>
+<p>育苗期間終了後も引き続き温湿度測定をさせていただいております。
+温度と湿度から導くことができる露点温度と飽差も同時に取得できるようにしております。</p>
+<p>「飽差」とは、空気が含むことができる水蒸気の最大量（飽和水蒸気量）と、実際の水蒸気量との差を指します。これは、1立方メートルの空気中に追加で含むことができる水蒸気の量を示し、温度が高いほど飽差は大きくなります。飽差が高い状態では空気は乾燥しており、植物は水分蒸散を防ぐため気孔を閉じ、成長が制限されます。逆に飽差が低い場合、空気がほぼ飽和状態にあり、気孔が開いていても蒸散が起こらず、栄養吸収が妨げられます。適切な飽差の管理により、植物は水分と養分を効率的に吸収し、健康的に成長します。特にビニールハウスでの栽培において、この指標を適切にコントロールすることが重要です。</p>
+<p><img alt="" src="../images/prototype/prototype5/soracom/soracom_3.jpg#center" /></p>
 <h2 id="_9">コード<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h2>
 <div class="codehilite"><pre><span></span><code>#define CONSOLE Serial
 #define INTERVAL_MS (300000) // 5分に一度
