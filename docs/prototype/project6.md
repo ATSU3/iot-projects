@@ -4,6 +4,29 @@
 
 # 温湿度管理システムを作成してみた
 
+ESP-NOW通信を使用することで、
+<br>
+- WIFIが使用できない屋外でSIMカードなども使用せずに通信できること
+<br>
+- 省電力で駆動するため、電池駆動をすることができること
+<br>
+がメリットとして挙げられます。
+
+今回は以下の図のようなシステムを作成していきたいと思います。
+![](../images/prototype/prototype6/sketch/sketch_1.jpg#center)
+
+各ESP32デバイス(温度データを送信する子機)からESP32デバイス（温度データを受信する親機）にESP-NOW通信(Wi-Fiネットワークを使用せずに、デバイス間で直接データを送受信する通信)を使用してデータを送ります。
+
+ESP32によるESP-NOW通信でのデータ送受信を行うメリットは、
+<br>
+- ESP32はDeepSleepモードを活用することで、長期間の電池駆動が可能であること。
+<br>
+これにより、農地に設置したセンサーやデバイスが頻繁なバッテリー交換を必要とせず、メンテナンスが容易になります。
+<br>
+- MACアドレスを使って直接通信することができ、Wi-Fiネットワークを介さないため、低遅延でのデータ送受信が可能であること
+<br>
+が挙げられます。
+
 ## ESP-NOW
 
 ![](../images/prototype/prototype6/device/device_1.JPG#center)
@@ -30,6 +53,7 @@ void loop() {
 
 ```
 
+ESP-NOW 受信プログラム
 
 ```
 #include <esp_now.h>
@@ -64,6 +88,8 @@ void loop() {
 }
 
 ```
+
+ESP-NOW 送信プログラム
 
 ```
 #include <esp_now.h>
@@ -148,3 +174,9 @@ void loop() {
 }
 
 ```
+
+
+### 参考資料
+
+[RaspberryとArduinoをシリアル通信する](http://soup01.com/ja/2020/08/12/raspberry-arduino-serialcomm/)
+[【シリアル通信〜基礎編】USBを繋いでArduino Unoとラズパイ間で簡単なシリアル通信を行ってみる](https://geek.tacoskingdom.com/blog/30)
